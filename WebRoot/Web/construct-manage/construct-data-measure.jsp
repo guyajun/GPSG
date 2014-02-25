@@ -14,40 +14,40 @@
 	rel="stylesheet">
 <link href="../bootstrap-3.0.0/css/sticky-footer-navbar.css"
 	rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
 	rel="stylesheet">
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootbox.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/moment.min.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-<script src="/GP/Web/construct-manage/construct-data-mud.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+<script src="/GPSG/Web/construct-manage/construct-data-mud.js"></script>
 </head>
 
 <body>
 	<div id="wrap">
-		<iframe src="/GP/construct-web/menu.action" width="100%" height="160px"></iframe>
+		<iframe src="/GPSG/construct-web/menu.action" width="100%" height="160px"></iframe>
 		<div class="container">
 			<div class="row">
 				<div class="panel panel-info" style="height:150px;">
 					<div class="panel-heading">查询事项</div>
 					<div class="panel-body">
 						<div class="well">
-							<a id="a-mud" href="/GP/construct-web/soil.action"
+							<a id="a-mud" href="/GPSG/construct-web/soil.action"
 								class="btn btn-danger">剖面位置/土质图</a> <a id="a-facility"
-								href="/GP/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
-							<a id="a-measure" href="/GP/construct-web/measure.action"
+								href="/GPSG/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
+							<a id="a-measure" href="/GPSG/construct-web/measure.action"
 								class="btn btn-success btn-lg">测点布置情况</a> <a id="a-advance"
-								href="/GP/construct-web/advance_getAllRecord.action"
+								href="/GPSG/construct-web/advance_getAllRecord.action"
 								class="btn btn-warning">盾构推进数据</a> <a id="a-pose"
-								href="/GP/construct-web/pose.action" class="btn btn-success">盾构/管片姿态</a>
-							<a id="a-syn" href="/GP/construct-web/syn.action"
+								href="/GPSG/construct-web/pose.action" class="btn btn-success">盾构/管片姿态</a>
+							<a id="a-syn" href="/GPSG/construct-web/syn.action"
 								class="btn btn-primary ">同步注浆数据</a> <a id="a-thing"
-								href="/GP/construct-web/thing.action" class="btn btn-danger">施工大事记录</a>
+								href="/GPSG/construct-web/thing.action" class="btn btn-danger">施工大事记录</a>
 						</div>
 					</div>
 				</div>
@@ -66,9 +66,9 @@
 								<span class="caret"></span> <span class="sr-only">Toggle
 									Dropdown</span>
 							</button>
-							<ul class="dropdown-menu" role="menu">
+							<ul class="dropdown-menu" role="menu"><!-- 
 								<li><a href="#" data-toggle="modal"
-									data-target="#modal-syn-date">按索引查询</a></li>
+									data-target="#modal-syn-date">按索引查询</a></li> -->
 								<li><a href="#" data-toggle="modal"
 									data-target="#modal-measure-cedian">按测点查询</a></li>
 							</ul>
@@ -86,7 +86,7 @@
 									data-target="#modal-total">导出全部记录</a></li>
 								
 							</ul>
-						</div>
+						</div><!-- 
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary">绘制曲线</button>
 							<button type="button" class="btn btn-primary dropdown-toggle"
@@ -95,10 +95,10 @@
 									Dropdown</span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a id="date-md" href="/GP/construct-web/draw.action">绘制时间-比重</a>
+								<li><a id="date-md" href="/GPSG/construct-web/draw.action">绘制时间-比重</a>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 						</div>
 						<table class="table table-condensed table-hover table-responsive">
 					<tbody>
@@ -147,7 +147,7 @@
 					<div class="col-sm-offset-4">
 						<s:set name="page" value="#request.pager"></s:set>
 						<form id="form-page" method="get"
-							action="/GP/construct-web/measure.action">
+							action="/GPSG/construct-web/measure.action">
 							<input id="input-page" name="pageNow" style="width:30px;"
 								value="<s:property value="#page.pageNow"/>"> /
 							<s:property value="#page.totalPage" />
@@ -187,7 +187,7 @@
 								<div class="modal-body">
 									<div class="row">
 										<form id="form-total" method="post"
-											action="/GP/construct-web/excelAll3.action"
+											action="/GPSG/construct-web/excelAll3.action"
 											class="form-inline" role="form">
 											<div class="form-group col-sm-9">
 												<label class="col-sm-6 control-label" for="excelPath">请输入EXCEL导出路径：</label>
@@ -222,7 +222,7 @@
 							</div>
 							<div class="modal-body">
 								<form id="form-date-query" method="post"
-									action="/GP/construct-web/indx.action" class="form-inline"
+									action="/GPSG/construct-web/indx.action" class="form-inline"
 									role="form">
 									<div class="form-group col-sm-8">
 										<label class="col-sm-5 control-label" for="input-date">请输入索引号：</label>
@@ -252,7 +252,7 @@
 							</div>
 							<div class="modal-body">
 								<form id="form-query-by-loop" method="post"
-									action="/GP/construct-web/cedian.action" class="form-inline"
+									action="/GPSG/construct-web/cedian.action" class="form-inline"
 									role="form">
 									<div class="form-group col-sm-8">
 										<label class="col-sm-5 control-label" for="input-start-date">测点：</label>
@@ -341,7 +341,7 @@
 	</div>
 	
 	<div id="footer">
-		<iframe src="/GP/Web/footer.jsp" class="col-md-12" frameborder="0"
+		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0"
 			scrolling="no" height="60" marginheight="0" marginwidth="0"></iframe>
 	</div>
 	<script src="../bootstrap-3.0.0/js/jquery-1.9.1.js"></script>

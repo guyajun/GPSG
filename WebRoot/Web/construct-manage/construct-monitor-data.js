@@ -1,6 +1,23 @@
 $(function() {
-	$("#aaa").on('click',function(){
-		$('#form-aaa').submit();
+	var _button1 = $('#aaa');
+	var _form1 = $('#form-aaa');
+	var _alert1=$('#alert1');
+	var form1Validator = _form1.validate({
+		rules : {
+			number : {
+				required : true
+			}
+		},
+		messages : {
+			number : {
+				required : "测点号不能为空"
+			}
+		}
+	});
+	_button1.on('click', function() {
+		if (form1Validator.form()) {
+				_form1.submit();	
+		}
 	});
 	$('#curve-btn').on('click',function(){
 		$('#form-curve').submit();

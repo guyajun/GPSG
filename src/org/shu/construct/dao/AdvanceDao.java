@@ -29,7 +29,7 @@ public class AdvanceDao extends GenericHibernateDao<ShieldProcess, Integer> {
 	}
 
 	public ArrayList<ShieldProcess> getCountByDate(Date date) {
-		String sql = "select * from SHIELD_PROCESS where TODAY ='" + date
+		String sql = "select * from SHIELD_PROCESS where TODAY like '" + date
 				+ "';";
 		ArrayList<ShieldProcess> list = (ArrayList<ShieldProcess>) this
 				.sqlFind(sql);

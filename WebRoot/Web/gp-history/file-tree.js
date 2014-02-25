@@ -6,7 +6,7 @@ $(function() {
 	
 	$.ajax({
 		type : "post",
-		url : "/GP/construct-web/fileTree.action",
+		url : "/GPSG/construct-web/fileTree.action",
 		data:{localPath:$('#localPath').val()},
 		dataType : "JSON",
 		success : modulestree

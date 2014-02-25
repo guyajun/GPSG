@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -62,20 +63,17 @@ public class FtpAction extends BaseAction {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date startDate = sdf.parse(request.getParameter("startDate"));
 		Date endDate = sdf.parse(request.getParameter("endDate"));
-		System.out.println("startDate=" + startDate);
-		System.out.println("endDate=" + endDate);
 		FTPClient ftpClient = new FTPClient();
 		ftpClient.connect(ip);
 		ftpClient.login(username, password);
 		FTPFile[] files = ftpClient.listFiles();
 		ArrayList<String> dadList = new ArrayList<String>();
-		for (int j = 2; j < files.length; j++) {
-			System.out.println("files[j].getName()=" + files[j].getName());
+		for (int j = 0; j < files.length; j++) {
 			String str[] = files[j].getName().split("-");
 			if (str.length == 3) {
-				if (str[0].length() == 4 && str[1].length() == 2
-						&& str[2].length() == 2) {
-					Date date = sdf.parse(files[j].getName());
+				if (str[0].length() == 4 && str[1].length() == 2) {
+					String baseName=FilenameUtils.getBaseName(files[j].getName());
+					Date date = sdf.parse(baseName);
 					if ((date.after(startDate) && date.before(endDate))
 							|| date.equals(startDate) || date.equals(endDate)) {
 						dadList.add(files[j].getName());

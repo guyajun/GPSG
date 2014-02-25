@@ -10,7 +10,10 @@ import java.util.Map;
 
 import org.apache.struts2.json.annotations.JSON;
 import org.shu.common.service.AdminService;
+import org.shu.common.service.DepartmentService;
 import org.shu.model.DepartmentInfo;
+import org.shu.model.ProInfo;
+import org.tool.Pager;
 
 import com.opensymphony.xwork2.ActionContext;
 import common.base.action.BaseAction;
@@ -18,27 +21,113 @@ import common.db.QueryResult;
 
 @SuppressWarnings("serial")
 public class DepartmentAction extends BaseAction {
-	private AdminService adminService;
+
+	private Integer pageNow = 1;
+	private DepartmentService departmentService;
 	protected DepartmentInfo deptinfo;
+	private Integer id;
+	private Integer parentId;
+	private String departmentName;
+	private String departmentDescription;
+
+	public String getAll() {
+		Pager pager = new Pager(pageNow, departmentService.getDepInfo().size());
+		ArrayList<DepartmentInfo> deplist = departmentService.getAll();
+		Map request = (Map) ActionContext.getContext().get("request");
+		request.put("pager", pager);
+		request.put("deplist", deplist);
+		return SUCCESS;
+	}
+
+	public String deletedepo() {
+		System.out.println(id);
+		List<DepartmentInfo> list = departmentService.findById(id);
+		departmentService.delete(list.get(0));
+		return SUCCESS;
+	}
+	public String deletedep(){
+		ArrayList<DepartmentInfo> list = departmentService.findBydepName(departmentName);
+		departmentService.delete(list.get(0));
+		return SUCCESS;
+	}
+
+
+
+	public Integer getPageNow() {
+		return pageNow;
+	}
+
+	public void setPageNow(Integer pageNow) {
+		this.pageNow = pageNow;
+	}
+
+
+
+	public void setDepartmentService(DepartmentService departmentService) {
+		this.departmentService = departmentService;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+
+	public String getDepartmentDescription() {
+		return departmentDescription;
+	}
+
+	public void setDepartmentDescription(String departmentDescription) {
+		this.departmentDescription = departmentDescription;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
+	}
+
+	
+
+	public int getPage() {
+		return page;
+	}
 
 	private int total;
 	private List<Object> rows;
 
 	private int page;
 	private int row;
-	 
 
 	public void setPage(int page) {
 		this.page = page;
 	}
-	
+
 	public void setRows(List<Object> rows) {
 		this.rows = rows;
 	}
-	 
-	public void setAdminService(AdminService adminService) {
-		this.adminService = adminService;
-	}
+
+
 
 	public int getTotal() {
 		return total;
@@ -47,12 +136,12 @@ public class DepartmentAction extends BaseAction {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-	
+
 	public List<Object> getRows() {
 		return rows;
 	}
-	
-	@JSON(serialize=false) 
+
+	@JSON(serialize = false)
 	public DepartmentInfo getDeptinfo() {
 		return deptinfo;
 	}
@@ -61,84 +150,37 @@ public class DepartmentAction extends BaseAction {
 		this.deptinfo = deptinfo;
 	}
 
-	/** ========================≤ø√≈π‹¿Ì=================== **/
-	SimpleDateFormat matter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	/** ÃÌº”≤ø√≈ **/
-	public String addDept() throws Exception {
-		
-		Date date=new Date();
-		String currentdate=matter.format(date);
-		Timestamp timestamp=Timestamp.valueOf(currentdate);  //ªÒ»°œµÕ≥µ±«∞ ±º‰
-		
-		DepartmentInfo dept1 = new DepartmentInfo();
-//		dept1.setId(deptinfo.getId());
-		dept1.setDepartmentName(deptinfo.getDepartmentName());
-		dept1.setDepartmentDescription(deptinfo.getDepartmentDescription());
-		dept1.setParentId(deptinfo.getParentId());
-		dept1.setCreatorId(deptinfo.getCreatorId());
-		dept1.setCreateTime(timestamp);
-		//dept1.setModifierId(deptinfo.getModifierId());
-		//dept1.setModifyTime(deptinfo.getModifyTime());
-		adminService.addDept(dept1);
-		return SUCCESS;
-	}
-	public void delDept() throws Exception
-	{
-		Integer id=Integer.valueOf(request.getParameter("id"));
-		adminService.delDept(id);
-	}
 
-	public String deptDataGrid() throws Exception
-	{
-		QueryResult<DepartmentInfo> results=adminService.getAllDepts(page, row);
-		List<DepartmentInfo> deptList=results.getList();
-		if(deptList.size()>0)
-		{
-			total=deptList.size();
-		}else
-		{total=0;}
-		this.rows=new ArrayList<Object>();
-		if(deptList.size()>0)
-		{
-			for(int i=0;i<deptList.size();i++)
-			{
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("id", deptList.get(i).getId());
-				map.put("deptname", deptList.get(i).getDepartmentName());
-				map.put("descrpt", deptList.get(i).getDepartmentDescription());
-				map.put("parentid", deptList.get(i).getParentId());
-				map.put("creator", deptList.get(i).getCreatorId());
-				map.put("createtime", deptList.get(i).getCreateTime());
-				map.put("modifier", deptList.get(i).getModifierId());
-				map.put("modifytime", deptList.get(i).getModifyTime());
-				this.rows.add(map);
-			}
+
+	
+
+	
+	public String editDep() {
+		System.out.println("ttt");
+		List<DepartmentInfo> list = departmentService.findById(id);
+		if (list.size() > 0) {
+			DepartmentInfo dept=list.get(0);
+			dept.setDepartmentName(departmentName);
+			dept.setDepartmentDescription(departmentDescription);
+			departmentService.update(dept);
 		}
 		return SUCCESS;
 	}
-	
-	public String editDept() throws Exception
-	{
-		Integer id=deptinfo.getId();
-		List deptinfo = adminService.findDeptById(id);
-		Map request = (Map) ActionContext.getContext().get("request");
-		request.put("deptinfo",deptinfo);
+
+	public String addDep() {
+		ArrayList<DepartmentInfo> list = departmentService
+				.findByName(departmentName);
+		if (list.size() == 0) {
+			DepartmentInfo user = new DepartmentInfo();
+			user.setDepartmentName(departmentName);
+			user.setDepartmentDescription(departmentDescription);
+			user.setCreateTime(new Timestamp(new Date().getTime()));
+			departmentService.save(user);
+		} else {
+			Map request = (Map) ActionContext.getContext().get("request");
+			request.put("msg", "Ê≠§ËßíËâ≤Â∑≤ÁªèÂ≠òÂú®");
+		}
 		return SUCCESS;
 	}
-	
-	public String updateDept() throws Exception {
-		Integer id=deptinfo.getId();
-		DepartmentInfo dept1=adminService.findDeptEntity(id);
-		dept1.setDepartmentName(deptinfo.getDepartmentName());
-		dept1.setDepartmentDescription(deptinfo.getDepartmentDescription());
-		dept1.setParentId(deptinfo.getParentId());
-		dept1.setCreatorId(deptinfo.getCreatorId());
-		dept1.setCreateTime(deptinfo.getCreateTime());
-		dept1.setModifierId(deptinfo.getModifierId());
-		dept1.setModifyTime(deptinfo.getModifyTime());
-		Map request=(Map)ActionContext.getContext().get("request");
-		adminService.updateDept(dept1);
-		return SUCCESS;
-	}
-	
+
 }

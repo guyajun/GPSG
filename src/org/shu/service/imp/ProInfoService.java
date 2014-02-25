@@ -1,8 +1,11 @@
 package org.shu.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.shu.dao.imp.ProInfoDao;
 import org.shu.model.ProInfo;
+import org.shu.model.RoleInfo;
+import org.shu.model.UserInfo;
 
 public class ProInfoService {
     
@@ -11,6 +14,26 @@ public class ProInfoService {
     public void setProInfoDao(ProInfoDao proInfoDao) {
         this.proInfoDao = proInfoDao;
     }
+    public ArrayList<ProInfo> getAll() {
+		return proInfoDao.getAll();
+		 
+	}
+    public void delete(ProInfo proInfo){
+    	proInfoDao.delete(proInfo);
+	}
+    public void save(ProInfo proInfo) {
+    	proInfoDao.save(proInfo);
+	}
+    public ArrayList<ProInfo> getOnePageByproName(String proName, int pageNow,
+			int pageSize) {
+		return proInfoDao.getByproName(proName, pageNow, pageSize);
+	}
+    public ArrayList<ProInfo> getCountByproName(String proName) {
+		return proInfoDao.getCountByproName(proName);
+	}
+    public ArrayList<ProInfo> getProInfo() {
+		return (ArrayList<ProInfo>) proInfoDao.proSearch();
+	}
     
     public int getLastLoop() {
         return proInfoDao.getLastLoop();
@@ -20,10 +43,7 @@ public class ProInfoService {
         proInfoDao.saveProInfo(proInfo);
     }
     
-    public List getAll() {
-        return proInfoDao.getAll();
-        
-    }
+
     
     public int findProInfoSize() {
         return proInfoDao.findProInfoSize();
@@ -45,9 +65,9 @@ public class ProInfoService {
         proInfoDao.update(proInfo);
     }
     
-    public List<ProInfo> findByName(String str) {
-        return proInfoDao.findByName(str);
-    }
+    public ArrayList<ProInfo> findByproName(String proName){
+		return proInfoDao.findByName(proName);
+	}
     
     public void deleteProInfo(int id) {
         proInfoDao.deleteProInfo(id);

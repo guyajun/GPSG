@@ -14,7 +14,7 @@ public class XunJianDao extends GenericHibernateDao<Segmentrepair, Integer> {
 	
 	public ArrayList<Segmentrepair> getByTunnelLoop(int tunnelLoop)
 	{
-		String sql = "select * from SEGMENTREPAIR where TUNNEL_LOOP="+tunnelLoop;
+		String sql = "select * from SEGMENTREPAIR where isPhoto='1' and TUNNEL_LOOP="+tunnelLoop;
 		ArrayList<Segmentrepair> result=(ArrayList<Segmentrepair>) this.sqlFind(sql);
 		return result;
 	}

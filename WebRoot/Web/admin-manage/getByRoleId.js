@@ -1,7 +1,7 @@
 $(function(){
 	$.ajax({
 		type:"post",
-		url:"/GP/admin/ShowModulesTree.action",
+		url:"/GPSG/admin/ShowModulesTree.action",
 		dataType:"JSON",
 		success:modulestree
 	});	
@@ -28,7 +28,7 @@ function loadtreedata(id)
 {
 	$.ajax({
 		type:'post',
-		url:'/GP/admin/UserAuthority.action',
+		url:'/GPSG/admin/UserAuthority.action',
 		data:"roleId="+id,
 		dataType:'JSON',
 		success:function(data)

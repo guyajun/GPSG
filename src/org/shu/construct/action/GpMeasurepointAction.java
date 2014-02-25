@@ -62,6 +62,9 @@ public class GpMeasurepointAction extends BaseAction{
 		Pager pager = new Pager(1,1);
 		ArrayList<GpMeasurepoint> measureList = measureService.getCountById(cbIndx); 
 		Map request = (Map) ActionContext.getContext().get("request");
+		if(measureList.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("measureList", measureList);
 		return "success";
@@ -72,6 +75,9 @@ public class GpMeasurepointAction extends BaseAction{
 		ArrayList<GpMeasurepoint> measureList = measureService.getGpMeasurepointByPage(pageNow,
 				pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+		if(measureList.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("measureList", measureList);
 		return SUCCESS;
@@ -85,6 +91,9 @@ public class GpMeasurepointAction extends BaseAction{
 		ArrayList<GpMeasurepoint> measureList = measureService.getOnePageByCno(
 				cbCdnoNew, pageNow, pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+		if(measureList.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("measureList", measureList);
 		return SUCCESS;
@@ -99,8 +108,10 @@ public class GpMeasurepointAction extends BaseAction{
 			String excelPath) {
 		ArrayList<String> titles = new ArrayList<String>();
 		titles.add("索引号");
+		titles.add("项目编号");
 		titles.add("测点名称");
 		titles.add("测点类型");
+		titles.add("里程");
 		titles.add("隧道坐标(X)");
 		titles.add("隧道坐标(Y)");
 		titles.add("组坐标(X)");

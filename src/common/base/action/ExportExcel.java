@@ -11,7 +11,7 @@ import jxl.write.WritableWorkbook;
 @SuppressWarnings("serial")
 public class ExportExcel extends BaseAction {	
 
-	public void exportExcelCommon(ArrayList list,ArrayList<String> titles,String excelPath) {
+	public void exportExcelCommon(ArrayList list,ArrayList<String> titles,String excelPath) {		
 		try {
 			WritableWorkbook book = Workbook
 					.createWorkbook(new File(excelPath));

@@ -56,7 +56,5 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.0.4-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/selenium-af84a31e80ee278492aa1f10ee7563d4c58b87dd/selenium/lib/guice-3.0.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ftp.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

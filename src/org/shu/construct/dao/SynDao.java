@@ -18,30 +18,35 @@ import common.db.QueryResult;
 
 public class SynDao extends GenericHibernateDao<SynchronousGrout, Integer> {
 	public ArrayList<SynchronousGrout> getAll() {
-		ArrayList<SynchronousGrout> synGrout = (ArrayList<SynchronousGrout>) 
-				this.getHibernateTemplate().find("from SynchronousGrout");
-		return synGrout;
+		String sql = "select * from SYNCHRONOUS_GROUT;";
+		ArrayList<SynchronousGrout> list = (ArrayList<SynchronousGrout>) this
+				.sqlFind(sql);
+		return list;
 	}
-    public List<SynchronousGrout> synSearch()
-    {
-        List<SynchronousGrout> result = this.getHibernateTemplate().find("from SynchronousGrout");
-        return result;
-    }
-    public ArrayList<SynchronousGrout> getCountByDate(Date date) {
-		String sql = "select * from Synchronous_Grout where TODAY ='" + date
+
+	public List<SynchronousGrout> synSearch() {
+		String sql = "select * from SYNCHRONOUS_GROUT;";
+		ArrayList<SynchronousGrout> list = (ArrayList<SynchronousGrout>) this
+				.sqlFind(sql);
+		return list;
+	}
+
+	public ArrayList<SynchronousGrout> getCountByDate(Date date) {
+		String sql = "select * from SYNCHRONOUS_GROUT where TODAY like'" + date
 				+ "';";
 		ArrayList<SynchronousGrout> list = (ArrayList<SynchronousGrout>) this
 				.sqlFind(sql);
 		return list;
 	}
-    
-    public List synSearch(String reportId)
-    {
-        List result = this.getHibernateTemplate().find("from SynchronousGrout where reportId=?", reportId);
-        return result;
-    }
-    
-    public ArrayList<SynchronousGrout> groutSearchByPage(int pageNow, int pageSize) {
+
+	public List synSearch(String reportId) {
+		List result = this.getHibernateTemplate().find(
+				"from SynchronousGrout where reportId=?", reportId);
+		return result;
+	}
+
+	public ArrayList<SynchronousGrout> groutSearchByPage(int pageNow,
+			int pageSize) {
 		List<SynchronousGrout> list = synSearch();
 		ArrayList<SynchronousGrout> list1 = new ArrayList<SynchronousGrout>();
 		for (int i = ((pageNow - 1) * pageSize); i <= (pageNow * pageSize - 1); i++) {
@@ -53,18 +58,24 @@ public class SynDao extends GenericHibernateDao<SynchronousGrout, Integer> {
 		}
 		return list1;
 	}
-    public int getLastLoop() {
-        String sql = "select top 1 * from SYNCHRONOUS_GROUT order by id desc;";
-        List<SynchronousGrout> synchronousGrouts = sqlFind(sql);
-        if (synchronousGrouts.size() > 0)
-            return synchronousGrouts.get(0).getTunnelLoop();
-        else
-            return 0;
-    }
-    public ArrayList<SynchronousGrout> groutSearchByLoop(Integer tunnelLoop) {
-		return (ArrayList<SynchronousGrout>) this.getHibernateTemplate().find("from SynchronousGrout where tunnelLoop=?",tunnelLoop);
+
+	public int getLastLoop() {
+		String sql = "select top 1 * from SYNCHRONOUS_GROUT order by id desc;";
+		List<SynchronousGrout> synchronousGrouts = sqlFind(sql);
+		if (synchronousGrouts.size() > 0)
+			return synchronousGrouts.get(0).getTunnelLoop();
+		else
+			return 0;
 	}
-    public ArrayList<SynchronousGrout> getByDate(Date date, int pageNow,
+
+	public ArrayList<SynchronousGrout> groutSearchByLoop(Integer tunnelLoop) {
+		String sql = "select * from SYNCHRONOUS_GROUT where TUNNEL_LOOP ='" + tunnelLoop+ "';";
+		ArrayList<SynchronousGrout> list = (ArrayList<SynchronousGrout>) this
+				.sqlFind(sql);
+		return list;
+	}
+
+	public ArrayList<SynchronousGrout> getByDate(Date date, int pageNow,
 			int pageSize) {
 		ArrayList<SynchronousGrout> list = getCountByDate(date);
 		System.out.println(list.size());

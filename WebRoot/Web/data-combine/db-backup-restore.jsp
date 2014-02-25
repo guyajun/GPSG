@@ -8,18 +8,17 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <title>施工端数据展示</title>
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
 	rel="stylesheet">
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootbox.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/moment.min.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-<script src="/GP/Web/gp-history/gp-construct-info.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
 </head>
 <body>
 	<%
@@ -32,7 +31,7 @@
 		String path=cp.getString("local-bak-path");
 	%>
 	<div id="wrap">
-		<iframe src="/GP/construct-web/menu.action" width="100%"
+		<iframe src="/GPSG/construct-web/menu.action" width="100%"
 			height="160px"></iframe>
 		<div class="container">
 			<div class="row">
@@ -43,7 +42,7 @@
 						</div>
 						<div class="panel-body" style="padding-top:100px;">
 							<form id="form-query" method="post"
-								action="/GP/construct-web/db_backup.action"
+								action="/GPSG/construct-web/db_backup.action"
 								class="form-horizontal" role="form">								
 								<div class="form-group">
 									<label class="col-sm-3 control-label" for="backupPath">保存地址：</label>
@@ -70,7 +69,7 @@
 						</div>
 						<div class="panel-body" style="padding-top:100px;">
 							<form id="form-query" method="post"
-								action="/GP/construct-web/db_restore.action"
+								action="/GPSG/construct-web/db_restore.action"
 								class="form-horizontal" role="form" enctype="multipart/form-data">
 								<div class="form-group">
 									<label class="col-sm-3 control-label" for="restorePath">待还原数据库路径：</label>
@@ -83,7 +82,7 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label" for="restorePath">还原后的名称：</label>
 									<div class="col-sm-9 input-group">
-										<input id="restorePath" name="dbName" type="text" value="GP0711"
+										<input id="restorePath" name="dbName" type="text" value="GPSG0711"
 											width="200px"
 											class="form-control">
 									</div>
@@ -102,7 +101,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<iframe src="/GP/Web/footer.jsp" class="col-md-12" frameborder="0"
+		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0"
 			scrolling="no" height="60" marginheight="0" marginwidth="0"></iframe>
 	</div>
 </body>

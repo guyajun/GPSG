@@ -9,44 +9,40 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>施工端数据展示</title>
-<link href="/GP//bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="/GP/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
-<link href="/GP/bootstrap-3.0.0/css/sticky-footer-navbar.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
 	rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
-	rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
-	rel="stylesheet">
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootbox.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/moment.min.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-<script src="/GP/Web/construct-manage/construct-data-advance.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+<script src="/GPSG/Web/construct-manage/construct-data-thing.js"></script>
 </head>
 <body>
 	<div id="wrap">
-		<iframe src="/GP/construct-web/menu.action" width="100%" height="160px"></iframe>
+		<iframe src="/GPSG/construct-web/menu.action" width="100%"
+			height="160px"></iframe>
 		<div class="container">
 			<div class="row">
 				<div class="panel panel-info" style="height:150px;">
 					<div class="panel-heading">查询事项</div>
 					<div class="panel-body">
 						<div class="well">
-							<a id="a-mud" href="/GP/construct-web/soil.action"
+							<a id="a-mud" href="/GPSG/construct-web/soil.action"
 								class="btn btn-danger">剖面位置/土质图</a> <a id="a-facility"
-								href="/GP/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
-							<a id="a-measure" href="/GP/construct-web/measure.action"
+								href="/GPSG/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
+							<a id="a-measure" href="/GPSG/construct-web/measure.action"
 								class="btn btn-success">测点布置情况</a> <a id="a-advance"
-								href="/GP/construct-web/advance_getAllRecord.action"
+								href="/GPSG/construct-web/advance_getAllRecord.action"
 								class="btn btn-warning">盾构推进数据</a> <a id="a-pose"
-								href="/GP/construct-web/pose.action" class="btn btn-success ">盾构/管片姿态</a>
-							<a id="a-syn" href="/GP/construct-web/syn.action"
+								href="/GPSG/construct-web/pose.action" class="btn btn-success ">盾构/管片姿态</a>
+							<a id="a-syn" href="/GPSG/construct-web/syn.action"
 								class="btn btn-primary">同步注浆数据</a> <a id="a-thing"
-								href="/GP/construct-web/thing.action"
+								href="/GPSG/construct-web/thing.action"
 								class="btn btn-danger btn-lg">施工大事记录</a>
 						</div>
 					</div>
@@ -58,6 +54,7 @@
 						<h3 class="panel-title">施工大事信息</h3>
 					</div>
 					<div class="panel-body">
+					<div class="well">
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary">查询</button>
 							<button type="button" class="btn btn-primary dropdown-toggle"
@@ -67,12 +64,15 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#" data-toggle="modal"
-									data-target="#modal-thing-date">按时间查询</a></li>
-								<li><a href="#" data-toggle="modal"
-									data-target="#modal-thing-loop">按环号查询</a></li>
+									data-target="#modal-thing-date">按时间查询</a>
+								</li>
+								<!-- <li><a href="#" data-toggle="modal"
+									data-target="#modal-thing-number">按项目编号查询</a>
+								</li> -->
 							</ul>
 						</div>
-						
+							
+
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary">EXCEL导出</button>
 							<button type="button" class="btn btn-primary dropdown-toggle"
@@ -82,9 +82,9 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li><a id="excel-all" href="#" data-toggle="modal"
-									data-target="#modal-total">导出全部记录</a>
-								</li>
+									data-target="#modal-total">导出全部记录</a></li>
 							</ul>
+						</div>
 						</div>
 						<div class="modal fade" id="modal-total">
 							<div class="modal-dialog">
@@ -97,13 +97,13 @@
 									<div class="modal-body">
 										<div class="row">
 											<form id="form-total" method="post"
-												action="/GP/construct-web/excelAll7.action"
+												action="/GPSG/construct-web/excelAll7.action"
 												class="form-inline" role="form">
 												<div class="form-group col-sm-9">
 													<label class="col-sm-6 control-label" for="excelPath">请输入EXCEL导出路径：</label>
 													<div class="col-sm-6">
-														<input id="excelPath" name="excelPath" value="d:/施工大事信息.xls"
-															type="text" class="form-control">
+														<input id="excelPath" name="excelPath"
+															value="d:/施工大事信息.xls" type="text" class="form-control">
 													</div>
 												</div>
 												<div class="col-sm-3">
@@ -129,7 +129,7 @@
 									</div>
 									<div class="modal-body">
 										<form class="form-inline" role="form" method="post"
-										action="/GP/construct-web/thingDate.action">
+											action="/GPSG/construct-web/thingDate.action">
 											<div class="form-group col-sm-8">
 												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
 												<div class="col-sm-7 input-group start-date">
@@ -150,7 +150,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="modal fade" id="modal-thing-loop">
+						<div class="modal fade" id="modal-thing-number">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -159,11 +159,12 @@
 										<h4 class="modal-title" id="myModalLabel">施工大事信息</h4>
 									</div>
 									<div class="modal-body">
-										<form class="form-inline" role="form">
+										<form class="form-inline" role="form" method="post"
+											action="/GPSG/construct-web/sgdsnumber.action">
 											<div class="form-group col-sm-8">
-												<label class="col-sm-5 control-label" for="input-start-date">环号：</label>
+												<label class="col-sm-5 control-label" for="input-start-date">项目编号：</label>
 												<div class="col-sm-7 input-group">
-													<input id="input-start-date" type="text"
+													<input id="input-start-date" type="text" name="proId"
 														class="form-control">
 												</div>
 											</div>
@@ -187,7 +188,7 @@
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal"
 											aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">土质信息</h4>
+										<h4 class="modal-title" id="myModalLabel">施工大事信息</h4>
 									</div>
 
 
@@ -198,6 +199,7 @@
 													<td>索引</td>
 													<td id="index1"></td>
 												</tr>
+
 												<tr>
 													<td>日期</td>
 													<td id="a"></td>
@@ -214,9 +216,12 @@
 													<td>负责人</td>
 													<td id="d"></td>
 												</tr>
-
 												<tr>
-													<td>isEast</td>
+													<td>项目编号</td>
+													<td id="e"></td>
+												</tr>
+												<tr>
+													<td>东西线</td>
 													<td id="u"></td>
 												</tr>
 											</tbody>
@@ -234,18 +239,28 @@
 									<td>详细描述</td>
 									<td>负责人</td>
 									<td>东西线</td>
+									<td>项目编号</td>
 									<td>操作</td>
 								</tr>
 								<s:iterator value="#request.sgdsList" id="sgds">
 									<tr>
-										<td id="index"><s:property value="#sgds.dsIndx" /></td>
-										<td id="aa"><s:property value="#sgds.dsDate" /></td>
-										<td id="bb"><s:property value="#sgds.dsTitl" /></td>
-										<td id="cc"><s:property value="#sgds.dsDspt" /></td>
-										<td id="dd"><s:property value="#sgds.dsPzr" /></td>
-										<td id="uu"><s:property value="#sgds.isEast" /></td>
+										<td id="index"><s:property value="#sgds.dsIndx" />
+										</td>
+										<td id="aa"><s:property value="#sgds.dsDate" />
+										</td>
+										<td id="bb"><s:property value="#sgds.dsTitl" />
+										</td>
+										<td id="cc"><s:property value="#sgds.dsDspt" />
+										</td>
+										<td id="dd"><s:property value="#sgds.dsPzr" />
+										</td>
+										<td id="uu"><s:property value="#sgds.isEast" />
+										</td>
+										<td id="ee"><s:property value="#sgds.proId" />
+										</td>
 
-										<td><a id="detail" class="btn-detail" href="#">详细</a></td>
+										<td><a id="detail" class="btn-detail" href="#">详细</a>
+										</td>
 
 									</tr>
 								</s:iterator>
@@ -255,7 +270,7 @@
 							<div class="col-sm-offset-4">
 								<s:set name="page" value="#request.pager"></s:set>
 								<form id="form-page" method="get"
-									action="/GP/construct-web/thing.action">
+									action="/GPSG/construct-web/thing.action">
 									<input id="input-page" name="pageNow" style="width:30px;"
 										value="<s:property value="#page.pageNow"/>"> /
 									<s:property value="#page.totalPage" />
@@ -289,7 +304,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<iframe src="/GP/Web/footer.jsp" class="col-md-12" frameborder="0"
+		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0"
 			scrolling="no" height="60" marginheight="0" marginwidth="0"></iframe>
 	</div>
 </body>

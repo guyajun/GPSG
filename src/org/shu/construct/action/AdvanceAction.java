@@ -72,6 +72,10 @@ public class AdvanceAction extends BaseAction {
 		ArrayList<ShieldProcess> list = advanceService.getOnePageByLoop(loop,
 				pageNow, pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+
+		if(list.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("list", list);
 		return "success";
@@ -83,6 +87,9 @@ public class AdvanceAction extends BaseAction {
 		ArrayList<ShieldProcess> list = advanceService.getOnePageByDate(
 				dateNew, pageNow, pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+		if(list.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("list", list);
 		return SUCCESS;
@@ -143,6 +150,7 @@ public class AdvanceAction extends BaseAction {
 		titles.add("备注");
 		titles.add("报表状态");
 		titles.add("班次");
+		titles.add("东西线（0-东 1-西）");
 		ExportExcel exportExcel = new ExportExcel();
 		exportExcel.exportExcelCommon(list, titles, excelPath);
 	}

@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"
+	import="java.io.File, org.tool.CommonParam"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
@@ -7,22 +8,23 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <title>施工端数据展示</title>
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css"
 	rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootbox.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/moment.min.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-<script src="/GP/Web/gp-history/gp-construct-info.js"></script>
+<link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
+	rel="stylesheet">
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+<script src="/GPSG/Web/gp-history/gp-construct-info.js"></script>
 </head>
 <body>
 	<div id="wrap">
-		<iframe src="/GP/construct-web/menu.action" width="100%"
+		<iframe src="/GPSG/construct-web/menu.action" width="100%"
 			height="160px"></iframe>
 		<div class="container">
 			<div id="div-advance" class="row">
@@ -41,26 +43,26 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="#" data-toggle="modal"
-										data-target="#modal-loop">按环号查询</a>
-									</li>
+										data-target="#modal-loop">按环号查询</a></li>
 								</ul>
 							</div>
 							<div class="btn-group">
-								<a href="/GP/construct-web/updateAction.action"
+								<a href="/GPSG/construct-web/updateAction.action"
 									class="btn btn-primary">更新管片全生命周期表</a>
 							</div>
 							<div class="modal fade" id="modal-loop">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<form id="form-query" method="post"
-											action="/GP/construct-web/total_getByLoop.action"
+											action="/GPSG/construct-web/getByLoopTotal.action"
 											class="form-horizontal" role="form">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal"
 													aria-hidden="true">&times;</button>
 												<h4 class="modal-title" id="myModalLabel">管片施工信息</h4>
 											</div>
-											<div class="modal-body">
+											<div id="template" class="modal-body">
+												<div id="alert1" class="alert alert-danger text-center hide"></div>
 												<div class="form-group">
 													<label class="col-sm-4 control-label" for="input-loop">成环环号：</label>
 													<div class="col-sm-5 input-group">
@@ -88,36 +90,65 @@
 								<tr>
 									<td>序号</td>
 									<td>环号</td>
-									<td>项目编号</td>
-									<td>盾构和管片姿态报表</td>
-									<td>同步注浆报表</td>
-									<td>进场检查表</td>
-									<td>下井前检查表</td>
-									<td>拼装前检查表</td>
-									<td>管片修补表</td>
-									<td>东西线(0—东线 1—西线)</td>
+									<td>盾构/管片姿态</td>
+									<td>同步注浆</td>
+									<td>进场检查</td>
+									<td>下井前检查</td>
+									<td>拼装前检查</td>
+									<td>管片修补</td>
+									<td>东西线(0—东 1—西)</td>
 								</tr>
 								<s:iterator value="#request.list" id="row">
 									<tr>
 										<td><%=++i%></td>
-										<td><s:property value="#row.tunnelLoop" />
+										<td><s:property value="#row.tunnelLoop" /></td>
+										<td><a
+											href="/GPSG/Web/gp-history/image-construct.jsp?folder=SHIELD_POSE&fileName=<s:property value="#row.shieldPosePic" />"><s:property
+													value="#row.shieldPosePic" /> </a></td>
+										<td><a
+											href="/GPSG/Web/gp-history/image-construct.jsp?folder=ReportSG&fileName=<s:property value="#row.synchronousGroutPic" />"><s:property
+													value="#row.synchronousGroutPic" /> </a>
 										</td>
-										<td><s:property value="#row.proId" />
-										</td>
-										<td><s:property value="#row.shieldPosePic" />
-										</td>
-										<td><s:property value="#row.synchronousGroutPic" />
-										</td>
-										<td><s:property value="#row.inCheckPic" />
-										</td>
-										<td><s:property value="#row.downWellPic" />
-										</td>
-										<td><s:property value="#row.pzqcheckPic" />
-										</td>
-										<td><s:property value="#row.segmentrepairPic" />
-										</td>
-										<td><s:property value="#row.isEast" />
-										</td>
+										<s:if test="#row.inCheckPic!=0">
+											<td><a
+												href="inCheck_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
+														value="#row.inCheckPic" /> </a></td>
+										</s:if>
+										<s:else>
+											<td><s:property value="#row.inCheckPic" /></td>
+										</s:else>
+
+
+
+										<s:if test="#row.downWellPic!=0">
+											<td><a
+												href="downWell_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
+														value="#row.downWellPic" /> </a></td>
+										</s:if>
+										<s:else>
+											<td><s:property value="#row.downWellPic" /></td>
+										</s:else>
+
+
+
+										<s:if test="#row.pzqcheckPic!=0">
+											<td><a
+												href="pzqCheck_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
+														value="#row.pzqcheckPic" /> </a></td>
+										</s:if>
+										<s:else>
+											<td><s:property value="#row.pzqcheckPic" /></td>
+										</s:else>
+
+										<s:if test="#row.segmentrepairPic != 0">
+											<td><a
+												href="xunJian_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
+														value="#row.segmentrepairPic" /> </a></td>
+										</s:if>
+										<s:else>
+											<td><s:property value="#row.segmentrepairPic" /></td>
+										</s:else>
+										<td><s:property value="#row.isEast" /></td>
 									</tr>
 								</s:iterator>
 							</tbody>
@@ -160,7 +191,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<iframe src="/GP/Web/footer.jsp" class="col-md-12" frameborder="0"
+		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0"
 			scrolling="no" height="60" marginheight="0" marginwidth="0"></iframe>
 	</div>
 </body>

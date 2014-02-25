@@ -7,9 +7,9 @@ import common.db.GenericHibernateDao;
 
 public class PoseDao extends GenericHibernateDao<ShieldPose, Integer> {
 	public ArrayList<ShieldPose> getAll() {
-		ArrayList<ShieldPose> result = (ArrayList<ShieldPose>) this
-				.getHibernateTemplate().find("from ShieldPose");
-		return result;
+		String sql = "select * from SHIELD_POSE";
+		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
+		return list;
 	}
 
 	public ArrayList<ShieldPose> getByBetweenLoops(int startLoop, int endLoop) {
@@ -27,9 +27,9 @@ public class PoseDao extends GenericHibernateDao<ShieldPose, Integer> {
 	}
 
 	public List<ShieldPose> poseSearch() {
-		List<ShieldPose> result = this.getHibernateTemplate().find(
-				"from ShieldPose");
-		return result;
+		String sql = "select * from SHIELD_POSE";
+		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
+		return list;
 	}
 
 	public List poseSearch(String reportId) {
@@ -52,8 +52,9 @@ public class PoseDao extends GenericHibernateDao<ShieldPose, Integer> {
 	}
 
 	public ArrayList<ShieldPose> poseSearchByLoop(Integer tunnelLoop) {
-		return (ArrayList<ShieldPose>) this.getHibernateTemplate().find(
-				"from ShieldPose where tunnelLoop=?", tunnelLoop);
+		String sql = "select * from SHIELD_POSE where TUNNEL_LOOP="+tunnelLoop;
+		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
+		return list;
 	}
 
 	public ArrayList<ShieldPose> poseSearchByNumber(Integer number) {

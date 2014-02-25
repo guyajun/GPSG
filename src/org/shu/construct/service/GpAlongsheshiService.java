@@ -30,9 +30,12 @@ public class GpAlongsheshiService {
 	public ArrayList<GpAlongsheshi> getAll() {
 		return sheshiDao.getAll();
 	}
-
+	
 	public ArrayList<GpAlongsheshi> getCountById(Integer ssIndx) {
 		return (ArrayList<GpAlongsheshi>) sheshiDao.sheshiSearchByLoop(ssIndx);
+	}
+	public ArrayList<GpAlongsheshi> getCountByLoop(Integer ssLoop) {
+		return (ArrayList<GpAlongsheshi>) sheshiDao.sheshiSearchBySSLoop(ssLoop);
 	}
 	
 }

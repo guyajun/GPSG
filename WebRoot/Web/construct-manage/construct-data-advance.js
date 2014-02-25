@@ -13,9 +13,53 @@ $(function() {
 	var _queryByDateBtn = $('#by-date');
 	var _queryByLoopBtn = $('#by-loop');
 	var _excelExportBtn = $('#excel-export-btn');
-	// $('#date-md').on('click',function(){
-	// 	$
-	// });
+	
+	
+	var _button1 = $('#button1');
+	var _form1 = $('#form1');
+	var _alert1=$('#alert1');
+	var form1Validator = _form1.validate({
+		rules : {
+			excelPath : "required",
+			startLoop : {
+				required : true,
+				number : true
+			},
+			endLoop : {
+				required : true,
+				number : true
+			}
+		},
+		messages : {
+			excelPath : "路径不能为空",
+			startLoop : {
+				required : "起始环号不能为空",
+				number : "起始环号必须是数字"
+			},
+			endLoop : {
+				required : "终止环号不能为空",
+				number : "终止环号必须是数字"
+			}
+		}
+	});
+	function errorHandle(message) {
+		_alert1.removeClass('hide').html(message);
+        setTimeout(function() {
+        	_alert1.addClass('hide').html('');
+        }, 5000);
+    }
+	_button1.on('click', function() {
+		if (form1Validator.form()) {
+			if($('#gp-high-start-loop').val()>=$('#gp-high-start-loop').val()){
+				errorHandle("起始环号必须小于终止环号！");
+			}else{
+				_form1.submit();				
+			}
+		}
+	});
+	
+	
+	
 	$('#query-date-btn').on('click',function(){
 		$('#form-date-query').submit();
 	});
@@ -70,6 +114,7 @@ $(function() {
 		$('#3c').text(tr.find('#ccc').text());
 		$('#3d').text(tr.find('#ddd').text());
 		$('#3e').text(tr.find('#eee').text());
+		$('#3f').text(tr.find('#fff').text());
 		$('#modal-detail').modal('show');
 	});
 	_startDatePicker.datetimepicker({

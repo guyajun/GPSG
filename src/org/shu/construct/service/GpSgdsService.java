@@ -30,16 +30,12 @@ public class GpSgdsService {
 	{
 		return sgdsDao.getByDate(date, pageNow, pageSize);
 	}
-	public SgdsDAO getSgdsDao() {
-		return sgdsDao;
-	}
-
 	public void setSgdsDao(SgdsDAO sgdsDao) {
 		this.sgdsDao = sgdsDao;
 	}
 
-	public ArrayList<GpSgds> getCountById(Integer tunnelLoop) {
-		return (ArrayList<GpSgds>) sgdsDao.poseSearchByLoop(tunnelLoop);
+	public ArrayList<GpSgds> getCountById(Integer proId) {
+		return (ArrayList<GpSgds>) sgdsDao.poseSearchByNumber(proId);
 	}
 	
 }

@@ -7,7 +7,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
 		</property>
 		<property name="url"
-			value="jdbc:sqlserver://localhost:1433;databasename=GP">
+			value="jdbc:sqlserver://localhost:1433;databasename=GpConstruct">
 		</property>
 		<property name="username" value="sa"></property>
 		<property name="password" value="ZBF917ZGB919cs"></property>
@@ -229,17 +229,6 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 			<ref bean="soilDao" />
 		</property>
 	</bean>
-
-	<!--======================================= 测试=================================== -->
-	<bean id="testDAO" class="org.shu.dao.imp.TestDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="testService" class="org.shu.service.imp.TestService">
-		<property name="testDAO">
-			<ref bean="testDAO" />
-		</property>
-	</bean>
-
 	<bean id="proInfoDao" class="org.shu.dao.imp.ProInfoDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -248,114 +237,6 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 			<ref bean="proInfoDao" />
 		</property>
 	</bean>
-
-
-
-	<bean id="steelQualDao" class="org.shu.dao.imp.SteelQualDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-
-
-
-	<bean id="steelQualService" class="org.shu.service.imp.SteelQualService">
-		<property name="steelQualDao">
-			<ref bean="steelQualDao" />
-		</property>
-	</bean>
-	<bean id="steelRawDao" class="org.shu.dao.imp.SteelRawDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="steelRawService" class="org.shu.service.imp.SteelRawService">
-		<property name="steelRawDao">
-			<ref bean="steelRawDao" />
-		</property>
-	</bean>
-	<bean id="concQualDao" class="org.shu.dao.imp.ConcQualDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concQualService" class="org.shu.service.imp.ConcQualService">
-		<property name="concQualDao">
-			<ref bean="concQualDao" />
-		</property>
-	</bean>
-	<bean id="concMixRatioDao" class="org.shu.dao.imp.ConcMixRatioDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concMixRatioService" class="org.shu.service.imp.ConcMixRatioService">
-		<property name="concMixRatioDao">
-			<ref bean="concMixRatioDao" />
-		</property>
-	</bean>
-	<bean id="preEmbedDao" class="org.shu.dao.imp.PreEmbedDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="preEmbedService" class="org.shu.service.imp.PreEmbedService">
-		<property name="preEmbedDao">
-			<ref bean="preEmbedDao" />
-		</property>
-	</bean>
-
-	<bean id="rfidRefGpDao" class="org.shu.dao.imp.RfidRefGpDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="rfidRefGpService" class="org.shu.service.imp.RfidRefGpService">
-		<property name="rfidRefGpDao">
-			<ref bean="rfidRefGpDao" />
-		</property>
-	</bean>
-
-
-	<bean id="concResistCompDao" class="org.shu.dao.imp.ConcResistCompDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concResistCompService" class="org.shu.service.imp.ConcResistCompService">
-		<property name="concResistCompDao">
-			<ref bean="concResistCompDao" />
-		</property>
-	</bean>
-	<bean id="concResistLeakDao" class="org.shu.dao.imp.ConcResistLeakDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concResistLeakService" class="org.shu.service.imp.ConcResistLeakService">
-		<property name="concResistLeakDao">
-			<ref bean="concResistLeakDao" />
-		</property>
-	</bean>
-	<bean id="gpCraneDao" class="org.shu.dao.imp.GpCraneDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpCraneService" class="org.shu.service.imp.GpCraneService">
-		<property name="gpCraneDao">
-			<ref bean="gpCraneDao" />
-		</property>
-	</bean>
-	<bean id="gpTotalInfoDao" class="org.shu.dao.imp.GpTotalInfoDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpTotalInfoService" class="org.shu.service.imp.GpTotalInfoService">
-		<property name="gpTotalInfoDao">
-			<ref bean="gpTotalInfoDao" />
-		</property>
-		<property name="steelQualDAO">
-			<ref bean="steelQualDAO" />
-		</property>
-		<property name="steelRawDAO">
-			<ref bean="steelRawDAO" />
-		</property>
-		<property name="concResistCompDAO">
-			<ref bean="concResistCompDAO" />
-		</property>
-		<property name="concQualDAO">
-			<ref bean="concQualDAO" />
-		</property>
-		<property name="concMixRatioDAO">
-			<ref bean="concMixRatioDAO" />
-		</property>
-		<property name="preEmbedDao">
-			<ref bean="preEmbedDao" />
-		</property>
-	</bean>
-
 	<bean id="roleInfoDao" class="org.shu.dao.imp.RoleInfoDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -371,15 +252,24 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 	<bean id="functionInfoDao" class="org.shu.dao.imp.FunctionInfoDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
 	<bean id="roleRefFunctionDao" class="org.shu.dao.imp.RoleRefFunctionDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	<bean id="roleRefFunctionDao1" class="org.shu.construct.dao.RoleRefFunctionDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleRefFunctionService" class="org.shu.construct.service.RoleRefFunctionService">
+		<property name="roleRefFunctionDao" ref="roleRefFunctionDao1" />
+	</bean>
 	<bean id="roleRefUserDao" class="org.shu.dao.imp.RoleRefUserDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	<bean id="roleRefUserDao1" class="org.shu.construct.dao.RoleRefUserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleRefUserService" class="org.shu.construct.service.RoleRefUserService">
+		<property name="roleRefUserDao" ref="roleRefUserDao1" />
+	</bean>
 	<bean id="systemService" class="org.shu.service.imp.SystemService">
 		<property name="userInfoDao" ref="userInfoDao" />
 		<property name="functionInfoDao" ref="functionInfoDao" />
@@ -390,11 +280,13 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 	<bean id="userDAO" class="org.shu.admin.dao.UserDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="deptDAO" class="org.shu.admin.dao.DepartmentDAO">
+	<bean id="departmentInfoDao" class="org.shu.construct.dao.DepartmentInfoDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="planDAO" class="org.shu.plan.dao.PlanDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+	<bean id="departmentInfoService" class="org.shu.construct.service.DepartmentInfoService">
+		<property name="departmentInfoDao">
+			<ref bean="departmentInfoDao" />
+		</property>
 	</bean>
 	<bean id="authorityDAO" class="org.shu.admin.dao.AuthorityDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -403,213 +295,9 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 		<property name="userDAO">
 			<ref bean="userDAO" />
 		</property>
-		<property name="deptDAO">
-			<ref bean="deptDAO" />
-		</property>
+
 		<property name="authorityDAO">
 			<ref bean="authorityDAO" />
 		</property>
 	</bean>
-
-	<bean id="planService" class="org.shu.common.service.PlanService">
-		<property name="planDAO">
-			<ref bean="planDAO" />
-		</property>
-	</bean>
-
-
-
-
-
-
-	<bean id="steelRawDAO" class="org.shu.plan.dao.SteelRawDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="steelQualDAO" class="org.shu.plan.dao.SteelQualDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concQualDAO" class="org.shu.plan.dao.ConcQualDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concMixRatioDAO" class="org.shu.plan.dao.ConcMixRatioDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-
-	<bean id="materialService" class="org.shu.common.service.MaterialService">
-		<property name="steelRawDAO">
-			<ref bean="steelRawDAO" />
-		</property>
-		<property name="steelQualDAO">
-			<ref bean="steelQualDAO" />
-		</property>
-		<property name="concQualDAO">
-			<ref bean="concQualDAO" />
-		</property>
-		<property name="concMixRatioDAO">
-			<ref bean="concMixRatioDAO" />
-		</property>
-		<property name="preEmbedDao">
-			<ref bean="preEmbedDao" />
-		</property>
-	</bean>
-
-	<bean id="fourSameDAO" class="org.shu.plan.dao.FourSameDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concPourDAO" class="org.shu.plan.dao.ConcPourDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpSteamDAO" class="org.shu.plan.dao.GpSteamCuringDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpCraneDAO" class="org.shu.plan.dao.GpCraneDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpWaterCuringDAO" class="org.shu.plan.dao.GpWaterCuringDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="reportPdfMappingDAO" class="org.shu.plan.dao.ReportPdfMappingDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="productService" class="org.shu.common.service.ProductService">
-		<property name="fourSameDAO">
-			<ref bean="fourSameDAO" />
-		</property>
-		<property name="concPourDAO">
-			<ref bean="concPourDAO" />
-		</property>
-		<property name="gpSteamDAO">
-			<ref bean="gpSteamDAO" />
-		</property>
-		<property name="gpCraneDAO">
-			<ref bean="gpCraneDAO" />
-		</property>
-		<property name="gpWaterCuringDAO">
-			<ref bean="gpWaterCuringDAO" />
-		</property>
-		<property name="reportPdfMappingDAO">
-			<ref bean="reportPdfMappingDAO" />
-		</property>
-	</bean>
-
-
-
-	<bean id="concResistCompDAO" class="org.shu.plan.dao.ConcResistCompDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="concResistLeakDAO" class="org.shu.plan.dao.ConcResistLeakDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="steelSkelHalfDAO" class="org.shu.plan.dao.SteelSkelHalfDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpAssembleDAO" class="org.shu.plan.dao.GpAssembleDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpCheckLeakDAO" class="org.shu.plan.dao.GpCheckLeakDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="checkService" class="org.shu.common.service.CheckService">
-		<property name="concResistCompDAO">
-			<ref bean="concResistCompDAO" />
-		</property>
-		<property name="concResistLeakDAO">
-			<ref bean="concResistLeakDAO" />
-		</property>
-		<property name="steelSkelHalfDAO">
-			<ref bean="steelSkelHalfDAO" />
-		</property>
-		<property name="gpAssembleDAO">
-			<ref bean="gpAssembleDAO" />
-		</property>
-		<property name="gpCheckLeakDAO">
-			<ref bean="gpCheckLeakDAO" />
-		</property>
-		<property name="fourSameDAO">
-			<ref bean="fourSameDAO" />
-		</property>
-		<property name="reportPdfMappingDAO">
-			<ref bean="reportPdfMappingDAO" />
-		</property>
-		<property name="gpStorageDAO">
-			<ref bean="gpStorageDAO" />
-		</property>
-		<property name="gpReceiveDAO">
-			<ref bean="gpReceiveDAO" />
-		</property>
-		<property name="gpQualityDAO">
-			<ref bean="gpQualityDAO" />
-		</property>
-	</bean>
-
-	<bean id="gpStorageDAO" class="org.shu.plan.dao.GpStorageDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpReceiveDAO" class="org.shu.plan.dao.GpReceiveDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="gpQualityDAO" class="org.shu.plan.dao.GpQualityDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-
-
-	<bean id="transportService" class="org.shu.common.service.TransportService">
-		<property name="gpStorageDAO">
-			<ref bean="gpStorageDAO" />
-		</property>
-		<property name="gpReceiveDAO">
-			<ref bean="gpReceiveDAO" />
-		</property>
-		<property name="gpQualityDAO">
-			<ref bean="gpQualityDAO" />
-		</property>
-	</bean>
-
-
-
-
-	<bean id="boldDAO" class="org.shu.construct.dao.BoltQualityDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-
-
-	<bean id="waterProofDAO" class="org.shu.construct.dao.WaterProofDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-
-	<bean id="constructService" class="org.shu.construct.service.ConstructService">
-		<property name="boldDAO">
-			<ref bean="boldDAO" />
-		</property>
-		<property name="poseDao">
-			<ref bean="poseDao" />
-		</property>
-		<property name="synDao">
-			<ref bean="synDao" />
-		</property>
-		<property name="waterProofDAO">
-			<ref bean="waterProofDAO" />
-		</property>
-	</bean>
-
-
-
-	<bean id="waterProofDao" class="org.shu.construct.dao.WaterProofDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="waterProofService" class="org.shu.construct.service.WaterProofService">
-		<property name="waterProofDao">
-			<ref bean="waterProofDao" />
-		</property>
-	</bean>
-	<bean id="boltQualityDao" class="org.shu.construct.dao.BoltQualityDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<bean id="boltQualityService" class="org.shu.construct.service.BoltQualityService">
-		<property name="boltQualityDao">
-			<ref bean="boltQualityDao" />
-		</property>
-	</bean>
-	<!--======================================= 测试结束=================================== -->
-
 </beans>

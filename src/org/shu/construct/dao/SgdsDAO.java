@@ -30,6 +30,7 @@ public class SgdsDAO extends GenericHibernateDao<GpSgds,Integer>{
 	public ArrayList<GpSgds> getCountByDate(Date date) {
 		String sql = "from GpSgds where dsDate ='" + date
 				+ "'";
+		System.out.println("123");
 		ArrayList<GpSgds> list = (ArrayList<GpSgds>) this
 				.find(sql);
 //		String sql = "select * from GP_SGDS where DS_DATE ='" + date
@@ -57,13 +58,14 @@ public class SgdsDAO extends GenericHibernateDao<GpSgds,Integer>{
 		return list1;
 	}
 
-	public ArrayList<GpSgds> poseSearchByLoop(Integer tunnelLoop) {
-		return (ArrayList<GpSgds>) this.getHibernateTemplate().find("from GpSgds where tunnelLoop=?",tunnelLoop);
+	public ArrayList<GpSgds> poseSearchByNumber(Integer proId) {
+		return (ArrayList<GpSgds>) this.getHibernateTemplate().find("from GpSgds where proId=?",proId);
 	}
 	 public ArrayList<GpSgds> getByDate(Date date, int pageNow,
 				int pageSize) {
 			ArrayList<GpSgds> list = getCountByDate(date);
 			System.out.println(list.size());
+			System.out.println(2);
 			ArrayList<GpSgds> list1 = new ArrayList<GpSgds>();
 			for (int i = ((pageNow - 1) * pageSize); i <= (pageNow * pageSize - 1); i++) {
 				if (i < list.size()) {

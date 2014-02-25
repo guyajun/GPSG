@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
-import org.tool.CommonParam;
 import org.tool.Pager;
 import com.opensymphony.xwork2.ActionContext;
 import common.base.action.BaseAction;
@@ -27,32 +26,29 @@ public class ProduceGP extends BaseAction{
 		return pageNow;
 	}
 	public void setPageNow(Integer pageNow) {
-		System.out.println("pageNow="+pageNow);
 		this.pageNow = pageNow;
 	}
 	
 	public String getByLoop() {
-		CommonParam cp=new CommonParam();
-		String path=cp.getString("storage_path");
 		Pager pager = new Pager(pageNow, getByLoop1(loop).size());
 		ArrayList<ShengChanGpTotalInfo> list = getOnePageByLoop(pageNow,pager.getPageSize());
-		System.out.println("loop="+loop);
 		Map request = (Map) ActionContext.getContext().get("request");
+		if(list.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("list", list);
-		request.put("path",path);
 		return SUCCESS;
 	}
 	public String getList() {
-		CommonParam cp=new CommonParam();
-		String path=cp.getString("storage_path");
 		Pager pager = new Pager(pageNow, getAll().size());
 		ArrayList<ShengChanGpTotalInfo> list = getOnePage(pageNow,pager.getPageSize());
-		System.out.println("path="+path);
 		Map request = (Map) ActionContext.getContext().get("request");
+		if(list.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("list", list);
-		request.put("path",path);
 		return SUCCESS;
 	}
 	public ArrayList<ShengChanGpTotalInfo> getOnePage(int pageNow, int pageSize) {
@@ -90,9 +86,6 @@ public class ProduceGP extends BaseAction{
 			Connection con = DriverManager.getConnection(
 					"jdbc:sqlserver://localhost:1433;databaseName=GP0711",
 					"sa", "ZBF917ZGB919cs");
-			if (!con.isClosed()) {
-				System.out.println("Successfully connected to server");
-			}
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			while (rs.next()) {

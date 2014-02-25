@@ -1,5 +1,5 @@
-
 package org.shu.construct.dao;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,23 +8,25 @@ import org.shu.model.GpSoilproperty;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import common.db.GenericHibernateDao;
+
 public class SheshiDAO extends GenericHibernateDao<GpAlongsheshi, Integer> {
 	public ArrayList<GpAlongsheshi> getAll() {
-		ArrayList<GpAlongsheshi> gpAlongsheshi = (ArrayList<GpAlongsheshi>) this
-				.getHibernateTemplate().find("from GpAlongsheshi");
-		return gpAlongsheshi;
+		String sql = "select * from GP_ALONGSHESHI";
+		ArrayList<GpAlongsheshi> list = (ArrayList<GpAlongsheshi>) this
+				.sqlFind(sql);
+		return list;
 	}
 
-	public List<GpAlongsheshi> sheshiSearch()
-	{
-		List<GpAlongsheshi> result=this.getHibernateTemplate().find("from GpAlongsheshi");
-		return result;
+	public List<GpAlongsheshi> sheshiSearch() {
+		String sql = "select * from GP_ALONGSHESHI";
+		ArrayList<GpAlongsheshi> list = (ArrayList<GpAlongsheshi>) this
+				.sqlFind(sql);
+		return list;
 	}
-	
-	
-	public List sheshiSearch(String reportId)
-	{
-		List result=this.getHibernateTemplate().find("from GpAlongsheshi where reportId=?",reportId);
+
+	public List sheshiSearch(String reportId) {
+		List result = this.getHibernateTemplate().find(
+				"from GpAlongsheshi where reportId=?", reportId);
 		return result;
 	}
 
@@ -42,7 +44,14 @@ public class SheshiDAO extends GenericHibernateDao<GpAlongsheshi, Integer> {
 	}
 
 	public ArrayList<GpAlongsheshi> sheshiSearchByLoop(Integer ssIndx) {
-		return (ArrayList<GpAlongsheshi>) this.getHibernateTemplate().find("from GpAlongsheshi where ssIndx=?",ssIndx);
+		return (ArrayList<GpAlongsheshi>) this.getHibernateTemplate().find(
+				"from GpAlongsheshi where ssIndx=?", ssIndx);
+	}
+
+	public ArrayList<GpAlongsheshi> sheshiSearchBySSLoop(Integer ssLoop) {
+		String sql = "select * from GP_ALONGSHESHI where SS_LOOP="+ssLoop;
+		ArrayList<GpAlongsheshi> list = (ArrayList<GpAlongsheshi>) this
+				.sqlFind(sql);
+		return list;
 	}
 }
-

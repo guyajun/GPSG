@@ -48,6 +48,10 @@ public class MonitorAction extends BaseAction {
 		ArrayList<GpGroundsettling> list = monitorService.getOnePage(pageNow,
 				pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+
+		if(list.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("list", list);
 		return "success";
@@ -59,6 +63,9 @@ public class MonitorAction extends BaseAction {
 		ArrayList<GpGroundsettling> list = monitorService.getOnePageByNumber(number,
 				pageNow, pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+		if(list.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("list", list);
 		return "success";

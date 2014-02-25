@@ -4,17 +4,10 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
-
 import org.shu.construct.service.GpSgdsService;
-import org.shu.construct.service.ShieldPoseService;
 import org.shu.model.GpSgds;
-import org.shu.model.GpSoilproperty;
-import org.shu.model.ShieldPose;
-import org.shu.model.SynchronousGrout;
 import org.tool.Pager;
-
 import com.opensymphony.xwork2.ActionContext;
-
 import common.base.action.BaseAction;
 import common.base.action.ExportExcel;
 
@@ -23,8 +16,10 @@ public class GpSgdsAction extends BaseAction{
 	private static final long serialVersionUID = 1L;
 	private Integer pageNow = 1;
 	private GpSgdsService sgdsService;
-	private Integer tunnelLoop;
-	
+
+	public void setSgdsService(GpSgdsService sgdsService) {
+		this.sgdsService = sgdsService;
+	}
 	private String date;
 	public String getDate() {
 		return date;
@@ -39,12 +34,6 @@ public class GpSgdsAction extends BaseAction{
 	public void setExcelPath(String excelPath) {
 		this.excelPath = excelPath;
 	}
-	public Integer getTunnelLoop() {
-		return tunnelLoop;
-	}
-	public void setTunnelLoop(Integer tunnelLoop) {
-		this.tunnelLoop = tunnelLoop;
-	}
 	public Integer getPageNow() {
 		return pageNow;
 	}
@@ -54,11 +43,11 @@ public class GpSgdsAction extends BaseAction{
 	public String getByDate() throws Exception {
 		Date dateNew = java.sql.Date.valueOf(date);
 		Pager pager = new Pager(pageNow, sgdsService.getCountByDate(dateNew).size());
-		ArrayList<GpSgds> sgdList = sgdsService.getOnePageByDate(
+		ArrayList<GpSgds> sgdsList = sgdsService.getOnePageByDate(
 				dateNew, pageNow, pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
 		request.put("pager", pager);
-		request.put("sgdList", sgdList);
+		request.put("sgdsList", sgdsList);
 		return SUCCESS;
 	}
 	public String exportExcel() throws Exception {
@@ -69,15 +58,7 @@ public class GpSgdsAction extends BaseAction{
 		exportExcelCommon(sgdsList, excelPathNew);
 		return SUCCESS;
 	}
-	public String getBytunnelLoop() {
-		Pager pager = new Pager(1,1);
-		ArrayList<GpSgds> sgdsList = sgdsService.getCountById(tunnelLoop); 
-		Map request = (Map) ActionContext.getContext().get("request");
-		request.put("pager", pager);
-		request.put("sgdsList", sgdsList);
-		return "success";
-	}
-	
+
 	public String sgds() throws Exception{
 		Pager pager = new Pager(pageNow, sgdsService.getGpSgds().size());
 		ArrayList<GpSgds> sgdsList = sgdsService.getGpSgdsByPage(pageNow,
@@ -86,12 +67,6 @@ public class GpSgdsAction extends BaseAction{
 		request.put("pager", pager);
 		request.put("sgdsList", sgdsList);
 		return SUCCESS;
-	}
-	public GpSgdsService getSgdsService() {
-		return sgdsService;
-	}
-	public void setSgdsService(GpSgdsService sgdsService) {
-		this.sgdsService = sgdsService;
 	}
 	public void exportExcelCommon(ArrayList<GpSgds> sgdsList,
 			String excelPath) {

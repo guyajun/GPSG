@@ -7,20 +7,20 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<title>施工端数据展示</title>
-	<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-	<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css" rel="stylesheet">
-	<link href="/GP/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css" rel="stylesheet">
-	<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/bootbox.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/moment.min.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-	<script src="/GP/Web/construct-manage/construct-monitor-data.js"></script>
+	<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+	<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css" rel="stylesheet">
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+	<script src="/GPSG/Web/construct-manage/construct-monitor-data.js"></script>
 </head>
 <body>
 	<div id="wrap">
-		<iframe src="/GP/construct-web/menu.action" width="100%" height="160px"></iframe>
+		<iframe src="/GPSG/construct-web/menu.action" width="100%" height="160px"></iframe>
 		<div class="container">
 			<div id="div-advance" class="row">
 				<div class="panel panel-info">
@@ -49,7 +49,7 @@
 											<h4 class="modal-title" id="myModalLabel">地面沉降信息</h4>
 										</div>
 										<div class="modal-body">
-											<form id="form-aaa" method="post" action="/GP/construct-web/monitor_getByNumber.action" class="form-horizontal" role="form">
+											<form id="form-aaa" method="post" action="/GPSG/construct-web/monitor_getByNumber.action" class="form-horizontal" role="form">
 												<div class="form-group">
 													<label class="col-sm-4 control-label" for="input-measure-loop">请输入测点号：</label>
 													<div class="col-sm-5 input-group">
@@ -87,7 +87,7 @@
 											<h4 class="modal-title" id="myModalLabel">地面沉降信息</h4>
 										</div>
 										<div class="modal-body">
-											<form method="post" action="/GP/construct-web/monitor_curve.action" id="form-curve" class="form-horizontal" role="form">
+											<form method="post" action="/GPSG/construct-web/monitor_curve.action" id="form-curve" class="form-horizontal" role="form">
 												<div class="form-group">
 													<label class="col-sm-4 control-label" for="input-measure-point">请输入测点：</label>
 													<div class="col-sm-5 input-group">
@@ -148,13 +148,13 @@
 						
 					</div>
 				</div>
-				<iframe src="/GP/monitor.jpg" scroll="true" class="col-sm-12" height="600px">
+				<iframe src="/GPSG/monitor.jpg" scroll="true" class="col-sm-12" height="600px">
 						</iframe>
 			</div>
 			</div>
 	</div>
 	<div id="footer">
-		<iframe src="/GP/Web/footer.jsp" class="col-md-12" frameborder="0" scrolling="no" height="60"
+		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0" scrolling="no" height="60"
 						marginheight="0" marginwidth="0"></iframe>
 	</div>
 </body>

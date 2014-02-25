@@ -22,6 +22,13 @@ public class GpAlongsheshiAction extends BaseAction{
 	private GpAlongsheshiService sheshiService;
 	private Integer ssIndx;
 	private String excelPath;
+	private Integer ssLoop;
+	public Integer getSsLoop() {
+		return ssLoop;
+	}
+	public void setSsLoop(Integer ssLoop) {
+		this.ssLoop = ssLoop;
+	}
 	public String getExcelPath() {
 		return excelPath;
 	}
@@ -50,6 +57,14 @@ public class GpAlongsheshiAction extends BaseAction{
 		return SUCCESS;
 	}
 	
+	public String getByssLoop() {
+		Pager pager = new Pager(1,1);
+		ArrayList<GpAlongsheshi> sheshiList = sheshiService.getCountByLoop(ssLoop); 
+		Map request = (Map) ActionContext.getContext().get("request");
+		request.put("pager", pager);
+		request.put("sheshiList", sheshiList);
+		return "success";
+	}
 	public String getByssIndx() {
 		Pager pager = new Pager(1,1);
 		ArrayList<GpAlongsheshi> sheshiList = sheshiService.getCountById(ssIndx); 
@@ -77,28 +92,23 @@ public class GpAlongsheshiAction extends BaseAction{
 	public void exportExcelCommon(ArrayList<GpAlongsheshi> sheshiList,
 			String excelPath) {
 		ArrayList<String> titles = new ArrayList<String>();
-		titles.add("甚好");
-		titles.add("层号");
-		titles.add("土层名称");
-		titles.add("含水量");
-		titles.add("重度");
-		titles.add("比重");
-		titles.add("饱和度");
-		titles.add("孔隙比");
-		titles.add("内摩擦角");
-		titles.add("水平渗透系数");
-		titles.add("垂直渗透系数");
-		titles.add("粘聚力");
-		titles.add("压缩模量");
-		titles.add("标准贯入");
-		titles.add("压缩系数");
-		titles.add("静止侧压系数");
-		titles.add("塑限");
-		titles.add("液限");
-		titles.add("液性指数");
-		titles.add("塑性指数");
-		titles.add("单轴抗压");
-		titles.add("石英含量");
+		titles.add("索引号");
+		titles.add("项目编号");
+		titles.add("环号");
+		titles.add("里程");
+		titles.add("建筑物名称");
+		titles.add("建筑物保护等级");
+		titles.add("建筑物名建造年份");
+		titles.add("建筑物结构");
+		titles.add("建筑物用途");
+		titles.add("穿越形式");
+		titles.add("基础形式");
+		titles.add("基底标高");
+		titles.add("桩基与隧道间距");
+		titles.add("允许差异沉降");
+		titles.add("允许隆起沉降");
+		titles.add("相关测点列表");
+		titles.add("允许倾斜");
 		titles.add("东西线(0—东线 1—西线)");
 		ExportExcel exportExcel = new ExportExcel();
 		exportExcel.exportExcelCommon(sheshiList, titles, excelPath);

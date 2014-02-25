@@ -5,7 +5,6 @@ $(function() {
 	var _detailBtn = $('.btn-detail');
 	var _pageInput = $('#input-page');
 	var _LoopInput = $('#input-loop');
-	var _queryLoopBtn = $('#query-loop-btn');
 
 	var _excelAll = $('#excel-all');
 	var _excelPart = $('#excel-part');
@@ -13,14 +12,49 @@ $(function() {
 	var _queryByDateBtn = $('#by-date');
 	var _queryByLoopBtn = $('#by-loop');
 	var _excelExportBtn = $('#excel-export-btn');
-	
-	$('#query-date-btn').on('click',function(){
+
+	var _exportAllBtn = $('#export-all-btn');
+	var _totalForm = $('#form-total');
+	var totalValidator = _totalForm.validate({
+		rules : {
+			excelPath : "required"
+		},
+		messages : {
+			excelPath : "路径不能为空"
+		}
+	});
+	_exportAllBtn.on('click', function() {
+		if (totalValidator.form()) {
+			_totalForm.submit();
+		}
+	});
+
+	$('#query-date-btn').on('click', function() {
 		$('#form-date-query').submit();
 	});
-	$('#query-loop-btn').on('click',function(){
-		$('#form-query-by-loop').submit();
+	_queryForm = $('#form-query-by-loop');
+	_queryLoopBtn = $('#query-loop-btn');
+	var queryValidator = _queryForm.validate({
+		rules : {
+			id : {
+				required : true,
+				number : true
+			}
+		},
+		messages : {
+			id : {
+				required : "环号不能为空",
+				number : "环号必须是数字"
+			}
+		}
 	});
-	$('#btn-by-condition').on('click',function(){
+
+	_queryLoopBtn.on('click', function() {
+		if (queryValidator.form()) {
+			_queryForm.submit();
+		}
+	});
+	$('#btn-by-condition').on('click', function() {
 		$('#form-loop-query').submit();
 	});
 	_queryByDateBtn.on('click', function() {
@@ -41,6 +75,7 @@ $(function() {
 		$('#index1').text(tr.find('#index').text());
 		$('#a').text(tr.find('#aa').text());
 		$('#b').text(tr.find('#bb').text());
+		$('#loop1').text(tr.find('#loop').text());
 		$('#c').text(tr.find('#cc').text());
 		$('#d').text(tr.find('#dd').text());
 		$('#e').text(tr.find('#ee').text());
@@ -62,27 +97,27 @@ $(function() {
 		$('#modal-detail').modal('show');
 	});
 	_startDatePicker.datetimepicker({
-		pickTime: false,
-		orientation: 'left',
-		defaultDate: moment(),
-		format: "YYYY-MM-DD",
-		icons: {
-			time: "fa fa-clock-o",
-			date: "fa fa-calendar",
-			up: "fa fa-arrow-up",
-			down: "fa fa-arrow-down"
+		pickTime : false,
+		orientation : 'left',
+		defaultDate : moment(),
+		format : "YYYY-MM-DD",
+		icons : {
+			time : "fa fa-clock-o",
+			date : "fa fa-calendar",
+			up : "fa fa-arrow-up",
+			down : "fa fa-arrow-down"
 		}
 	});
 	_endDatePicker.datetimepicker({
-		pickTime: false,
-		orientation: 'left',
-		defaultDate: moment(),
-		format: "YYYY-MM-DD",
-		icons: {
-			time: "fa fa-clock-o",
-			date: "fa fa-calendar",
-			up: "fa fa-arrow-up",
-			down: "fa fa-arrow-down"
+		pickTime : false,
+		orientation : 'left',
+		defaultDate : moment(),
+		format : "YYYY-MM-DD",
+		icons : {
+			time : "fa fa-clock-o",
+			date : "fa fa-calendar",
+			up : "fa fa-arrow-up",
+			down : "fa fa-arrow-down"
 		}
 	});
 

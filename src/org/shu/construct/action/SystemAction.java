@@ -1,50 +1,48 @@
 package org.shu.construct.action;
 
-import org.apache.struts2.json.annotations.JSON;
+import java.util.ArrayList;
 import org.shu.common.service.AdminService;
 import org.shu.model.UserInfo;
-
 import common.base.action.BaseAction;
 
 @SuppressWarnings("serial")
 public class SystemAction extends BaseAction {
-	protected UserInfo userinfo;
+	private String message; 
 	private AdminService adminService;
 	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 	public void setAdminService(AdminService adminService) {
 		this.adminService = adminService;
 	}
-
-	@JSON(serialize=false) 
-	public UserInfo getUserinfo() {
-		return userinfo;
-	}
-
-	public void setUserinfo(UserInfo userinfo) {
-		this.userinfo = userinfo;
-	}
-
-	/** ========================µÇÂ¼¹ÜÀí=================== **/
-	public String login() throws Exception
-	{
-		String loginName=userinfo.getLoginName();
-		String password=userinfo.getPassword();
-
-		UserInfo user=adminService.findByLoginNameAndPassword(loginName, password);
-		if(user != null){
-		int userid=user.getId();
-
-		if(userid>0)
-		{
-			session.put("loginName", loginName);
-			session.put("name", userinfo.getFullName());
-			return SUCCESS;
-		}
-		}
-		return "failure";
-		
-	}
 	
-	
+	public String login() throws Exception {
+		String loginName =request.getParameter("loginName");
+		String password = request.getParameter("password");
+		ArrayList<UserInfo> list = adminService.findByLoginNameAndPassword(
+				loginName, password);
+		if (list.size() > 0) {
+			int userid = list.get(0).getId();
+			if (userid > 0) {
+				session.put("userId", list.get(0).getId());
+				session.put("name", list.get(0).getFullName());
+				message="ok";
+				return "success";
+			}
+		}
+		message="ç™»å½•åæˆ–å¯†ç æœ‰è¯¯ï¼";
+		return "error";
+	}
+
+	public String logOut(){
+		session.remove("name");
+		session.remove("userId");
+		return SUCCESS;
+	}
 }

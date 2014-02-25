@@ -6,8 +6,8 @@ import common.db.GenericHibernateDao;
 
 public class SoilDao extends GenericHibernateDao<GpSoilproperty, Integer> {
 	public ArrayList<GpSoilproperty> getAll() {
-		ArrayList<GpSoilproperty> gpSoilpropertys = (ArrayList<GpSoilproperty>) this
-				.getHibernateTemplate().find("from GpSoilproperty");
+		String sql="select * from GP_SOILPROPERTY";
+		ArrayList<GpSoilproperty> gpSoilpropertys =(ArrayList<GpSoilproperty>) sqlFind(sql);
 		return gpSoilpropertys;
 	}
 
@@ -26,7 +26,7 @@ public class SoilDao extends GenericHibernateDao<GpSoilproperty, Integer> {
 	}
 
 	public ArrayList<GpSoilproperty> getCountById(int id) {
-		String sql = "select * from GP_SOILPROPERTY where TC_INDX =" + id;
+		String sql = "select * from GP_SOILPROPERTY where TC_LOOP =" + id;
 		ArrayList<GpSoilproperty> gpSoilpropertys = (ArrayList<GpSoilproperty>) this
 				.sqlFind(sql);
 		return gpSoilpropertys;

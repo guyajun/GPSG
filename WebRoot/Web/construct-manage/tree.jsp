@@ -7,13 +7,13 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<title>施工端数据展示</title>
-	  <link rel="stylesheet" type="text/css" href="/GP/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="/GP/themes/icon.css">
-	<link rel="stylesheet" type="text/css" href="/GP/css/demo.css">
-	<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-	<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+	  <link rel="stylesheet" type="text/css" href="/GPSG/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/GPSG/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/GPSG/css/demo.css">
+	<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
 </head>
 <body>	
     <div class="container">

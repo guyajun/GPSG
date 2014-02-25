@@ -7,22 +7,21 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0"> 
 	<title>施工端数据展示</title>
-	<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-	<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css" rel="stylesheet">
-	<link href="/GP/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css" rel="stylesheet">
-	<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-	<script src="/GP/Web/bootstrap-3.0.0/js/bootbox.js"></script>
+	<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+	<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css" rel="stylesheet">
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+	<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
 </head>
 <body>
 	<div id="wrap">
-		<iframe src="/GP/construct-web/menu.action" width="100%" height="160px"></iframe>
+		<iframe src="/GPSG/construct-web/menu.action" width="100%" height="160px"></iframe>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5">
 					<div class="panel panel-info">
-						<!-- Default panel contents -->
 						<div class="panel-heading">基本信息</div>
 						<div class="panel-body">
 							<div class="list-group">
@@ -105,12 +104,8 @@
 		</div>
 	</div>
 	<div id="footer">
-			<iframe src="/GP/Web/footer.jsp" class="col-md-12" frameborder="0" scrolling="no" height="60"
+			<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0" scrolling="no" height="60"
 						marginheight="0" marginwidth="0"></iframe>
 	</div>
-</div>
-<script src="./bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-<script src="./bootstrap-3.0.0/js/jquery.validate.js"></script>
-<script src="./bootstrap-3.0.0/js/bootstrap.js"></script>
 </body>
 </html>

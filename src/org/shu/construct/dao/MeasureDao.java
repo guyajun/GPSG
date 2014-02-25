@@ -12,14 +12,17 @@ import common.db.GenericHibernateDao;
 
 public class MeasureDao extends GenericHibernateDao<GpMeasurepoint,Integer>{
 	public ArrayList<GpMeasurepoint> getAll() {
-		ArrayList<GpMeasurepoint> gpMeasurepoint = (ArrayList<GpMeasurepoint>) 
-				this.getHibernateTemplate().find("from GpMeasurepoint");
-		return gpMeasurepoint;
+		String sql = "select * from GP_MEASUREPOINT";
+		ArrayList<GpMeasurepoint> list = (ArrayList<GpMeasurepoint>) this
+				.sqlFind(sql);
+		return list;
 	}
 	public List<GpMeasurepoint> measureSearch()
 	{
-		List<GpMeasurepoint> result=this.getHibernateTemplate().find("from GpMeasurepoint");
-		return result;
+		String sql = "select * from GP_MEASUREPOINT";
+		ArrayList<GpMeasurepoint> list = (ArrayList<GpMeasurepoint>) this
+				.sqlFind(sql);
+		return list;
 	}
 	public ArrayList<GpMeasurepoint> getCountByCno(String cbCdno) {
 		System.out.println("cbCdno=" + cbCdno);

@@ -1,21 +1,43 @@
 package org.shu.admin.dao;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.shu.model.DepartmentInfo;
+import org.shu.model.UserInfo;
 
 import common.db.GenericHibernateDao;
 import common.db.QueryParam;
 import common.db.QueryResult;
 
 public class DepartmentDAO extends GenericHibernateDao<DepartmentInfo,Integer>{
-	/** Ìí¼Ó²¿ÃÅ **/
+	/** ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ **/
 	public void addDept(DepartmentInfo dept){
 		this.getHibernateTemplate().save(dept);
 	}
-	/** ²éÑ¯ËùÓÐ²¿ÃÅ**/
-	public List findAll()
+	/** ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½**/
+	public void save(DepartmentInfo departmentInfo){
+		this.getHibernateTemplate().save(departmentInfo);
+	}
+	public void update(DepartmentInfo departmentInfo){
+		this.getHibernateTemplate().update(departmentInfo);
+	}
+	public void delete(DepartmentInfo departmentInfo){
+		this.getHibernateTemplate().delete(departmentInfo);
+	}
+	public ArrayList<DepartmentInfo> findByName(String departmentname)
 	{
-		return this.getHibernateTemplate().find("from DepartmentInfo");
+		String sql="select * from DEPARTMENT_INFO where DEPARTMENT_NAME='"+departmentname+"';";
+		ArrayList<DepartmentInfo> list=(ArrayList<DepartmentInfo>) sqlFind(sql);
+		return list;
+	}
+	 public List<DepartmentInfo> depSearch()
+	    {
+	        List<DepartmentInfo> result = this.getHibernateTemplate().find("from DepartmentInfo");
+	        return result;
+	    }
+	public ArrayList<DepartmentInfo> findAll()
+	{
+		return (ArrayList<DepartmentInfo>) this.getHibernateTemplate().find("from DepartmentInfo");
 	}
 	public QueryResult<DepartmentInfo> getAllDepts(int page,int row)  throws Exception
 	{
@@ -25,7 +47,12 @@ public class DepartmentDAO extends GenericHibernateDao<DepartmentInfo,Integer>{
 		QueryResult<DepartmentInfo> result = list(param);
 		return result;  
 	}
-	/**É¾³ý²¿ÃÅ**/
+	public ArrayList<DepartmentInfo> getAll() {
+		String sql="select * from DEPARTMENT_INFO;";
+		ArrayList<DepartmentInfo> deplist=(ArrayList<DepartmentInfo>) sqlFind(sql);
+		return deplist;
+	}
+	/**É¾ï¿½ï¿½ï¿½ï¿½**/
 	public void delete(Integer deptnumber)
 	{
 		this.getHibernateTemplate().delete(findss(deptnumber));
@@ -56,6 +83,10 @@ public class DepartmentDAO extends GenericHibernateDao<DepartmentInfo,Integer>{
 	public void updateDept(DepartmentInfo dept)
 	{
 		this.getHibernateTemplate().update(dept);
+	}
+	public List<DepartmentInfo> findById(Integer id) {
+		 List<DepartmentInfo> result = this.getHibernateTemplate().find("from DepartmentInfo where id=?",id);
+		return result;
 	}
 
 }

@@ -12,7 +12,7 @@ public class PzqDao extends GenericHibernateDao<Pzqcheck, Integer> {
 	}
 
 	public ArrayList<Pzqcheck> getByLoop(String produceLoop) {
-		String sql = "select * from PZQcheck where PRODUCE_LOOP like '" + produceLoop+"__';";
+		String sql = "select * from PZQcheck where PHOTO!='' and PRODUCE_LOOP like '" + produceLoop+"__' order by PRODUCE_LOOP;";
 		ArrayList<Pzqcheck> list = (ArrayList<Pzqcheck>) this
 				.sqlFind(sql);
 		return list;

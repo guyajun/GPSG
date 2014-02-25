@@ -66,6 +66,10 @@ public class SoilAction extends BaseAction {
 		ArrayList<GpSoilproperty> soilList = soilService.getOnePage(pageNow,
 				pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+
+		if(soilList.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("soilList", soilList);
 		return "success";
@@ -76,6 +80,10 @@ public class SoilAction extends BaseAction {
 		ArrayList<GpSoilproperty> soilList = soilService.getOnePageById(id,
 				pageNow, pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+
+		if(soilList.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("soilList", soilList);
 		return "success";
@@ -90,6 +98,10 @@ public class SoilAction extends BaseAction {
 		ArrayList<GpSoilproperty> soilList = soilService.getOnePageByCno(
 				tcCnoNew, pageNow, pager.getPageSize());
 		Map request = (Map) ActionContext.getContext().get("request");
+
+		if(soilList.size()==0){
+			pager.setPageNow(0);
+		}
 		request.put("pager", pager);
 		request.put("soilList", soilList);
 		return SUCCESS;
@@ -122,6 +134,7 @@ public class SoilAction extends BaseAction {
 			titles.add("层号");
 			titles.add("土层名称");
 			titles.add("含水量");
+			titles.add("环号");
 			titles.add("重度");
 			titles.add("比重");
 			titles.add("饱和度");

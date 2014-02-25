@@ -66,16 +66,35 @@ public class ChartGpPose extends BaseAction {
 		chart.getLegend().setItemFont(font3);// 最下方
 		return SUCCESS;
 	}
-
-	public String temp() {
-		String startLoop = request.getParameter("gpHighStartLoop");
-		String endLoop = request.getParameter("gpHighEndLoop");
-		Map request = (Map) ActionContext.getContext().get("request");
-		request.put("startLoop", startLoop);
-		request.put("endLoop", endLoop);
+	public String chartPingMian() throws IOException {
+		// 定义图表对象
+		DefaultCategoryDataset linedataset = createDatasetPingMian();
+		chart = ChartFactory.createLineChart("管片姿态平面曲线", // chart
+															// title
+				"环号", // domain axis label
+				"管片姿态平面", // range axis label
+				linedataset, // data
+				PlotOrientation.VERTICAL, // orientation取向
+				true, // include legend图例
+				true, // tooltips
+				false // urls
+				);
+		CategoryPlot plot = chart.getCategoryPlot();
+		Font font2 = new Font("SimSun", 10, 16); // 设定字体、类型、字号
+		plot.getDomainAxis().setLabelFont(font2);// 相当于横轴或理解为X轴
+		plot.getRangeAxis().setLabelFont(font2);// 相当于竖轴理解为Y轴
+		// customise the range axis...
+		ValueAxis rangeAxis = plot.getRangeAxis();
+		// rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+		// rangeAxis.setAutoRangeIncludesZero(true);
+		// rangeAxis.setUpperMargin(0.20);
+		// rangeAxis.setLabelAngle(Math.PI / 2.0);
+		Font font1 = new Font("SimSun", 10, 20); // 设定字体、类型、字号
+		chart.getTitle().setFont(font1);
+		Font font3 = new Font("SimSun", 10, 12); // 设定字体、类型、字号
+		chart.getLegend().setItemFont(font3);// 最下方
 		return SUCCESS;
 	}
-
 	public DefaultCategoryDataset createDataset() {
 		int startLoop = Integer.valueOf(request.getParameter("startLoop"));
 		int endLoop = Integer.valueOf(request.getParameter("endLoop"));
@@ -89,6 +108,24 @@ public class ChartGpPose extends BaseAction {
 					&& list.get(i).getTunnelLoop() != null) {
 				linedataset.addValue(
 						Double.parseDouble(list.get(i).getGpVertical()),
+						series1, list.get(i).getTunnelLoop() + "");
+			}
+		}
+		return linedataset;
+	}
+	public DefaultCategoryDataset createDatasetPingMian() {
+		int startLoop = Integer.valueOf(request.getParameter("startLoop"));
+		int endLoop = Integer.valueOf(request.getParameter("endLoop"));
+		ArrayList<ShieldPose> list = poseService.getByBetweenLoops(startLoop,
+				endLoop);
+		DefaultCategoryDataset linedataset = new DefaultCategoryDataset();
+		String series1 = "管片姿态平面";
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getGpPlane() != null
+					&& !list.get(i).getGpPlane().equals("")
+					&& list.get(i).getTunnelLoop() != null) {
+				linedataset.addValue(
+						Double.parseDouble(list.get(i).getGpPlane()),
 						series1, list.get(i).getTunnelLoop() + "");
 			}
 		}

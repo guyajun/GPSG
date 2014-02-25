@@ -7,42 +7,38 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <title>施工端数据展示</title>
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css"
 	rel="stylesheet">
-<link href="/GP/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootbox.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/moment.min.js"></script>
-<script src="/GP/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-<script src="/GP/Web/construct-manage/construct-data-pose.js"></script>
+<link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
+	rel="stylesheet">
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
+<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+<script src="/GPSG/Web/construct-manage/construct-data-pose.js"></script>
 </head>
 <body>
 	<div id="wrap">
-		<iframe src="/GP/construct-web/menu.action" width="100%"
+		<iframe src="/GPSG/construct-web/menu.action" width="100%"
 			height="160px"></iframe>
 		<div class="container">
-			<div class="panel panel-info" style="height:150px;">
-				<div class="panel-heading">查询事项</div>
-				<div class="panel-body">
-					<div class="well">
-						<a id="a-mud" href="/GP/construct-web/soil.action"
-							class="btn btn-danger">剖面位置/土质图</a> <a id="a-facility"
-							href="/GP/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
-						<a id="a-measure" href="/GP/construct-web/measure.action"
-							class="btn btn-success">测点布置情况</a> <a id="a-advance"
-							href="/GP/construct-web/advance_getAllRecord.action"
-							class="btn btn-warning">盾构推进数据</a> <a id="a-pose"
-							href="/GP/construct-web/pose.action"
-							class="btn btn-success btn-lg">盾构/管片姿态</a> <a id="a-syn"
-							href="/GP/construct-web/syn.action" class="btn btn-primary">同步注浆数据</a>
-						<a id="a-thing" href="/GP/construct-web/thing.action"
-							class="btn btn-danger">施工大事记录</a>
-					</div>
-				</div>
+			<div class="well">
+				<a id="a-mud" href="/GPSG/construct-web/soil.action"
+					class="btn btn-danger">剖面位置/土质图</a> <a id="a-facility"
+					href="/GPSG/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
+				<a id="a-measure" href="/GPSG/construct-web/measure.action"
+					class="btn btn-success">测点布置情况</a> <a id="a-advance"
+					href="/GPSG/construct-web/advance_getAllRecord.action"
+					class="btn btn-warning">盾构推进数据</a> <a id="a-pose"
+					href="/GPSG/construct-web/pose.action"
+					class="btn btn-success btn-lg">盾构/管片姿态</a> <a id="a-syn"
+					href="/GPSG/construct-web/syn.action" class="btn btn-primary">同步注浆数据</a>
+				<a id="a-thing" href="/GPSG/construct-web/thing.action"
+					class="btn btn-danger">施工大事记录</a>
 			</div>
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -61,45 +57,13 @@
 								<li><a href="#" data-toggle="modal"
 									data-target="#modal-pose-loop">按环号查询</a>
 								</li>
-								<li><a href="#" data-toggle="modal"
-									data-target="#modal-pose-number">按项目编号查询</a>
-								</li>
 							</ul>
-						</div>
-						<div class="modal fade" id="modal-pose-number">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<form class="form-horizontal"
-										action="/GP/construct-web/number.action" role="form">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">&times;</button>
-											<h4 class="modal-title" id="myModalLabel">盾构/管片姿态信息</h4>
-										</div>
-										<div class="modal-body">
-											<div class="form-group">
-												<label class="col-sm-4 control-label"
-													for="input-measure-number">请输入项目编号：</label>
-												<div class="col-sm-5 input-group">
-													<input id="input-measure-number" type="text" name="number"
-														class="form-control">
-												</div>
-											</div>
-										</div>
-										<div class="modal-footer">
-											<button type="submit" class="btn btn-success">查询</button>
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">关闭</button>
-										</div>
-									</form>
-								</div>
-							</div>
 						</div>
 						<div class="modal fade" id="modal-pose-loop">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form class="form-horizontal"
-										action="/GP/construct-web/getposeBytunnelLoop.action"
+									<form id="form-query-by-loop" class="form-horizontal"
+										action="/GPSG/construct-web/getposeBytunnelLoop.action"
 										role="form">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
@@ -109,15 +73,15 @@
 										<div class="modal-body">
 											<div class="form-group">
 												<label class="col-sm-4 control-label"
-													for="input-measure-loop">请输入环号：</label>
+													for="input-loop">请输入环号：</label>
 												<div class="col-sm-5 input-group">
-													<input id="input-measure-loop" name="tunnelLoop"
+													<input id="input-loop" name="tunnelLoop"
 														type="text" class="form-control">
 												</div>
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-success">查询</button>
+											<button id="query-loop-btn" type="button" class="btn btn-success">查询</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">关闭</button>
 										</div>
@@ -136,7 +100,6 @@
 								<li><a id="excel-all" href="#" data-toggle="modal"
 									data-target="#modal-total">导出全部记录</a>
 								</li>
-
 							</ul>
 						</div>
 						<div class="btn-group">
@@ -158,31 +121,20 @@
 						<div class="btn-group">
 							<a href="#" data-toggle="modal" data-target="#modal-four"
 								class="btn btn-primary">绘制盾构姿态曲线</a>
-							<!--<button type="button" class="btn btn-primary dropdown-toggle"
-								data-toggle="dropdown">
-								<span class="caret"></span> <span class="sr-only">Toggle
-									Dropdown</span>
-							</button>
-							 <ul class="dropdown-menu" role="menu">
-								<li><a href="#" data-toggle="modal"
-									data-target="#modal-shield-vertical">盾构高程偏差曲线</a>
-								</li>
-								<li><a href="#" data-toggle="modal"
-									data-target="#modal-shield-horizontal">盾构平面偏差曲线</a>
-								</li>
-							</ul> -->
 						</div>
 						<div class="modal fade" id="modal-four">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form method="post" action="/GP/chart/temp1.action"
+									<form method="post"
+										action="/GPSG/Web/construct-manage/shield-pose-curve.jsp"
 										id="form-four" class="form-horizontal" role="form">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">盾构偏差曲线</h4>
 										</div>
-										<div class="modal-body">
+										<div class="modal-body">										
+											<div id="alert3" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
 												<label class="col-sm-4 control-label"
 													for="shield-start-loop">起始环号：</label>
@@ -202,36 +154,32 @@
 											<div class="form-group">
 												<div class="col-sm-5 col-sm-offset-1">
 													<div class="input-group">
-														<span class="input-group-addon"> 
-															<input class="check-one" value="qiekougaocheng" type="checkbox"/>
-														</span> 
-														<input type="text" value="切口高程偏差" class="form-control"/>
+														<span class="input-group-addon"> <input
+															class="check-one" value="qiekougaocheng" type="checkbox" />
+														</span> <input type="text" value="切口高程偏差" class="form-control" />
 													</div>
 												</div>
 												<div class="col-sm-5">
 													<div class="input-group">
-														<span class="input-group-addon"> 
-															<input class="check-one" value="qiekoupingmian" type="checkbox"/>
-														</span> 
-														<input type="text" value="切口平面偏差" class="form-control">
+														<span class="input-group-addon"> <input
+															class="check-one" value="qiekoupingmian" type="checkbox" />
+														</span> <input type="text" value="切口平面偏差" class="form-control">
 													</div>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-5 col-sm-offset-1">
 													<div class="input-group">
-														<span class="input-group-addon">
-														 	<input	class="check-one" value="dunweigaocheng" type="checkbox"/>
-														</span> 
-														<input type="text" value="盾尾高程偏差" class="form-control"/>
+														<span class="input-group-addon"> <input
+															class="check-one" value="dunweigaocheng" type="checkbox" />
+														</span> <input type="text" value="盾尾高程偏差" class="form-control" />
 													</div>
 												</div>
 												<div class="col-sm-5">
 													<div class="input-group">
-														<span class="input-group-addon"> 
-														<input class="check-one" value="dunweipingmian" type="checkbox"/>
-														</span> 
-														<input type="text" value="盾尾平面偏差" class="form-control"/>
+														<span class="input-group-addon"> <input
+															class="check-one" value="dunweipingmian" type="checkbox" />
+														</span> <input type="text" value="盾尾平面偏差" class="form-control" />
 													</div>
 												</div>
 											</div>
@@ -256,93 +204,58 @@
 									<div class="modal-body">
 										<div class="row">
 											<form id="form-total" method="post"
-												action="/GP/construct-web/excelAll5.action"
+												action="/GPSG/construct-web/excelAll5.action"
 												class="form-inline" role="form">
-												<div class="form-group col-sm-9">
-													<label class="col-sm-6 control-label" for="excelPath">请输入EXCEL导出路径：</label>
-													<div class="col-sm-6">
+												<div class="form-group col-sm-12">
+													<label class="col-sm-5 control-label" for="excelPath">请输入EXCEL导出路径：</label>
+													<div class="col-sm-7">
 														<input id="excelPath" name="excelPath"
 															value="d:/盾构和管片姿态信息.xls" type="text" class="form-control">
 													</div>
-												</div>
-												<div class="col-sm-3">
-													<button type="submit" class="btn btn-success">导出</button>
 												</div>
 											</form>
 										</div>
 									</div>
 									<div class="modal-footer">
+										<button id="export-all-btn" type="button" class="btn btn-success">导出</button>
 										<button type="button" class="btn btn-default"
 											data-dismiss="modal">关闭</button>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="modal fade" id="modal-shield-vertical">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">盾构高程偏差曲线</h4>
-									</div>
-									<div class="modal-body">
-										<form class="form-horizontal" role="form">
-											<div class="form-group">
-												<label class="col-sm-4 control-label"
-													for="input-shield-high-start-loop">起始环号：</label>
-												<div class="col-sm-5 input-group">
-													<input id="input-shield-high-start-loop" type="text"
-														class="form-control">
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-4 control-label"
-													for="input-shield-high-end-loop">结束环号：</label>
-												<div class="col-sm-5 input-group">
-													<input id="input-shield-high-end-loop" type="text"
-														class="form-control">
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-success">绘制曲线</button>
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</div>
-						</div>
+
 						<div class="modal fade" id="modal-gp-vertical">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form method="post" action="/GP/chart/temp.action"
+									<form id="form1" method="post"
+										action="/GPSG/Web/construct-manage/gp-pose-curve.jsp"
 										class="form-horizontal" role="form">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">管片高程偏差曲线</h4>
 										</div>
-										<div class="modal-body">
+										<div class="modal-body">											
+											<div id="alert1" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
 												<label class="col-sm-4 control-label"
 													for="gp-high-start-loop">起始环号：</label>
 												<div class="col-sm-5 input-group">
-													<input id="gp-high-start-loop" name="gpHighStartLoop"
-														type="text" class="form-control">
+													<input id="gp-high-start-loop" name="startLoop" type="text"
+														class="form-control">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-4 control-label" for="gp-high-end-loop">结束环号：</label>
 												<div class="col-sm-5 input-group">
-													<input id="gp-high-end-loop" name="gpHighEndLoop"
-														type="text" class="form-control">
+													<input id="gp-high-end-loop" name="endLoop" type="text"
+														class="form-control">
 												</div>
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-success">绘制曲线</button>
+											<button id="button1" type="button" class="btn btn-success">绘制曲线</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
 										</div>
@@ -353,36 +266,37 @@
 						<div class="modal fade" id="modal-gp-horizontal">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">管片平面偏差曲线</h4>
-									</div>
-									<div class="modal-body">
-										<form class="form-horizontal" role="form">
+									<form id="form2" method="post"
+										action="/GPSG/Web/construct-manage/gp-pose-pingmian-curve.jsp"
+										class="form-horizontal" role="form">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="myModalLabel">管片平面偏差曲线</h4>
+										</div>
+										<div class="modal-body">										
+											<div id="alert2" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
-												<label class="col-sm-4 control-label"
-													for="input-gp-horizontal-start-loop">起始环号：</label>
+												<label class="col-sm-4 control-label" for="gp-pan-start-loop">起始环号：</label>
 												<div class="col-sm-5 input-group">
-													<input id="input-gp-horizontal-start-loop" type="text"
+													<input id="gp-pan-start-loop" name="startLoop" type="text"
 														class="form-control">
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="col-sm-4 control-label"
-													for="input-gp-horizontal-end-loop">结束环号：</label>
+												<label class="col-sm-4 control-label" for="gp-pan-end-loop">结束环号：</label>
 												<div class="col-sm-5 input-group">
-													<input id="input-gp-horizontal-end-loop" type="text"
+													<input id="gp-pan-end-loop" type="text" name="endLoop"
 														class="form-control">
 												</div>
 											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-success">绘制曲线</button>
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
-									</div>
+										</div>
+										<div class="modal-footer">
+											<button id="button2" type="button" class="btn btn-success">绘制曲线</button>
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Close</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -617,7 +531,7 @@
 						<div class="col-sm-offset-4">
 							<s:set name="page" value="#request.pager"></s:set>
 							<form id="form-page" method="get"
-								action="/GP/construct-web/pose.action">
+								action="/GPSG/construct-web/pose.action">
 								<input id="input-page" name="pageNow" style="width:30px;"
 									value="<s:property value="#page.pageNow"/>"> /
 								<s:property value="#page.totalPage" />
@@ -650,7 +564,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<iframe src="/GP/Web/footer.jsp" class="col-md-12" frameborder="0"
+		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0"
 			scrolling="no" height="60" marginheight="0" marginwidth="0"></iframe>
 	</div>
 </body>

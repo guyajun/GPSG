@@ -5,7 +5,7 @@ public class Pager {
 	private int totalSize;
 	private int totalPage;
 	private boolean hasFirst;
-	private boolean hasPrevious;
+	private boolean hasPre;
 	private boolean hasNext;
 	private boolean hasLast;
 	public Pager(int pageNow,int totalSize){
@@ -48,14 +48,14 @@ public class Pager {
 	public void setHasFirst(boolean hasFirst) {
 		this.hasFirst = hasFirst;
 	}
-	public boolean isHasPrevious() {
+	public boolean isHasPre() {
 		if(isHasFirst())
 			return true;
 		else
 			return false;
 	}
-	public void setHasPrevious(boolean hasPrevious) {
-		this.hasPrevious = hasPrevious;
+	public void setHasPre(boolean hasPre) {
+		this.hasPre = hasPre;
 	}
 	public boolean isHasNext() {
 		if(isHasLast())
