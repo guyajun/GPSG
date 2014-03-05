@@ -45,7 +45,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-6 well">
 							<button id="button1" type="button"
-								class="col-sm-offset-4 btn btn-success btn-lg">登&nbsp&nbsp&nbsp&nbsp录</button>
+								class="col-sm-offset-4 btn btn-success btn-lg">11登&nbsp&nbsp&nbsp&nbsp录</button>
 						</div>
 					</div>
 				</form>
