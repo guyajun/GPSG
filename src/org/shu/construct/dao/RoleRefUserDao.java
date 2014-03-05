@@ -16,4 +16,7 @@ public class RoleRefUserDao extends GenericHibernateDao<RoleRefUser, Integer> {
 	public void deleteOne(RoleRefUser roleRefUser){
 		this.delete(roleRefUser);
 	}
+	public void updateOne(RoleRefUser roleRefUser){
+		this.update(roleRefUser);
+	}
 }

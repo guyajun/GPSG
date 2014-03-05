@@ -66,20 +66,43 @@ public class MenuAction extends BaseAction {
 	}
 
 	public String addUser() {
-		String fullName = userInfo.getFullName();
-		String cellPhone = userInfo.getCellPhone();
-		adminService.save(userInfo);
-		RoleRefUser roleRefUser = new RoleRefUser();
-		UserInfo userInfo1 = adminService.findByNameAndPhone(fullName,
-				cellPhone).get(0);
-		roleRefUser.setRoleInfo(userInfo.getRoleInfo());
-		roleRefUser.setUserInfo(userInfo1);
-		roleRefUserService.saveOne(roleRefUser);
+		String fullName = request.getParameter("fullName");
+		String jobNumber = request.getParameter("jobNumber");
+		String cellPhone = request.getParameter("cellPhone");
+		String loginName = request.getParameter("loginName");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		UserInfo userInfo1 = new UserInfo();
+		userInfo1.setFullName(fullName);
+		userInfo1.setJobNumber(jobNumber);
+		userInfo1.setCellPhone(cellPhone);
+		userInfo1.setLoginName(loginName);
+		userInfo1.setPassword(password);
+		userInfo1.setEmail(email);
+		userInfo1.setDepartmentInfo(userInfo.getDepartmentInfo());
+		userInfo1.setRoleInfo(userInfo.getRoleInfo());
+		adminService.save(userInfo1);
 		return SUCCESS;
 	}
 
 	public String updateUser() {
-		adminService.update(userInfo);
+		String fullName = request.getParameter("fullName");
+		String jobNumber = request.getParameter("jobNumber");
+		String cellPhone = request.getParameter("cellPhone");
+		String loginName = request.getParameter("loginName");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		UserInfo userInfo1 = new UserInfo();
+		userInfo1.setId(userInfo.getId());
+		userInfo1.setFullName(fullName);
+		userInfo1.setJobNumber(jobNumber);
+		userInfo1.setCellPhone(cellPhone);
+		userInfo1.setLoginName(loginName);
+		userInfo1.setPassword(password);
+		userInfo1.setEmail(email);
+		userInfo1.setDepartmentInfo(userInfo.getDepartmentInfo());
+		userInfo1.setRoleInfo(userInfo.getRoleInfo());
+		adminService.update(userInfo1);
 		return SUCCESS;
 	}
 
@@ -106,21 +129,18 @@ public class MenuAction extends BaseAction {
 	public String execute() {
 		int userId = (Integer) ActionContext.getContext().getSession()
 				.get("userId");
-		ArrayList<RoleRefUser> roleRefUserList = roleRefUserService
-				.getByUserId(userId);
+		UserInfo userInfo = adminService.getOneUser(userId);
 		ArrayList<FunctionInfo> list = new ArrayList<FunctionInfo>();
 		Map request = (Map) ActionContext.getContext().get("request");
-		if (roleRefUserList.size() > 0) {
-			int roleId = roleRefUserList.get(0).getRoleInfo().getId();
-			ArrayList<RoleRefFunction> roleRefFunctionList = roleRefFunctionService
-					.getByRoleId(roleId);
-			for (int i = 0; i < roleRefFunctionList.size(); i++) {
-				int functionId = roleRefFunctionList.get(i).getFunctionInfo()
-						.getId();
-				list.add(menuService.getById(functionId).get(0));
-			}
-			request.put("list", list);
-		} 
+		int roleId = userInfo.getRoleInfo().getId();
+		ArrayList<RoleRefFunction> roleRefFunctionList = roleRefFunctionService
+				.getByRoleId(roleId);
+		for (int i = 0; i < roleRefFunctionList.size(); i++) {
+			int functionId = roleRefFunctionList.get(i).getFunctionInfo()
+					.getId();
+			list.add(menuService.getById(functionId).get(0));
+		}
+		request.put("list", list);
 		return SUCCESS;
 	}
 }

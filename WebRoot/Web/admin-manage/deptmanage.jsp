@@ -32,6 +32,8 @@
 						<div class="well">
 							<a href="#" class="btn btn-success" data-toggle="modal"
 								data-target="#modal-add">添加</a>
+								<a href="#" class="btn btn-success" data-toggle="modal"
+								data-target="#modal-query">查询</a>
 						</div>
 						<table class="table table-hover">
 							<tbody>
@@ -39,11 +41,11 @@
 									<td>序号</td>
 									<td>部门名称</td>
 									<td>部门描述</td>
-									<td>父部门名称</td>
+									<!-- <td>父部门名称</td>
 									<td>创建者</td>
 									<td>创建时间</td>
 									<td>修改者</td>
-									<td>修改时间</td>
+									<td>修改时间</td> -->
 									<td>操作</td>
 									<td>操作</td>
 								</tr>
@@ -53,21 +55,22 @@
 										<td id="aa"><s:property value="#dep.departmentName" /></td>
 										<td id="bb"><s:property
 												value="#dep.departmentDescription" /></td>
-										<td id="cc"><s:property value="#dep.id.departmentName" />
+										<!-- <td id="cc"><s:property value="#dep.id.departmentName" />
 										</td>
 										<td id="ee"><s:property value="#dep.creatorId" /></td>
 										<td id="jj"><s:date name="##dep.createTime"
 												format="yyyy-MM-dd" /></td>
 										<td id="gg"><s:property value="#dep.modifierId" /></td>
 										<td id="jj"><s:date name="#dep.modifyTime"
-												format="yyyy-MM-dd" /></td>
+												format="yyyy-MM-dd" /></td> -->
 										<!--	<td><a href="#" class=" edit btn btn-primary">修改</a> -->
 										</td>
 										<!--<td>
 										 	<a href="/GPSG/system/deleteDep.action?id=<s:property value="#dep.id"/>">删除</a> 
 										</td> -->
-										<td><a href="#" class="delete btn btn-primary">删除</a>
+										<td><a href="#" class="edit">修改</a>
 										</td>
+										<td><a href="#" class="delete">删除</a></td>
 									</tr>
 								</s:iterator>
 							</tbody>
@@ -78,11 +81,40 @@
 							<input id="role-name88" name="departmentName" type="text"
 								class="form-control">
 						</form>
+			<div class="modal fade" id="modal-query">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<form id="form-query-by-loop2" method="post"
+							action="/GPSG/system/editDep123.action" class="form-horizontal"
+							role="form">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title">查询部门信息</h4>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="role-name" class="col-sm-4 control-label">部门名称：</label>
+									<div class="col-sm-6">
+										<input id="role-name" name="departmentName" type="text"
+											class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button id="export-all-btn" type="submit" class="btn btn-success">查询</button>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">关闭</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 						<div class="modal fade" id="modal-edit">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form id="form-query-by-loop" method="post"
-										action="/GPSG/system/editDep123.action" class="form-horizontal"
+									<form id="form-query-by-loop3" method="post"
+										action="/GPSG/system/bianji.action" class="form-horizontal"
 										role="form">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
@@ -90,6 +122,7 @@
 											<h4 class="modal-title">编辑角色信息</h4>
 										</div>
 										<div class="modal-body">
+										<div id="alert2" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
 												<label for="role-name1" class="col-sm-4 control-label">部门名称：</label>
 												<div class="col-sm-6">
@@ -105,16 +138,16 @@
 														type="text" class="form-control">
 												</div>
 											</div>
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<label for="role-Phone" class="col-sm-4 control-label">父部门名称：</label>
 												<div class="col-sm-6">
 													<input id="role-Phone" name="cellPhone" type="text"
 														class="form-control">
 												</div>
-											</div>
+											</div> -->
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-success">保存</button>
+											<button id="button2" type="submit" class="btn btn-success">保存</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
 										</div>
@@ -125,7 +158,7 @@
 						<div class="modal fade" id="modal-add">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form id="form-query-by-loop" method="post"
+									<form id="form-query-by-loop1" method="post"
 										action="/GPSG/system/addDep.action" class="form-horizontal"
 										role="form">
 										<div class="modal-header">
@@ -134,7 +167,7 @@
 											<h4 class="modal-title">添加角色信息</h4>
 										</div>
 										<div class="modal-body">
-
+											<div id="alert1" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
 												<label for="role-jobNumber" class="col-sm-4 control-label">部门名称：</label>
 												<div class="col-sm-6">
@@ -150,18 +183,18 @@
 														type="text" class="form-control">
 												</div>
 											</div>
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<label for="role-Phone" class="col-sm-4 control-label">父部门名称：</label>
 												<div class="col-sm-6">
 													<input id="role-Phone" name="cellPhone" type="text"
 														class="form-control">
 												</div>
-											</div>
+											</div> -->
 
 
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-success">保存</button>
+											<button id="button1" type="submit" class="btn btn-success">保存</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
 										</div>

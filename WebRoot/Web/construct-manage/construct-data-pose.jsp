@@ -72,16 +72,33 @@
 										</div>
 										<div class="modal-body">
 											<div class="form-group">
-												<label class="col-sm-4 control-label"
-													for="input-loop">请输入环号：</label>
+												<label class="col-sm-4 control-label" for="input-loop">请输入环号：</label>
 												<div class="col-sm-5 input-group">
-													<input id="input-loop" name="tunnelLoop"
-														type="text" class="form-control">
+													<input id="input-loop" name="tunnelLoop" type="text"
+														class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
 												</div>
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button id="query-loop-btn" type="button" class="btn btn-success">查询</button>
+											<button id="query-loop-btn" type="button"
+												class="btn btn-success">查询</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">关闭</button>
 										</div>
@@ -133,7 +150,7 @@
 												aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">盾构偏差曲线</h4>
 										</div>
-										<div class="modal-body">										
+										<div class="modal-body">
 											<div id="alert3" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
 												<label class="col-sm-4 control-label"
@@ -149,6 +166,23 @@
 													<input id="shield-end-loop" name="endLoop" type="text"
 														class="form-control"> <input id="checked"
 														name="checked" type="hidden" />
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
 												</div>
 											</div>
 											<div class="form-group">
@@ -202,22 +236,38 @@
 										<h4 class="modal-title" id="myModalLabel">导出所有记录</h4>
 									</div>
 									<div class="modal-body">
-										<div class="row">
-											<form id="form-total" method="post"
-												action="/GPSG/construct-web/excelAll5.action"
-												class="form-inline" role="form">
-												<div class="form-group col-sm-12">
-													<label class="col-sm-5 control-label" for="excelPath">请输入EXCEL导出路径：</label>
-													<div class="col-sm-7">
-														<input id="excelPath" name="excelPath"
-															value="d:/盾构和管片姿态信息.xls" type="text" class="form-control">
+										<form id="form-total" method="post"
+											action="/GPSG/construct-web/excelAll5.action"
+											class="form-horizontal" role="form">
+											<div class="form-group row">
+												<label class="col-sm-5 control-label" for="excelPath">请输入EXCEL导出路径：</label>
+												<div class="col-sm-6">
+													<input id="excelPath" name="excelPath"
+														value="d:/盾构和管片姿态信息.xls" type="text" class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-5 control-label">请选择东西线：</label>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
 													</div>
 												</div>
-											</form>
-										</div>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
+												</div>
+											</div>
+										</form>
 									</div>
 									<div class="modal-footer">
-										<button id="export-all-btn" type="button" class="btn btn-success">导出</button>
+										<button id="export-all-btn" type="button"
+											class="btn btn-success">导出</button>
 										<button type="button" class="btn btn-default"
 											data-dismiss="modal">关闭</button>
 									</div>
@@ -236,7 +286,7 @@
 												aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">管片高程偏差曲线</h4>
 										</div>
-										<div class="modal-body">											
+										<div class="modal-body">
 											<div id="alert1" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
 												<label class="col-sm-4 control-label"
@@ -251,6 +301,23 @@
 												<div class="col-sm-5 input-group">
 													<input id="gp-high-end-loop" name="endLoop" type="text"
 														class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
 												</div>
 											</div>
 										</div>
@@ -274,10 +341,11 @@
 												aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">管片平面偏差曲线</h4>
 										</div>
-										<div class="modal-body">										
+										<div class="modal-body">
 											<div id="alert2" class="alert alert-danger text-center hide"></div>
 											<div class="form-group">
-												<label class="col-sm-4 control-label" for="gp-pan-start-loop">起始环号：</label>
+												<label class="col-sm-4 control-label"
+													for="gp-pan-start-loop">起始环号：</label>
 												<div class="col-sm-5 input-group">
 													<input id="gp-pan-start-loop" name="startLoop" type="text"
 														class="form-control">
@@ -288,6 +356,23 @@
 												<div class="col-sm-5 input-group">
 													<input id="gp-pan-end-loop" type="text" name="endLoop"
 														class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
 												</div>
 											</div>
 										</div>

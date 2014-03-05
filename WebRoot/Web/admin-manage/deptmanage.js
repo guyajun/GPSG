@@ -27,6 +27,88 @@ $(function() {
 //				}
 //			}
 //		});
+	var _exportAllBtn = $('#export-all-btn');
+	var _totalForm = $('#form-query-by-loop2');
+	var totalValidator = _totalForm.validate({
+		rules : {
+			departmentName : "required"
+		},
+		messages : {
+			departmentName : "部门不能为空"
+		}
+	});
+	_exportAllBtn.on('click', function() {
+		if (totalValidator.form()) {
+			_totalForm.submit();
+		}
+	});
+	
+	var _button1 = $('#button1');
+	var _form1 = $('#form-query-by-loop1');
+	var _alert1=$('#alert1');
+	var form1Validator = _form1.validate({
+		rules : {
+			departmentName : {
+				required : true,
+			},
+			departmentDescription : {
+				required : true,
+			}
+		},
+		messages : {
+			departmentName : {
+				required : "部门名称不能为空",
+			},
+			departmentDescription : {
+				required : "部门描述不能为空",
+			}
+		}
+	});
+	function errorHandle(message) {
+		_alert1.removeClass('hide').html(message);
+        setTimeout(function() {
+        	_alert1.addClass('hide').html('');
+        }, 5000);
+    }
+	_button1.on('click', function() {
+		if (form1Validator.form()) {
+			_form1.submit();
+		}
+	});
+	
+	var _button2 = $('#button2');
+	var _form2 = $('#form-query-by-loop3');
+	var _alert2=$('#alert2');
+	var form2Validator = _form2.validate({
+		rules : {
+			departmentName : {
+				required : true,
+			},
+			departmentDescription : {
+				required : true,
+			}
+		},
+		messages : {
+			departmentName : {
+				required : "部门名称不能为空",
+			},
+			departmentDescription : {
+				required : "部门描述不能为空",
+			}
+		}
+	});
+	function errorHandle(message) {
+		_alert2.removeClass('hide').html(message);
+        setTimeout(function() {
+        	_alert2.addClass('hide').html('');
+        }, 5000);
+    }
+	_button2.on('click', function() {
+		if (form2Validator.form()) {
+			_form2.submit();
+		}
+	});
+	
 		$('.delete').on('click',function(){
 			var tr = $(this).parent().parent();
 			var departmentName=tr.find('#aa').text();

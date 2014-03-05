@@ -211,7 +211,7 @@
 													</div>
 												</div>
 												<div class="col-sm-3">
-													<button type="submit" class="btn btn-success">导出</button>
+													<button id="export-all-btn" type="submit" class="btn btn-success">导出</button>
 												</div>
 											</form>
 										</div>
@@ -306,7 +306,7 @@
 									</div>
 								</div>
 								<div class="col-sm-4">
-									<button type="submit" class="btn btn-success">查询</button>
+									<button id="button4"type="button" class="btn btn-success">查询</button>
 								</div>
 							</form>
 						</div>

@@ -27,7 +27,7 @@
 		<iframe src="/GPSG/construct-web/menu.action" width="100%"
 			height="160px"></iframe>
 		<div class="container">
-			<div id="div-advance" class="row">
+			<div id="div-advance">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">管片施工信息</h3>
@@ -43,7 +43,8 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="#" data-toggle="modal"
-										data-target="#modal-loop">按环号查询</a></li>
+										data-target="#modal-loop">按环号查询</a>
+									</li>
 								</ul>
 							</div>
 							<div class="btn-group">
@@ -101,21 +102,24 @@
 								<s:iterator value="#request.list" id="row">
 									<tr>
 										<td><%=++i%></td>
-										<td><s:property value="#row.tunnelLoop" /></td>
+										<td><s:property value="#row.tunnelLoop" />
+										</td>
 										<td><a
 											href="/GPSG/Web/gp-history/image-construct.jsp?folder=SHIELD_POSE&fileName=<s:property value="#row.shieldPosePic" />"><s:property
-													value="#row.shieldPosePic" /> </a></td>
+													value="#row.shieldPosePic" /> </a>
+										</td>
 										<td><a
 											href="/GPSG/Web/gp-history/image-construct.jsp?folder=ReportSG&fileName=<s:property value="#row.synchronousGroutPic" />"><s:property
-													value="#row.synchronousGroutPic" /> </a>
-										</td>
+													value="#row.synchronousGroutPic" /> </a></td>
 										<s:if test="#row.inCheckPic!=0">
 											<td><a
 												href="inCheck_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
-														value="#row.inCheckPic" /> </a></td>
+														value="#row.inCheckPic" /> </a>
+											</td>
 										</s:if>
 										<s:else>
-											<td><s:property value="#row.inCheckPic" /></td>
+											<td><s:property value="#row.inCheckPic" />
+											</td>
 										</s:else>
 
 
@@ -123,10 +127,12 @@
 										<s:if test="#row.downWellPic!=0">
 											<td><a
 												href="downWell_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
-														value="#row.downWellPic" /> </a></td>
+														value="#row.downWellPic" /> </a>
+											</td>
 										</s:if>
 										<s:else>
-											<td><s:property value="#row.downWellPic" /></td>
+											<td><s:property value="#row.downWellPic" />
+											</td>
 										</s:else>
 
 
@@ -134,21 +140,26 @@
 										<s:if test="#row.pzqcheckPic!=0">
 											<td><a
 												href="pzqCheck_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
-														value="#row.pzqcheckPic" /> </a></td>
+														value="#row.pzqcheckPic" /> </a>
+											</td>
 										</s:if>
 										<s:else>
-											<td><s:property value="#row.pzqcheckPic" /></td>
+											<td><s:property value="#row.pzqcheckPic" />
+											</td>
 										</s:else>
 
 										<s:if test="#row.segmentrepairPic != 0">
 											<td><a
 												href="xunJian_getList.action?tunnelLoop=<s:property value="#row.tunnelLoop" />"><s:property
-														value="#row.segmentrepairPic" /> </a></td>
+														value="#row.segmentrepairPic" /> </a>
+											</td>
 										</s:if>
 										<s:else>
-											<td><s:property value="#row.segmentrepairPic" /></td>
+											<td><s:property value="#row.segmentrepairPic" />
+											</td>
 										</s:else>
-										<td><s:property value="#row.isEast" /></td>
+										<td><s:property value="#row.isEast" />
+										</td>
 									</tr>
 								</s:iterator>
 							</tbody>

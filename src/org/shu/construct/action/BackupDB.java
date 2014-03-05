@@ -92,11 +92,11 @@ public class BackupDB extends BaseAction {
 				}
 				Statement st1 = con.createStatement();
 				CommonParam cp = new CommonParam();
-				String path = cp.getString("local-bak-path");
+				String path = cp.getString("local-restore-path");
 				String path1 = path + "/" + uploadFileName;
 				String dbName = request.getParameter("dbName");
 				String sql = "if exists(select 1 from master..sysdatabases where name='"
-						+ dbName + "') drop database " + dbName + " else restore database "+dbName+ " from disk='"
+						+ dbName + "') BEGIN drop database " + dbName + "; restore database "+dbName+" from disk='"+path1+"'; END else restore database "+dbName+ " from disk='"
 								+ path1 + "';";
 
 				System.out.println("sql=" + sql);

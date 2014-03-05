@@ -46,6 +46,8 @@
 									<td>角色</td>
 									<td>手机</td>
 									<td>邮箱</td>
+									<td>创建人</td>
+									<td>创建时间</td>
 									<td>操作</td>
 									<td>操作</td>
 								</tr>
@@ -76,10 +78,16 @@
 										</td>
 										<td id="gg"><s:property value="#user.email" />
 										</td>
+										<td id="hh"><s:property value="#user.creator" />
+										</td>
+										<td id="jj"><s:date name="#user.createTime"
+												format="yyyy-MM-dd" />
+										</td>
 										<td><a
 											href="/GPSG/system/getAllRole.action?userId=<s:property value="#user.id" />">修改</a>
 										</td>
-										<td><a href="/GPSG/system/deleteUser.action?userId=<s:property value="#user.id"/>">删除</a></td>
+										<!--<td><a href="/GPSG/system/deleteuser.action?fullName=<s:property value="#user.fullName"/>">删除</a></td>-->
+										<td><a href="#" class="delete">删除</a>
 									</tr>
 								</s:iterator>
 							</tbody>
@@ -120,40 +128,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal fade" id="modal-delete">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<form id="form-query-by-loop" method="post"
-							action="/GPSG/system/deleteuser.action" class="form-horizontal"
-							role="form">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">&times;</button>
-								<h4 class="modal-title">删除用户</h4>
-							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<label for="role-name" class="col-sm-4 control-label">确定删除？</label>
-
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="submit" class="btn btn-success">删除</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
 			<form id="form-hide" method="post"
-				action="/GPSG/system/deleteuser.action" class="hide form-horizontal"
+				action="/GPSG/system/deleteUser.action" class="hide form-horizontal"
 				role="form">
-				<input id="role-name88" name="fullName" type="text"
+				<input id="userId" name="userId" type="text"
 					class="form-control">
 			</form>
 			<div class="modal fade" id="modal-add">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form id="form-query-by-loop" method="post"
+						<form id="form-query-by-loop1" method="post"
 							action="/GPSG/system/adduser.action" class="form-horizontal"
 							role="form">
 							<div class="modal-header">
@@ -162,6 +146,7 @@
 								<h4 class="modal-title">添加角色信息</h4>
 							</div>
 							<div class="modal-body">
+							<div id="alert1" class="alert alert-danger text-center hide"></div>
 								<div class="form-group">
 									<label for="role-name1" class="col-sm-4 control-label">角色名称：</label>
 									<div class="col-sm-6">
@@ -201,7 +186,7 @@
 
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-success">保存</button>
+								<button id='button1' type="button" class="btn btn-success">保存</button>
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">Close</button>
 							</div>
@@ -212,7 +197,7 @@
 			<div class="modal fade" id="modal-query">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form id="form-query-by-loop" method="post"
+						<form id="form-query-by-loop3" method="post"
 							action="/GPSG/system/getByName.action" class="form-horizontal"
 							role="form">
 							<div class="modal-header">
@@ -230,7 +215,7 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-success">查询</button>
+								<button id='export-all-btn5' type="submit" class="btn btn-success">查询</button>
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">关闭</button>
 							</div>
@@ -241,7 +226,7 @@
 			<div class="modal fade" id="modal-edit">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form id="form-query-by-loop" method="post"
+						<form id="form-query-by-loop2" method="post"
 							action="/GPSG/system/editUser.action" class="form-horizontal"
 							role="form">
 							<div class="modal-header">
@@ -250,6 +235,7 @@
 								<h4 class="modal-title">编辑角色信息</h4>
 							</div>
 							<div class="modal-body">
+							<div id="alert2" class="alert alert-danger text-center hide"></div>
 								<div class="form-group">
 									<label for="role-name1" class="col-sm-4 control-label">用户姓名：</label>
 									<div class="col-sm-6">
@@ -291,7 +277,7 @@
 
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-success">保存</button>
+								<button id='button2'type="submit" class="btn btn-success">保存</button>
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">Close</button>
 							</div>

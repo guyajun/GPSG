@@ -16,9 +16,7 @@
 <script src="/GPSG/Web/bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
 <script src="/GPSG/Web/bootstrap-3.0.0/js/jquery.validate.js"></script>
 <script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap.js"></script>
-<script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
-<script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
-<script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+<script src="/GPSG/Web/admin-manage/edit-user.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -29,30 +27,31 @@
 				<div class="panel panel-info">
 					<div class="panel-heading">编辑用户信息</div>
 					<div class="panel-body">
-						<form class="form-horizontal" role="form" method="post"
+						<form id="form1" class="form-horizontal" role="form" method="post"
 							action="/GPSG/system/updateUser.action">
+							<div id="alert1" class="alert alert-danger text-center hide"></div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="fullName">姓名：</label>
 								<div class="col-sm-10">
 									<input type="hidden" name="userInfo.id" class="form-control"
 										value="<s:property value="userInfo.id"/>"> <input
-										type="text" class="form-control" name="userInfo.fullName"
-										id="fullName" value="<s:property value="userInfo.fullName"/>">
+										type="text" class="form-control" name="fullName" id="fullName"
+										value="<s:property value="userInfo.fullName"/>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="jobNumber">工号：</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										name="userInfo.jobNumber" id="jobNumber"
+									<input type="text" class="form-control" name="jobNumber"
+										id="jobNumber"
 										value="<s:property value="userInfo.jobNumber"/>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="loginName">登录名：</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										name="userInfo.loginName" id="loginName"
+									<input type="text" class="form-control" name="loginName"
+										id="loginName"
 										value="<s:property value="userInfo.loginName"/>">
 								</div>
 							</div>
@@ -60,13 +59,12 @@
 								<label class="col-sm-2 control-label" for="password">密码：</label>
 								<div class="col-sm-10">
 									<s:if test="userInfo.fullName==#session.name">
-										<input type="text" class="form-control"
-											name="userInfo.password" id="password"
-											value="<s:property value="userInfo.password"/>">
+										<input type="text" class="form-control" name="password"
+											id="password" value="<s:property value="userInfo.password"/>">
 									</s:if>
 									<s:else>
 										<input type="password" class="form-control" disabled
-											name="userInfo.password" id="password"
+											name="password" id="password"
 											value="<s:property value="userInfo.password"/>">
 									</s:else>
 								</div>
@@ -113,19 +111,19 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="cellPhone">手机：</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										name="userInfo.cellPhone" id="cellPhone"
+									<input type="text" class="form-control" name="cellPhone"
+										id="cellPhone"
 										value="<s:property value="userInfo.cellPhone"/>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="email">邮箱：</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="userInfo.email"
-										id="email" value="<s:property value="userInfo.email"/>">
+									<input type="text" class="form-control" name="email" id="email"
+										value="<s:property value="userInfo.email"/>">
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary">保存</button>
+							<button id="button1" type="button" class="btn btn-primary">保存</button>
 						</form>
 					</div>
 				</div>

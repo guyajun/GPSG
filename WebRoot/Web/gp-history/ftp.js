@@ -1,4 +1,27 @@
 $(function() {
+	$('.download-class').on('click',function() {
+		var tr = $(this).parent().parent();
+		var str=tr.find('#abc').text();
+		$('#a-download').attr('href', "ftpDownloadFolder.action?downloads="+str);
+//		$('#downloads').val(str);
+		$('#modal-download').modal('show');
+	});
+	$('#unZip-btn').on('click',function(){
+		var _alert=$('#alert2');
+		$.ajax({
+			type : 'POST',
+			url : '/GPSG/construct-web/unZip.action',
+			data : '',
+			dataType : 'JSOn',
+			success : function(data) {
+				_alert.removeClass('hide')
+						.html(data.message);
+				setTimeout(function() {
+					_alert.addClass('hide').html('');
+				}, 7000);
+			}
+		});
+	});
 	$('#check-all').attr('checked', true);
 	var checkBoxes = $('.check-one');
 	for ( var i = 0; i < checkBoxes.length; i++) {
@@ -26,8 +49,8 @@ $(function() {
 				}
 			}
 			if (count == checkBoxes.length) {
-				var checkAll=$('.check-all');
-				for(var i=0;i<checkAll.length;i++){
+				var checkAll = $('.check-all');
+				for ( var i = 0; i < checkAll.length; i++) {
 					checkAll[i].checked = true;
 				}
 			}
@@ -39,14 +62,6 @@ $(function() {
 	});
 
 	$('#download-btn').on('click', function() {
-		var checkBoxes = $('.check-one');
-		var str = "";
-		for ( var i = 0; i < checkBoxes.length; i++) {
-			if (checkBoxes[i].checked == true) {
-				str += checkBoxes[i].value + ",";
-			}
-		}
-		$('#downloads').val(str);
 		$('#form-download').submit();
 	});
 

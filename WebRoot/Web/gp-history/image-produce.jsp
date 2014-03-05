@@ -1,4 +1,6 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java"
+	import="org.tool.CommonParam,java.text.SimpleDateFormat,java.util.Date;"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +9,8 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <title>施工端数据展示</title>
-<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css"
+	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
@@ -24,14 +27,18 @@
 		<iframe src="/GPSG/construct-web/menu.action" width="100%"
 			height="160px"></iframe>
 		<div class="container">
-		<% String folder=request.getParameter("folder");
-			String fileName=request.getParameter("fileName");			
-		 %>
+			<%
+				String folder = request.getParameter("folder");
+				String fileName = request.getParameter("fileName");
+				CommonParam cp = new CommonParam();
+				String dirPath = cp.getString("local-imgs-produce");
+				String mostRencentDate=cp.getMostRecentDay(dirPath);
+			%>
 			<div>
 				<iframe style="padding-top:50px;"
-					src="/GPSG/stream/stream_getProduceStream.action?folder=<%=folder %>
-					&fileName=<%=fileName %>"
-					scroll="true" class="col-sm-12" height="700px"></iframe>
+					src="/GPSG/stream/stream_getProduceStream.action?date=<%=mostRencentDate %>&folder=<%=folder%>
+					&fileName=<%=fileName%>"
+					scroll="true" width="100%" height="700px"></iframe>
 			</div>
 		</div>
 	</div>

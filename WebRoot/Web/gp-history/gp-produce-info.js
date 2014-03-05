@@ -1,5 +1,55 @@
 $(function() {
-
+	var _button11 = $('#button11');
+	var _form11 = $('#form11');
+	var _alert11 = $('#alert11');
+	function errorHandle11(message) {
+		_alert11.removeClass('hide').html(message);
+		setTimeout(function() {
+			_alert11.addClass('hide').html('');
+		}, 5000);
+	}
+	_button11.on('click', function() {
+		var startDate = moment(_form11.find('#input-start-date').val());
+		var endDate = moment(_form11.find('#input-end-date').val());
+		if (endDate.diff(startDate) < 0) {
+			errorHandle11("开始时间必须早于或者等于结束时间！");
+		} else {
+			_form11.submit();
+		}
+	});
+	var _zipBtn = $('#zip-btn');
+	var _alertZip = $('#alert-zip');
+	_zipBtn.on('click', function() {
+		bootbox.dialog({
+			message : "压缩大文件需要3~4分钟时间，请耐心等待！待出现提示信息“压缩完成”后再上传，谢谢！",
+			title : "注意",
+			buttons : {
+				success : {
+					label : "确定",
+					className : "btn-danger",
+					callback : function() {
+						$.ajax({
+							type : 'POST',
+							url : '/GPSG/construct-web/ftpZip.action',
+							data : '',
+							dataType : 'JSOn',
+							success : function(data) {
+								_alertZip.removeClass('hide')
+										.html(data.message);
+								setTimeout(function() {
+									_alertZip.addClass('hide').html('');
+								}, 1000 * 30);
+							}
+						});
+					}
+				},
+				danger : {
+					label : "取消",
+					className : "bootbox-close-button close btn-success"
+				}
+			}
+		});
+	});
 	var _button2 = $('#button2');
 	var _form2 = $('#form2');
 	var _alert2 = $('#alert2');

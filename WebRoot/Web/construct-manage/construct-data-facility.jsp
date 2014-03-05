@@ -9,11 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>施工端数据展示</title>
-<link href="../bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="../bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
-	rel="stylesheet">
-<link href="../bootstrap-3.0.0/css/sticky-footer-navbar.css"
-	rel="stylesheet">
+
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
@@ -122,7 +118,7 @@
 													</div>
 												</div>
 												<div class="col-sm-3">
-													<button type="submit" class="btn btn-success">导出</button>
+													<button type="submit" id="export-all-btn" class="btn btn-success">导出</button>
 												</div>
 											</form>
 										</div>
@@ -394,11 +390,6 @@
 		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0"
 			scrolling="no" height="60" marginheight="0" marginwidth="0"></iframe>
 	</div>
-	<script src="../bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-	<script src="../bootstrap-3.0.0/js/jquery.validate.js"></script>
-	<script src="../bootstrap-3.0.0/js/bootstrap.js"></script>
-	<script src="../bootstrap-3.0.0/js/moment.min.js"></script>
-	<script src="../bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-	<script src="./construct-data.js"></script>
+	
 </body>
 </html>

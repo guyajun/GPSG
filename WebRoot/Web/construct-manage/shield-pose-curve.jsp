@@ -29,11 +29,13 @@
 					String startLoop = request.getParameter("startLoop");
 					String endLoop = request.getParameter("endLoop");
 					String checked = request.getParameter("checked");
+					String isEast = request.getParameter("isEast");
 				%>
 				<iframe style="padding-top:50px;"
 					src="/GPSG/chart/getChartFour.action?
 					startLoop=<%=startLoop %>
 					&endLoop=<%=endLoop %>
+					&isEast=<%=isEast %>
 					&checked=<%=checked %>"
 					scroll="true" class="col-sm-12" height="700px"></iframe>
 			</div>

@@ -45,9 +45,10 @@ public class StreamAction extends BaseAction {
 	public String getProduceStream() throws IOException {//生产端图片
 		CommonParam cp = new CommonParam();
 		String localPath = cp.getString("local-imgs-produce");
+		String date=request.getParameter("date");
 		String folder=request.getParameter("folder");
 		String fileName=request.getParameter("fileName");
-		File file=new File(localPath+"/"+folder+"/"+fileName);
+		File file=new File(localPath+"/"+date+"/"+folder+"/"+fileName);
 		InputStream is = new FileInputStream(file);
 		fileStream = new BufferedInputStream(is);
 		return SUCCESS;

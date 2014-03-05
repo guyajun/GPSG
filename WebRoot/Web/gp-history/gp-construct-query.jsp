@@ -27,7 +27,7 @@
 		<iframe src="/GPSG/construct-web/menu.action" width="100%"
 			height="160px"></iframe>
 		<div class="container">
-			<div id="div-advance" class="row">
+			<div id="div-advance">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">管片施工信息</h3>

@@ -16,8 +16,18 @@ public class PoseAction extends BaseAction {
 	private Integer pageNow = 1;
 	private PoseService poseService;
 	private Integer tunnelLoop;
+	private int isEast;
 	private Integer number;
 	private String excelPath;
+	
+	public int getIsEast() {
+		return isEast;
+	}
+
+	public void setIsEast(int isEast) {
+		this.isEast = isEast;
+	}
+
 	public void setPoseService(PoseService poseService) {
 		this.poseService = poseService;
 	}
@@ -66,7 +76,7 @@ public class PoseAction extends BaseAction {
 		String excelPathNew = URLDecoder
 				.decode(new String(request.getParameter("excelPath").getBytes(
 						"UTF-8"), "UTF-8"), "UTF-8");
-		ArrayList<ShieldPose> poseList = poseService.getAll();
+		ArrayList<ShieldPose> poseList = poseService.getByIsEast(isEast);
 		exportExcelCommon(poseList, excelPathNew);
 		return SUCCESS;
 	}
@@ -84,13 +94,8 @@ public class PoseAction extends BaseAction {
 	}
 
 	public String getBytunnelLoop() {
-		ArrayList<ShieldPose> poseList = poseService.getCountById(tunnelLoop);
+		ArrayList<ShieldPose> poseList = poseService.getCountById(tunnelLoop,isEast);
 		Map request = (Map) ActionContext.getContext().get("request");
-		Pager pager=new Pager(1,poseList.size());
-		if(poseList.size()==0){
-			pager.setPageNow(0);
-		}
-		request.put("pager", pager);
 		request.put("poseList", poseList);
 		return "success";
 	}

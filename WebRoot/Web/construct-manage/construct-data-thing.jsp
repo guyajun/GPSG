@@ -107,7 +107,7 @@
 													</div>
 												</div>
 												<div class="col-sm-3">
-													<button type="submit" class="btn btn-success">导出</button>
+													<button id="export-all-btn" type="button" class="btn btn-success">导出</button>
 												</div>
 											</form>
 										</div>
@@ -128,7 +128,7 @@
 										<h4 class="modal-title" id="myModalLabel">施工大事信息</h4>
 									</div>
 									<div class="modal-body">
-										<form class="form-inline" role="form" method="post"
+										<form class="form-query-by-loop" role="form" method="post"
 											action="/GPSG/construct-web/thingDate.action">
 											<div class="form-group col-sm-8">
 												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
@@ -139,7 +139,7 @@
 												</div>
 											</div>
 											<div class="col-sm-4">
-												<button type="submit" class="btn btn-success">查询</button>
+												<button id="query-loop-btn" type="submit" class="btn btn-success">查询</button>
 											</div>
 										</form>
 									</div>

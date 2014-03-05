@@ -23,8 +23,8 @@ public class SystemAction extends BaseAction {
 	}
 	
 	public String login() throws Exception {
-		String loginName =request.getParameter("loginName");
-		String password = request.getParameter("password");
+		String loginName =request.getParameter("loginName").trim();
+		String password = request.getParameter("password").trim();
 		ArrayList<UserInfo> list = adminService.findByLoginNameAndPassword(
 				loginName, password);
 		if (list.size() > 0) {

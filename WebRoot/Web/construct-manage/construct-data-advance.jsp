@@ -101,7 +101,7 @@
 						<div class="modal fade" id="modal-excel">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form id="form-loop-query" method="post"
+									<form id="form1" method="post"
 										action="/GPSG/construct-web/advance_excelBetween.action"
 										class="form-horizontal" role="form">
 										<div class="modal-header">
@@ -110,32 +110,33 @@
 											<h4 class="modal-title" id="myModalLabel">按需导出</h4>
 										</div>
 										<div class="modal-body">
+									    	<div id="alert1" class="alert alert-danger text-center hide"></div>
 											<div class="row">
 												<div class="form-group">
-													<label class="col-sm-6 control-label" for="excelPath">起始环号：</label>
+													<label class="col-sm-6 control-label" for="gp-high-start-loop">起始环号：</label>
 													<div class="col-sm-6">
-														<input id="excelPath" name="loop1" value="1" type="text"
+														<input id="gp-high-start-loop" name="loop1" value="1" type="text"
 															class="form-control">
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-6 control-label" for="excelPath">结束环号：</label>
+													<label class="col-sm-6 control-label" for="gp-high-end-loop">结束环号：</label>
 													<div class="col-sm-6">
-														<input id="excelPath" name="loop2" value="1" type="text"
+														<input id="gp-high-end-loop" name="loop2" value="1" type="text"
 															class="form-control">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-6 control-label" for="excelPath">导出路径：</label>
 													<div class="col-sm-6">
-														<input id="excelPath" name="excelPath" value="d:/土质表.xls"
+														<input id="excelPath" name="excelPath" value="d:/盾构推进区间查询.xls"
 															type="text" class="form-control">
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-success">EXCEL导出</button>
+											<button id="button1" type="button" class="btn btn-success">EXCEL导出</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">关闭</button>
 										</div>
@@ -153,7 +154,7 @@
 									</div>
 									<div class="modal-body">
 										<div class="row">
-											<form id="form-total" method="post"
+											<form id="form-total1" method="post"
 												action="/GPSG/construct-web/excelAdvance.action"
 												class="form-inline" role="form">
 												<div class="form-group col-sm-9">
@@ -164,7 +165,7 @@
 													</div>
 												</div>
 												<div class="col-sm-3">
-													<button type="submit" class="btn btn-success">EXCEL导出</button>
+													<button id="export-all-btn1" type="submit" class="btn btn-success">EXCEL导出</button>
 												</div>
 											</form>
 										</div>
@@ -243,7 +244,7 @@
 										<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
 									</div>
 									<div class="modal-body">
-										<form class="form-inline" role="form">
+										<form id="form-query-by-date" class="form-inline" role="form">
 											<div class="form-group col-sm-8">
 												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
 												<div class="col-sm-7 input-group start-date">
@@ -253,7 +254,7 @@
 												</div>
 											</div>
 											<div class="col-sm-4">
-												<button type="submit" class="btn btn-success">查询</button>
+												<button id="querydate" type="submit" class="btn btn-success">查询</button>
 											</div>
 										</form>
 									</div>
@@ -267,7 +268,7 @@
 						<div class="modal fade" id="modal-advance-loop">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form class="form-inline" role="form" method="post"
+									<form id="form2" class="form-inline" role="form" method="post"
 										action="/GPSG/construct-web/advance_getByLoop.action">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
@@ -284,7 +285,7 @@
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-success">查询</button>
+											<button id="button2" type="button" class="btn btn-success">查询</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
 										</div>

@@ -98,8 +98,8 @@ public class ChartGpPose extends BaseAction {
 	public DefaultCategoryDataset createDataset() {
 		int startLoop = Integer.valueOf(request.getParameter("startLoop"));
 		int endLoop = Integer.valueOf(request.getParameter("endLoop"));
-		ArrayList<ShieldPose> list = poseService.getByBetweenLoops(startLoop,
-				endLoop);
+		int isEast = Integer.valueOf(request.getParameter("isEast"));
+		ArrayList<ShieldPose> list = poseService.getByBetweenLoopsAndIsEast(startLoop, endLoop, isEast);
 		DefaultCategoryDataset linedataset = new DefaultCategoryDataset();
 		String series1 = "管片姿态高程";
 		for (int i = 0; i < list.size(); i++) {
@@ -116,8 +116,8 @@ public class ChartGpPose extends BaseAction {
 	public DefaultCategoryDataset createDatasetPingMian() {
 		int startLoop = Integer.valueOf(request.getParameter("startLoop"));
 		int endLoop = Integer.valueOf(request.getParameter("endLoop"));
-		ArrayList<ShieldPose> list = poseService.getByBetweenLoops(startLoop,
-				endLoop);
+		int isEast = Integer.valueOf(request.getParameter("isEast"));
+		ArrayList<ShieldPose> list = poseService.getByBetweenLoopsAndIsEast(startLoop, endLoop, isEast);
 		DefaultCategoryDataset linedataset = new DefaultCategoryDataset();
 		String series1 = "管片姿态平面";
 		for (int i = 0; i < list.size(); i++) {

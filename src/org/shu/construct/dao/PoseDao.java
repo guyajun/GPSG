@@ -11,10 +11,21 @@ public class PoseDao extends GenericHibernateDao<ShieldPose, Integer> {
 		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
 		return list;
 	}
-
+	public ArrayList<ShieldPose> getByIsEast(int isEast) {
+		String sql = "select * from SHIELD_POSE where IsEast="+isEast+";";
+		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
+		return list;
+	}
 	public ArrayList<ShieldPose> getByBetweenLoops(int startLoop, int endLoop) {
 		String sql = "select * from SHIELD_POSE where TUNNEL_LOOP between "
 				+ startLoop + " and " + endLoop;
+		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
+		return list;
+	}
+
+	public ArrayList<ShieldPose> getByBetweenLoopsAndIsEast(int startLoop, int endLoop,int isEast) {
+		String sql = "select * from SHIELD_POSE where TUNNEL_LOOP between "
+				+ startLoop + " and " + endLoop+" and IsEast="+isEast+";";
 		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
 		return list;
 	}
@@ -51,8 +62,8 @@ public class PoseDao extends GenericHibernateDao<ShieldPose, Integer> {
 		return list1;
 	}
 
-	public ArrayList<ShieldPose> poseSearchByLoop(Integer tunnelLoop) {
-		String sql = "select * from SHIELD_POSE where TUNNEL_LOOP="+tunnelLoop;
+	public ArrayList<ShieldPose> poseSearchByLoop(Integer tunnelLoop,int isEast) {
+		String sql = "select * from SHIELD_POSE where TUNNEL_LOOP="+tunnelLoop+" and IsEast="+isEast+";";
 		ArrayList<ShieldPose> list = (ArrayList<ShieldPose>) this.sqlFind(sql);
 		return list;
 	}

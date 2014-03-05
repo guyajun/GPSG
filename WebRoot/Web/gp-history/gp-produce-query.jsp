@@ -47,26 +47,6 @@
 									</li>
 								</ul>
 							</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-primary">FTP操作</button>
-								<button type="button" class="btn btn-primary dropdown-toggle"
-									data-toggle="dropdown">
-									<span class="caret"></span> <span class="sr-only">Toggle
-										Dropdown</span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<!-- 	<li><a href="#" data-toggle="modal"
-										data-target="#modal-upload">上传文件到FTP</a>
-									</li> -->
-									<li><a href="#" data-toggle="modal"
-										data-target="#modal-upload">Test上传文件到FTP</a>
-									</li>
-									<li>
-										<!-- <a href="/GPSG/construct-web/ftpFolders.action">从FTP下载文件</a> -->
-										<a href="#" data-toggle="modal" data-target="#modal-download">从FTP下载文件</a>
-									</li>
-								</ul>
-							</div>
 						</div>
 						<table class="table">
 							<tbody>

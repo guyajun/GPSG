@@ -9,11 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>施工端数据展示</title>
-<link href="../bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
-<link href="../bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
-	rel="stylesheet">
-<link href="../bootstrap-3.0.0/css/sticky-footer-navbar.css"
-	rel="stylesheet">
+
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
@@ -25,7 +21,7 @@
 <script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
 <script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
 <script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-<script src="/GPSG/Web/construct-manage/construct-data-mud.js"></script>
+<script src="/GPSG/Web/construct-manage/construct-data-measure.js"></script>
 </head>
 
 <body>
@@ -197,7 +193,7 @@
 												</div>
 											</div>
 											<div class="col-sm-3">
-												<button type="submit" class="btn btn-success">导出</button>
+												<button id="export-all-btn" type="submit" class="btn btn-success">导出</button>
 											</div>
 										</form>
 									</div>
@@ -251,7 +247,7 @@
 								<h4 class="modal-title" id="myModalLabel">测点查询</h4>
 							</div>
 							<div class="modal-body">
-								<form id="form-query-by-loop" method="post"
+								<form id="form1" method="post"
 									action="/GPSG/construct-web/cedian.action" class="form-inline"
 									role="form">
 									<div class="form-group col-sm-8">
@@ -262,7 +258,7 @@
 										</div>
 									</div>
 									<div class="col-sm-4">
-										<button type="submit" class="btn btn-success">查询</button>
+										<button id="button2" type="button" class="btn btn-success">查询</button>
 									</div>
 								</form>
 							</div>
@@ -344,11 +340,6 @@
 		<iframe src="/GPSG/Web/footer.jsp" class="col-md-12" frameborder="0"
 			scrolling="no" height="60" marginheight="0" marginwidth="0"></iframe>
 	</div>
-	<script src="../bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
-	<script src="../bootstrap-3.0.0/js/jquery.validate.js"></script>
-	<script src="../bootstrap-3.0.0/js/bootstrap.js"></script>
-	<script src="../bootstrap-3.0.0/js/moment.min.js"></script>
-	<script src="../bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
-	<script src="./construct-data.js"></script>
+	
 </body>
 </html>

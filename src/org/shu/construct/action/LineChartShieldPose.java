@@ -90,12 +90,12 @@ public class LineChartShieldPose extends BaseAction {
 	public DefaultCategoryDataset createDataset() {
 		int startLoop = Integer.valueOf(request.getParameter("startLoop"));
 		int endLoop = Integer.valueOf(request.getParameter("endLoop"));
+		int isEast = Integer.valueOf(request.getParameter("isEast"));
 		String checked = request.getParameter("checked");
 		System.out.println("checked="+checked);
 		String[] checks = checked.split("2");
 		System.out.println("checks.length="+checks.length);
-		ArrayList<ShieldPose> list = poseService.getByBetweenLoops(startLoop,
-				endLoop);
+		ArrayList<ShieldPose> list = poseService.getByBetweenLoopsAndIsEast(startLoop, endLoop, isEast);
 		String series1 = "切口高程偏差";
 		String series2 = "切口平面偏差";
 		String series3 = "盾尾高程偏差";

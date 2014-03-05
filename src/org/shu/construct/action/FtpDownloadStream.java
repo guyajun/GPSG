@@ -38,8 +38,6 @@ public class FtpDownloadStream extends BaseAction {
 		ftpclient.setControlEncoding("UTF-8");
 		ftpclient.setFileType(FTPClient.BINARY_FILE_TYPE);
 		fileStream = ftpclient.retrieveFileStream(remotePath);
-		Map request = (Map) ActionContext.getContext().get("request");
-		request.put("msg", "FTP文件" + downloadZip + "已下载至本地");
 		return SUCCESS;
 	}
 }

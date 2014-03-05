@@ -18,8 +18,8 @@ public class PoseService {
 	public ArrayList<ShieldPose> getShieldPoseByPage(int pageNow, int pageSize) {
 		return poseDao.poseSearchByPage(pageNow, pageSize);
 	}
-	public ArrayList<ShieldPose> getCountById(Integer tunnelLoop) {
-		return (ArrayList<ShieldPose>) poseDao.poseSearchByLoop(tunnelLoop);
+	public ArrayList<ShieldPose> getCountById(Integer tunnelLoop, int isEast) {
+		return (ArrayList<ShieldPose>) poseDao.poseSearchByLoop(tunnelLoop,isEast);
 	}
 	public ArrayList<ShieldPose> getCountByNumber(Integer number) {
 		return (ArrayList<ShieldPose>) poseDao.poseSearchByNumber(number);
@@ -27,9 +27,17 @@ public class PoseService {
 	public ArrayList<ShieldPose> getByBetweenLoops(int startLoop,int endLoop){
 		return poseDao.getByBetweenLoops(startLoop, endLoop);
 	}
+
+	public ArrayList<ShieldPose> getByBetweenLoopsAndIsEast(int startLoop, int endLoop,int isEast) {
+		return poseDao.getByBetweenLoopsAndIsEast(startLoop, endLoop, isEast);
+	}
 	public ArrayList<ShieldPose> getAll()
 	{		
 		return poseDao.getAll();
+	}
+	public ArrayList<ShieldPose> getByIsEast(int isEast)
+	{		
+		return poseDao.getByIsEast(isEast);
 	}
 	public ArrayList<ShieldPose> getByTunnelLoop(int tunnelLoop)
 	{		

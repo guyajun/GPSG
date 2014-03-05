@@ -19,6 +19,7 @@
 <script src="/GPSG/Web/bootstrap-3.0.0/js/bootbox.js"></script>
 <script src="/GPSG/Web/bootstrap-3.0.0/js/moment.min.js"></script>
 <script src="/GPSG/Web/bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+<script src="/GPSG/Web/admin-manage/add-user.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -29,34 +30,34 @@
 				<div class="panel panel-info">
 					<div class="panel-heading">添加一个用户</div>
 					<div class="panel-body">
-						<form class="form-horizontal" role="form" method="post"
+						<form id="form1" class="form-horizontal" role="form" method="post"
 							action="/GPSG/system/addUser.action">
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="fullName">姓名：</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										name="userInfo.fullName" id="fullName">
+										name="fullName" id="fullName">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="jobNumber">工号：</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										name="userInfo.jobNumber" id="jobNumber">
+										name="jobNumber" id="jobNumber">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="loginName">登录名：</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										name="userInfo.loginName" id="loginName">
+										name="loginName" id="loginName">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="password">密码：</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										name="userInfo.password" id="password">
+										name="password" id="password">
 								</div>
 							</div>
 							<div class="form-group">
@@ -88,17 +89,17 @@
 								<label class="col-sm-2 control-label" for="cellPhone">手机：</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										name="userInfo.cellPhone" id="cellPhone">
+										name="cellPhone" id="cellPhone">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="email">邮箱：</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="userInfo.email"
+									<input type="text" class="form-control" name="email"
 										id="email">
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary">保存</button>
+							<button id="button1" type="button" class="btn btn-primary">保存</button>
 						</form>
 					</div>
 				</div>

@@ -23,8 +23,8 @@ public class ShieldPoseService {
 		return poseDao.getAll();
 	}
 
-	public ArrayList<ShieldPose> getCountById(Integer tunnelLoop) {
-		return (ArrayList<ShieldPose>) poseDao.poseSearchByLoop(tunnelLoop);
+	public ArrayList<ShieldPose> getByLoop(Integer tunnelLoop,int isEast) {
+		return (ArrayList<ShieldPose>) poseDao.poseSearchByLoop(tunnelLoop,isEast);
 	}
 
 	public ArrayList<ShieldPose> getCountByNumber(Integer number) {

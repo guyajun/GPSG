@@ -60,7 +60,7 @@
 										<td id="ee"><s:property value="#pro.startGpId" />
 										</td>
 										<td id="ff"><s:property value="#pro.endGpId" /></td>
-										<!--  <td><a href="#" class="edit">修改</a></td> -->
+										<td><a href="#" class="edit">修改</a></td> 
 									<td><a href="#" class="delete">删除</a></td>
 										<td><a href="#" class="detail">详细</a></td>
 										<td id="gg" class="hide"><s:property value="#pro.gkTltp" />
@@ -385,7 +385,7 @@
 			<div class="modal fade" id="modal-add">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form id="form-query-by-loop" method="post"
+						<form id="form-query-by-loop2" method="post"
 							action="/GPSG/system/addpro.action" class="form-horizontal"
 							role="form">
 							<div class="modal-header">
@@ -636,7 +636,7 @@
 
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-success">保存</button>
+								<button id='export-all-btn' type="button" class="btn btn-success">保存</button>
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">Close</button>
 							</div>
@@ -650,7 +650,7 @@
 			<div class="modal fade" id="modal-query">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form id="form-query-by-loop" method="post"
+						<form id="form-query-by-loop3" method="post"
 							action="/GPSG/system/getByproName.action" class="form-horizontal"
 							role="form">
 							<div class="modal-header">
@@ -668,7 +668,7 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-success">查询</button>
+								<button id='export-all-btn2' type="button" class="btn btn-success">查询</button>
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">关闭</button>
 							</div>

@@ -54,6 +54,38 @@ $(function() {
 	// $('#date-md').on('click',function(){
 	// 	$
 	// });
+	var _exportAllBtn = $('#export-all-btn');
+	var _totalForm = $('#form-query-by-loop2');
+	var totalValidator = _totalForm.validate({
+		rules : {
+			proName : "required"
+		},
+		messages : {
+			proName : "名称不能为空"
+		}
+	});
+	_exportAllBtn.on('click', function() {
+		if (totalValidator.form()) {
+			_totalForm.submit();
+		}
+	});
+	var _exportAllBtn2 = $('#export-all-btn2');
+	var _totalForm2 = $('#form-query-by-loop3');
+	var totalValidator2 = _totalForm2.validate({
+		rules : {
+			proName : "required"
+		},
+		messages : {
+			proName : "名称不能为空"
+		}
+	});
+	_exportAllBtn2.on('click', function() {
+		if (totalValidator2.form()) {
+			_totalForm2.submit();
+		}
+	});
+	
+	
 	$('.delete').on('click',function(){
 		var tr = $(this).parent().parent();
 		var proName=tr.find('#bb').text();

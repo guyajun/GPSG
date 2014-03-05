@@ -16,6 +16,44 @@ $(function() {
 	// $('#date-md').on('click',function(){
 	// 	$
 	// });
+	var _exportAllBtn = $('#export-all-btn');
+	var _totalForm = $('#form-total');
+	var totalValidator = _totalForm.validate({
+		rules : {
+			excelPath : "required"
+		},
+		messages : {
+			excelPath : "路径不能为空"
+		}
+	});
+	_exportAllBtn.on('click', function() {
+		if (totalValidator.form()) {
+			_totalForm.submit();
+		}
+	});
+
+	_queryForm = $('#form-query-by-loop');
+	_queryLoopBtn = $('#query-loop-btn');
+	var queryValidator = _queryForm.validate({
+		rules : {
+			date : {
+				required : true,
+				number : true
+			}
+		},
+		messages : {
+			date : {
+				required : "环号不能为空",
+				number : "环号必须是数字"
+			}
+		}
+	});
+
+	_queryLoopBtn.on('click', function() {
+		if (queryValidator.form()) {
+			_queryForm.submit();
+		}
+	});
 	$('#query-date-btn').on('click',function(){
 		$('#form-date-query').submit();
 	});

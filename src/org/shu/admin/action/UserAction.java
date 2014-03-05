@@ -96,10 +96,9 @@ public class UserAction extends BaseAction {
 	}
 
 	public String deleteUser() {
-		int userId = Integer.parseInt(request.getParameter("userId"));
+		System.out.println(request.getParameter("userId"));
+		int userId = Integer.parseInt(request.getParameter("userId").trim());
 		ArrayList<UserInfo> list = adminService.findUserById(userId);
-		RoleRefUser roleRefUser = adminService.findRoleRefUser(userId);
-		roleRefUserService.deleteOne(roleRefUser);
 		adminService.delete(list.get(0));
 		return SUCCESS;
 	}
