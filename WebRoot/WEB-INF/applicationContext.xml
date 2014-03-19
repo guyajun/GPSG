@@ -10,6 +10,8 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 			value="jdbc:sqlserver://localhost:1433;databasename=GpConstruct">
 		</property>
 		<property name="username" value="aa"></property>
+		<!-- asd sdfsfsdfsd
+		fsdfsdfsdfsfsf -->
 		<property name="password" value="aa"></property>
 	</bean>
 	<bean id="sessionFactory"
