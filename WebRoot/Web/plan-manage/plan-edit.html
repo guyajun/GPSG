@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>施工端数据展示</title>
+	<link href="../bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+	<link href="../bootstrap-3.0.0/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<link href="../bootstrap-3.0.0/css/sticky-footer-navbar.css" rel="stylesheet"></head>
+<body>
+	<div id="wrap">
+		<iframe src="../menu.html" class="col-md-12" height="200" frameborder="0" scrolling="no" width="100%"
+						marginheight="0" marginwidth="0"></iframe>
+		<div class="container">
+			<div class="row">
+				<div class="panel panel-info">
+					<div class="panel-heading">创建计划</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group col-sm-4">
+								<label class="col-sm-4 control-label" for="input-start-date">开始时间：</label>
+								<div class="col-sm-8 input-group start-date">
+									<input id="input-start-date" type="text" class="form-control">
+									<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+								</div>
+							</div>
+							<div class="form-group col-sm-5">
+								<label class="col-sm-4 control-label" for="input-end-date">结束时间：</label>
+								<div class="col-sm-8 input-group end-date">
+									<input id="input-end-date" type="text" class="form-control">
+									<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+								</div>
+							</div>
+							<div class="form-group col-sm-4">
+								<label class="col-sm-4 control-label" for="input-start-loop">起始环号：</label>
+								<div class="col-sm-8 input-group">
+									<input id="input-start-loop" type="text" class="form-control"></div>
+							</div>
+							<div class="form-group col-sm-5">
+								<label class="col-sm-4 control-label" for="input-end-loop">终止环号：</label>
+								<div class="col-sm-8 input-group">
+									<input id="input-end-loop" type="text" class="form-control"></div>
+							</div>
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-success">保存</button>
+								<button type="submit" class="col-sm-offset-4 btn btn-success">取消</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">详细内容</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tbody>
+								<tr>
+									<td>开始时间</td>
+									<td>结束时间</td>
+									<td>开始环号</td>
+									<td>终止环号</td>
+									<td>创建人</td>
+									<td>创建时间</td>
+									<td>操作</td>
+									<td>操作</td>
+								</tr>
+								<tr>
+									<td>2013-05-01</td>
+									<td>2013-05-31</td>
+									<td>1874</td>
+									<td>2032</td>
+									<td>tom</td>
+									<td>2013-12-14</td>
+									<td>
+										<a href="#">修改</a>
+									</td>
+									<td>
+										<a href="#">删除</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4">
+							<ul class="pagination">
+								<li>
+									<a href="#">&laquo;</a>
+								</li>
+								<li>
+									<a href="#">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+								<li>
+									<a href="#">4</a>
+								</li>
+								<li>
+									<a href="#">5</a>
+								</li>
+								<li>
+									<a href="#">&raquo;</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+			<iframe src="../footer.html" class="col-md-12" frameborder="0" scrolling="no" height="60"
+						marginheight="0" marginwidth="0"></iframe>
+	</div>
+	<script src="../bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+	<script src="../bootstrap-3.0.0/js/jquery.validate.js"></script>
+	<script src="../bootstrap-3.0.0/js/bootstrap.js"></script>
+	<script src="../bootstrap-3.0.0/js/moment.min.js"></script>
+	<script src="../bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+	<script src="./plan-scan.js"></script>
+</body>
+</html>

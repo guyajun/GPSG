@@ -1,0 +1,514 @@
+<!DOCTYPE struts PUBLIC
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.multipart.maxSize" value="10000000000" />
+	<package name="login" extends="json-default">
+		<action name="login" class="org.shu.construct.action.SystemAction"
+			method="login">
+			<result name="success" type="json"></result>
+			<result name="error" type="json"></result>
+		</action>
+	</package>
+	<package name="strutsDefault" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="org.shu.construct.action.LoginInterceptor" />
+			<interceptor-stack name="myDefaultInterceptor">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="myDefaultInterceptor" />
+		<global-results>
+			<!-- 下面定义的结果对所有的Action都有效 -->
+			<result name="loginView">/index.jsp</result>
+		</global-results>
+	</package>
+	<package name="jsonDefault" extends="json-default">
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="org.shu.construct.action.LoginInterceptor" />
+			<interceptor-stack name="myDefaultInterceptor">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="myDefaultInterceptor" />
+		<global-results>
+			<!-- 下面定义的结果对所有的Action都有效 -->
+			<result name="loginView">/index.jsp</result>
+		</global-results>
+	</package>
+	<package name="stream" namespace="/stream" extends="strutsDefault">
+		<action name="stream_*" class="org.shu.construct.action.StreamAction"
+			method="{1}">
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+			</result>
+		</action>
+		<action name="getFtpStream" class="org.shu.construct.action.FtpDownloadStream"
+			method="mainDownload">
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${downloadZip}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
+		</action>
+	</package>
+	<package name="chart" namespace="/chart" extends="jfreechart-default">
+		<action name="gpPose_*" class="org.shu.construct.action.ChartGpPose"
+			method="{1}">
+			<result name="success" type="chart">
+				<param name="width">1500</param>
+				<param name="height">500</param>
+			</result>
+		</action>
+		<action name="getChartFour" class="org.shu.construct.action.LineChartShieldPose"
+			method="chart">
+			<result name="success" type="chart">
+				<param name="width">1500</param>
+				<param name="height">500</param>
+			</result>
+		</action>
+	</package>
+	<package name="system" namespace="/system" extends="strutsDefault">
+		<action name="getAllRole" class="org.shu.construct.action.MenuAction"
+			method="getAllRole">
+			<result name="success">/Web/admin-manage/edit-user.jsp</result>
+		</action>
+		<action name="getRoleAndDepart" class="org.shu.construct.action.MenuAction"
+			method="getRoleAndDepart">
+			<result name="success">/Web/admin-manage/add-user.jsp</result>
+		</action>
+		<action name="updateUser" class="org.shu.construct.action.MenuAction"
+			method="updateUser">
+			<result type="redirectAction">usermanage</result>
+		</action>
+		<action name="addUser" class="org.shu.construct.action.MenuAction"
+			method="addUser">
+			<result type="redirectAction">usermanage</result>
+		</action>
+		<action name="usermanage" class="org.shu.admin.action.UserAction"
+			method="getAll">
+			<result name="success">/Web/admin-manage/usermanage.jsp</result>
+		</action>
+		<action name="getByName" class="org.shu.admin.action.UserAction"
+			method="getByName">
+			<result name="success">/Web/admin-manage/usermanage.jsp</result>
+		</action>
+
+		<action name="deleteUser" class="org.shu.admin.action.UserAction"
+			method="deleteUser">
+			<result type="redirectAction">usermanage</result>
+		</action>
+
+		<action name="editUser" class="org.shu.admin.action.UserAction"
+			method="editUser">
+			<result type="redirectAction">usermanage</result>
+		</action>
+		<action name="deptmanage" class="org.shu.construct.action.DepartmentInfoAction"
+			method="getAll">
+			<result name="success">/Web/admin-manage/deptmanage.jsp</result>
+		</action>
+		<action name="deletedep" class="org.shu.construct.action.DepartmentInfoAction"
+			method="deletedep">
+			<result type="redirectAction">deptmanage</result>
+		</action>
+		<action name="addDep" class="org.shu.construct.action.DepartmentInfoAction"
+			method="addDep">
+			<result type="redirectAction">deptmanage</result>
+		</action>
+		<action name="bianji" class="org.shu.construct.action.DepartmentInfoAction"
+			method="bianji">
+			<result type="redirectAction">deptmanage</result>
+		</action>
+		<action name="editDep123" class="org.shu.construct.action.DepartmentInfoAction"
+			method="editDep">
+			<result name="success">/Web/admin-manage/deptmanage.jsp</result>
+		</action>
+		<action name="proinfo" class="org.shu.action.ProInfoAction"
+			method="getAll">
+			<result name="success">/Web/admin-manage/projectmanage.jsp</result>
+		</action>
+		<action name="getByproName" class="org.shu.action.ProInfoAction"
+			method="getByproName">
+			<result name="success">/Web/admin-manage/projectmanage.jsp</result>
+		</action>
+		<action name="addpro" class="org.shu.action.ProInfoAction"
+			method="Addpro">
+			<result name="success" type="redirectAction">proinfo</result>
+		</action>
+		<action name="editpro123" class="org.shu.action.ProInfoAction"
+			method="editpro123">
+			<result name="success" type="redirectAction">proinfo</result>
+		</action>
+		<action name="deletepro" class="org.shu.action.ProInfoAction"
+			method="deletepro">
+			<result name="success" type="redirectAction">proinfo</result>
+
+		</action>
+		<action name="logOut" class="org.shu.construct.action.SystemAction"
+			method="logOut">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="editAuthority" class="org.shu.construct.action.AuthorityAction"
+			method="saveRight">
+			<result type="redirectAction">allRole</result>
+		</action>
+		<action name="allRole" class="org.shu.action.RoleInfoAction"
+			method="getAll">
+			<result name="success">/Web/admin-manage/role.jsp</result>
+		</action>
+		<action name="role_*" class="org.shu.action.RoleInfoAction"
+			method="{1}">
+			<result type="redirectAction">allRole</result>
+		</action>
+		<action name="getRoleByName" class="org.shu.action.RoleInfoAction"
+			method="queryRole">
+			<result>/Web/admin-manage/role.jsp</result>
+		</action>
+		<action name="getByRoleId" class="org.shu.construct.action.AuthorityAction"
+			method="getByRoleId">
+			<result name="success">/Web/admin-manage/getByRoleId.jsp</result>
+		</action>
+		<action name="tree" class="org.shu.construct.action.MenuAction">
+			<result name="success">/Web/admin-manage/role.jsp</result>
+		</action>
+	</package>
+	<package name="web" namespace="/construct-web" extends="jsonDefault">
+		<action name="unZip" class="org.shu.construct.action.UnZip"
+			method="beginUnZip">
+			<result type="json"></result>
+		</action>
+		<action name="ftpZip" class="org.shu.construct.action.Zip"
+			method="beginZip">
+			<result type="json"></result>
+		</action>
+		<action name="inCheck_*" class="org.shu.construct.action.InCheckAction"
+			method="{1}">
+			<result name="success">/Web/gp-history/in-check.jsp</result>
+		</action>
+		<action name="downWell_*" class="org.shu.construct.action.DownWellAction"
+			method="{1}">
+			<result name="success">/Web/gp-history/down-well.jsp</result>
+		</action>
+		<action name="pzqCheck_*" class="org.shu.construct.action.PzqCheckAction"
+			method="{1}">
+			<result name="success">/Web/gp-history/pzq-check.jsp</result>
+		</action>
+		<action name="xunJian_*" class="org.shu.construct.action.XunJianAction"
+			method="{1}">
+			<result name="success">/Web/gp-history/xun-jian.jsp</result>
+		</action>
+		<action name="db_*" class="org.shu.construct.action.BackupDB"
+			method="{1}">
+			<result name="success">/Web/gp-history/msg.jsp</result>
+		</action>
+		<action name="fileTree" class="org.shu.construct.action.TreeFileAction"
+			method="generateTree">
+			<result type="json"></result>
+		</action>
+		<action name="ftpUpload" class="org.shu.construct.action.FtpUploadAction"
+			method="mainUpload">
+			<result name="success">/Web/gp-history/file-tree.jsp</result>
+		</action>
+		<action name="copyFtpUpload" class="org.shu.construct.action.CopyUploadAction"
+			method="execute">
+			<result name="success">/Web/gp-history/msg.jsp</result>
+		</action>
+		<action name="ftpDownload1" class="org.shu.construct.action.FtpUploadAction"
+			method="mainDownload">
+			<result name="success">/Web/gp-history/file-tree.jsp</result>
+		</action>
+		<action name="ftpDownload" class="org.shu.construct.action.FtpAction"
+			method="download">
+			<result name="success">/Web/gp-history/sonftp.jsp</result>
+		</action>
+		<action name="ftpDownloadFolder" class="org.shu.construct.action.FtpDownloadAction1"
+			method="mainDownload">
+			<result name="success">/Web/gp-history/msg.jsp</result>
+		</action>
+		<action name="ftpDownloadZip" class="org.shu.construct.action.FtpDownloadStream"
+			method="mainDownload">
+			<result name="success">/Web/gp-history/msg.jsp</result>
+		</action>
+		<action name="ftpFolders" class="org.shu.construct.action.FtpAction"
+			method="getAllFtpFolders">
+			<result name="success">/Web/gp-history/ftp.jsp</result>
+		</action>
+		<action name="ftpFolders1" class="org.shu.construct.action.FtpAction"
+			method="getAllFtpFolders">
+			<result name="success">/Web/gp-history/ftp1.jsp</result>
+		</action>
+		<action name="getSon" class="org.shu.construct.action.FtpAction"
+			method="getSon">
+			<result name="success">/Web/gp-history/sonftp.jsp</result>
+		</action>
+		<action name="menu" class="org.shu.construct.action.MenuAction">
+			<result name="success">/Web/menu.jsp</result>
+		</action>
+		<action name="updateAction" class="org.shu.construct.action.TotalAction"
+			method="update">
+			<result type="redirectAction">total_getAll</result>
+		</action>
+		<action name="total_*" class="org.shu.construct.action.TotalAction"
+			method="{1}">
+			<result name="success">/Web/gp-history/gp-construct-info.jsp</result>
+		</action>
+		<action name="getByLoopTotal" class="org.shu.construct.action.TotalAction"
+			method="getByLoop">
+			<result name="zero" type="json"></result>
+			<result name="one" type="json"></result>
+		</action>
+		<action name="pose" class="org.shu.construct.action.PoseAction"
+			method="pose">
+			<result name="success">/Web/construct-manage/construct-data-pose.jsp
+			</result>
+			<result name="input">/Web/construct-manage/construct-data-pose.jsp
+			</result>
+		</action>
+		<action name="getposeBytunnelLoop" class="org.shu.construct.action.PoseAction"
+			method="getBytunnelLoop">
+			<result name="success">/Web/construct-manage/pose-query.jsp
+			</result>
+		</action>
+		<action name="number" class="org.shu.construct.action.PoseAction"
+			method="getByposenumber">
+			<result name="success">/Web/construct-manage/construct-data-pose.jsp
+			</result>
+		</action>
+		<action name="excelAll5" class="org.shu.construct.action.PoseAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">pose</result>
+		</action>
+		<action name="excelShieldPose" class="org.shu.construct.action.PoseAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">pose</result>
+		</action>
+		<action name="Shield_*" class="org.shu.construct.action.PoseAction"
+			method="{1}">
+			<result name="success">/Web/construct-manage/construct-data-facility.jsp
+			</result>
+		</action>
+		<action name="syn" class="org.shu.construct.action.SynGroutAction"
+			method="syn">
+			<result name="success">/Web/construct-manage/construct-data-syn.jsp
+			</result>
+			<result name="input">/Web/construct-manage/construct-data-syn.jsp
+			</result>
+		</action>
+		<action name="draw6" class="org.shu.construct.action.TimeSeriesChart6"
+			method="getTimeSeriesChart">
+			<result name="success">/Web/construct-manage/construct-data-syn-curve.jsp
+			</result>
+		</action>
+		<action name="syndate" class="org.shu.construct.action.SynGroutAction"
+			method="getByDate">
+			<result name="success">/Web/construct-manage/construct-data-syn.jsp
+			</result>
+		</action>
+		<action name="synLoop" class="org.shu.construct.action.SynGroutAction"
+			method="getBytunnelLoop">
+			<result name="success">/Web/construct-manage/construct-data-syn.jsp
+			</result>
+		</action>
+		<action name="excelAll6" class="org.shu.construct.action.SynGroutAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">syn</result>
+		</action>
+		<action name="facility" class="org.shu.construct.action.GpAlongsheshiAction"
+			method="sheshi">
+			<result name="success">/Web/construct-manage/construct-data-facility.jsp
+			</result>
+			<result name="input">/Web/construct-manage/construct-data-facility.jsp
+			</result>
+		</action>
+		<action name="sheshiLoop" class="org.shu.construct.action.GpAlongsheshiAction"
+			method="getByssLoop">
+			<result name="success">/Web/construct-manage/construct-data-facility.jsp
+			</result>
+		</action>
+		<action name="sheshiDengji" class="org.shu.construct.action.GpAlongsheshiAction"
+			method="getByssIndx">
+			<result name="success">/Web/construct-manage/construct-data-facility.jsp
+			</result>
+		</action>
+
+		<action name="excelAll2" class="org.shu.construct.action.GpAlongsheshiAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">facility</result>
+		</action>
+		<action name="excelGpAlongsheshi" class="org.shu.construct.action.GpAlongsheshiAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">facility</result>
+		</action>
+		<action name="gpAlong_*" class="org.shu.construct.action.GpAlongsheshiAction"
+			method="{1}">
+			<result name="success">/Web/construct-manage/construct-data-facility.jsp
+			</result>
+		</action>
+		<action name="thing" class="org.shu.construct.action.GpSgdsAction"
+			method="sgds">
+			<result name="success">/Web/construct-manage/construct-data-thing.jsp
+			</result>
+			<result name="input">/Web/construct-manage/construct-data-thing.jsp
+			</result>
+		</action>
+		<action name="thingDate" class="org.shu.construct.action.GpSgdsAction"
+			method="getByDate">
+			<result name="success">/Web/construct-manage/construct-data-thing.jsp
+			</result>
+		</action>
+		<action name="excelAll7" class="org.shu.construct.action.GpSgdsAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">thing</result>
+		</action>
+		<action name="measure" class="org.shu.construct.action.GpMeasurepointAction"
+			method="measure">
+			<result name="success">/Web/construct-manage/construct-data-measure.jsp
+			</result>
+			<result name="input">/Web/construct-manage/construct-data-measure.jsp
+			</result>
+		</action>
+		<action name="excelAll3" class="org.shu.construct.action.GpMeasurepointAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">measure</result>
+		</action>
+		<action name="excelMeasurepoint" class="org.shu.construct.action.GpMeasurepointAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">measure</result>
+		</action>
+		<action name="measure_*" class="org.shu.construct.action.GpMeasurepointAction"
+			method="{1}">
+			<result name="success">/Web/construct-manage/construct-data-measure.jsp
+			</result>
+		</action>
+		<action name="indx" class="org.shu.construct.action.GpMeasurepointAction"
+			method="getByCbIndx">
+			<result name="success">/Web/construct-manage/construct-data-measure.jsp
+			</result>
+		</action>
+		<action name="cedian" class="org.shu.construct.action.GpMeasurepointAction"
+			method="getByCdno">
+			<result name="success">/Web/construct-manage/construct-data-measure.jsp
+			</result>
+		</action>
+
+		<action name="mysql" class="org.shu.construct.action.TreeAction"
+			method="getList">
+			<result name="success">/Web/construct-manage/tree.jsp</result>
+		</action>
+		<action name="monitor_*" class="org.shu.construct.action.MonitorAction"
+			method="{1}">
+			<result name="success">/Web/construct-manage/construct-monitor-data.jsp
+			</result>
+		</action>
+		<action name="curveMonitor" class="org.shu.construct.action.MonitorChart"
+			method="getTimeSeriesChart">
+			<result name="success">/Web/construct-manage/construct-monitor-curve.jsp
+			</result>
+		</action>
+		<action name="getList" class="org.shu.construct.action.ProduceGP"
+			method="getList">
+			<result name="success">/Web/gp-history/gp-produce-info.jsp</result>
+		</action>
+		<action name="getByLoop" class="org.shu.construct.action.ProduceGP"
+			method="getByLoop">
+			<result name="success">/Web/gp-history/gp-produce-query.jsp</result>
+		</action>
+		<action name="chartAdvance" class="org.shu.construct.action.ChartAdvance"
+			method="getChart">
+			<result name="success">/Web/construct-manage/construct-data-advance-curve.jsp
+			</result>
+		</action>
+		<action name="excelAdvance" class="org.shu.construct.action.AdvanceAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">advance_getAllRecord</result>
+		</action>
+		<action name="advance_*" class="org.shu.construct.action.AdvanceAction"
+			method="{1}">
+			<result name="success">/Web/construct-manage/construct-data-advance.jsp
+			</result>
+		</action>
+		<action name="draw" class="org.shu.construct.action.TimeSeriesChart"
+			method="getTimeSeriesChart">
+			<result name="success">/Web/construct-manage/construct-data-mud-curve.jsp
+			</result>
+		</action>
+		<action name="soil" class="org.shu.construct.action.SoilAction"
+			method="getAllRecord">
+			<result name="success">/Web/construct-manage/construct-data-mud.jsp
+			</result>
+			<result name="input">/Web/construct-manage/construct-data-mud.jsp
+			</result>
+		</action>
+		<action name="queryLoop" class="org.shu.construct.action.SoilAction"
+			method="getById">
+			<result name="success">/Web/construct-manage/construct-data-mud.jsp
+			</result>
+		</action>
+		<action name="queryDate" class="org.shu.construct.action.SoilAction"
+			method="getByCno">
+			<result name="success">/Web/construct-manage/construct-data-mud.jsp
+			</result>
+		</action>
+		<action name="excelAll" class="org.shu.construct.action.SoilAction"
+			method="exportExcel">
+			<result name="success" type="redirectAction">soil</result>
+		</action>
+		<action name="excelPartDate" class="org.shu.construct.action.SoilAction"
+			method="exportExcelByDate">
+			<result name="success">/Web/construct-manage/construct-data-mud.jsp
+			</result>
+		</action>
+		<action name="excelPartLoop" class="org.shu.construct.action.SoilAction"
+			method="exportExcelByLoop">
+			<result name="success">/Web/construct-manage/construct-data-mud.jsp
+			</result>
+		</action>
+
+	</package>
+	<package name="adminjson1" namespace="/admin" extends="jsonDefault">
+		<action name="ShowRoleDataGrid" class="org.shu.action.AuthorityManagement"
+			method="rolesDataGrid">
+			<result type="json"></result>
+		</action>
+		<action name="ShowModulesTree" class="org.shu.action.AuthorityManagement"
+			method="modulesTree">
+			<result type="json"></result>
+		</action>
+		<action name="UserAuthority" class="org.shu.action.AuthorityManagement"
+			method="userAuthority">
+			<result type="json"></result>
+		</action>
+		<action name="getAllUsers" class="org.shu.action.AdminAction"
+			method="getAllUsers">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="userDataGrid" class="org.shu.admin.action.UserAction"
+			method="userDataGrid">
+			<result name="success" type="json"></result>
+		</action>
+
+		<action name="deptDataGrid" class="org.shu.admin.action.DepartmentAction"
+			method="deptDataGrid">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="gpDataGrid" class="org.shu.action.GpTotalInfoAction"
+			method="gpDataGrid">
+			<result name="success" type="json"></result>
+		</action>
+	</package>
+	<package name="admin" namespace="/admin1" extends="jsonDefault">
+		<action name="EditAurhotiry" class="org.shu.action.AuthorityManagement"
+			method="editAurhotiry">
+			<result type="json"></result>
+		</action>
+	</package>
+</struts>
+

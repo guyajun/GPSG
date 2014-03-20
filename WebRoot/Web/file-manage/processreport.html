@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>施工端数据展示</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="../bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+	<link href="../bootstrap-3.0.0/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="../bootstrap-3.0.0/css/sticky-footer-navbar.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<iframe src="../menu.html" class="col-md-12" height="200" frameborder="0" scrolling="no" width="100%"marginheight="0" marginwidth="0">
+    </iframe>
+	<div class="container">
+		
+           <div class="row">
+                <div class="col-md-12">	
+				<div class="panel panel-info">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading">过程报告</div>
+					  <div class="panel-body" style="height:300px;">
+		
+ 
+	  
+	    	<form id="ff2" action="transportsearch.action" method="post">
+	    	<table>
+	    		<tr>
+					<td colspan="2"> 选择查询类型：<select  class="easyui-validatebox" name="reporttype" style="width:150px;">
+        <option value="1001">盾构推进过程记录</option>
+        <option value="1002">盾构和管片姿态记录</option>
+        <option value="1003">同步注浆记录</option>
+        <option value="1004">地面沉降信息记录</option>
+        </select></td>
+	   <td>记录编号:</td>
+	    			<td><input class="easyui-validatebox" type="text" name="reportId" ></input></td>
+	    </tr>
+		</table>
+		<table>		
+		<tr>
+		<td>
+		<div style="padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onClick="submitForm()">查询</a>
+	    </div>
+		</td>
+		</tr>
+		</table>
+		</form>
+	    </div>
+</div>
+             
+    </div>
+    </div>
+        <div id="footer">
+      <div class="container" style="background-color:gray">
+		  <div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p class="text-muted credit">上海市虹梅南路-金海路越江隧道</p>
+			</div>
+			<div class="col-md-4"></div>       
+		  </div>
+	   </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+	<script src="../bootstrap-3.0.0/js/jquery.validate.js"></script>
+	<script src="../bootstrap-3.0.0/js/bootstrap.js"></script>
+	<script src="../bootstrap-3.0.0/js/moment.min.js"></script>
+	<script src="../bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+</body>
+</html>

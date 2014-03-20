@@ -1,0 +1,124 @@
+$(function() {
+	var mud = $('#div-mud');
+	var _startDatePicker = $('.start-date');
+	var _endDatePicker = $('.end-date');
+	var _detailBtn = $('.btn-detail');
+	var _pageInput = $('#input-page');
+	var _LoopInput = $('#input-loop');
+
+	var _excelAll = $('#excel-all');
+	var _excelPart = $('#excel-part');
+	var _excelDatebtn = $('#excel-by-date');
+	var _queryByDateBtn = $('#by-date');
+	var _queryByLoopBtn = $('#by-loop');
+	var _excelExportBtn = $('#excel-export-btn');
+
+	var _exportAllBtn = $('#export-all-btn');
+	var _totalForm = $('#form-total');
+	var totalValidator = _totalForm.validate({
+		rules : {
+			excelPath : "required"
+		},
+		messages : {
+			excelPath : "路径不能为空"
+		}
+	});
+	_exportAllBtn.on('click', function() {
+		if (totalValidator.form()) {
+			_totalForm.submit();
+		}
+	});
+
+	$('#query-date-btn').on('click', function() {
+		$('#form-date-query').submit();
+	});
+	_queryForm = $('#form-query-by-loop');
+	_queryLoopBtn = $('#query-loop-btn');
+	var queryValidator = _queryForm.validate({
+		rules : {
+			id : {
+				required : true,
+				number : true
+			}
+		},
+		messages : {
+			id : {
+				required : "环号不能为空",
+				number : "环号必须是数字"
+			}
+		}
+	});
+
+	_queryLoopBtn.on('click', function() {
+		if (queryValidator.form()) {
+			_queryForm.submit();
+		}
+	});
+	$('#btn-by-condition').on('click', function() {
+		$('#form-loop-query').submit();
+	});
+	_queryByDateBtn.on('click', function() {
+		$('#div-query-by-date').removeClass('hide');
+	});
+	_queryByLoopBtn.on('click', function() {
+		$('#modal-mud-loop').modal('show');
+	});
+	_pageInput.keyup(function(e) {
+		var pageNow = _pageInput.val();
+		$.ajax();
+		if (e.keyCode === 13) {
+			$('#form-page').submit();
+		}
+	});
+	_detailBtn.on('click', function() {
+		var tr = $(this).parent().parent();
+		$('#index1').text(tr.find('#index').text());
+		$('#a').text(tr.find('#aa').text());
+		$('#b').text(tr.find('#bb').text());
+		$('#loop1').text(tr.find('#loop').text());
+		$('#c').text(tr.find('#cc').text());
+		$('#d').text(tr.find('#dd').text());
+		$('#e').text(tr.find('#ee').text());
+		$('#f').text(tr.find('#ff').text());
+		$('#g').text(tr.find('#gg').text());
+		$('#h').text(tr.find('#hh').text());
+		$('#i').text(tr.find('#ii').text());
+		$('#j').text(tr.find('#jj').text());
+		$('#l').text(tr.find('#ll').text());
+		$('#m').text(tr.find('#mm').text());
+		$('#n').text(tr.find('#nn').text());
+		$('#o').text(tr.find('#oo').text());
+		$('#p').text(tr.find('#pp').text());
+		$('#q').text(tr.find('#qq').text());
+		$('#r').text(tr.find('#rr').text());
+		$('#s').text(tr.find('#ss').text());
+		$('#t').text(tr.find('#tt').text());
+		$('#u').text(tr.find('#uu').text());
+		$('#modal-detail').modal('show');
+	});
+	_startDatePicker.datetimepicker({
+		pickTime : false,
+		orientation : 'left',
+		defaultDate : moment(),
+		format : "YYYY-MM-DD",
+		icons : {
+			time : "fa fa-clock-o",
+			date : "fa fa-calendar",
+			up : "fa fa-arrow-up",
+			down : "fa fa-arrow-down"
+		}
+	});
+	_endDatePicker.datetimepicker({
+		pickTime : false,
+		orientation : 'left',
+		defaultDate : moment(),
+		format : "YYYY-MM-DD",
+		icons : {
+			time : "fa fa-clock-o",
+			date : "fa fa-calendar",
+			up : "fa fa-arrow-up",
+			down : "fa fa-arrow-down"
+		}
+	});
+
+});

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<property name="url"
+			value="jdbc:sqlserver://localhost:1433;databasename=GpConstruct">
+		</property>
+		<property name="username" value="sa"></property>		
+		<property name="password" value="ZBF917ZGB919cs"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+				</prop>
+				<prop key="show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>org/shu/model/FunctionInfo.hbm.xml</value>
+				<value>org/shu/model/UserInfo.hbm.xml</value>
+				<value>org/shu/model/RoleInfo.hbm.xml</value>
+				<value>org/shu/model/RoleRefUser.hbm.xml</value>
+				<value>org/shu/model/RoleRefFunction.hbm.xml</value>
+				<value>org/shu/model/DepartmentInfo.hbm.xml</value>
+				<value>org/shu/model/ProInfo.hbm.xml</value>
+				<value>org/shu/model/ProducePlan.hbm.xml</value>
+				<value>org/shu/model/SteelQual.hbm.xml</value>
+				<value>org/shu/model/SteelRaw.hbm.xml</value>
+				<value>org/shu/model/ConcQual.hbm.xml</value>
+				<value>org/shu/model/ConcMixRatio.hbm.xml</value>
+				<value>org/shu/model/FourTableSamePart.hbm.xml</value>
+				<value>org/shu/model/FourTableMapping.hbm.xml</value>
+				<value>org/shu/model/FourTableCheckItems.hbm.xml</value>
+				<value>org/shu/model/ConcPour.hbm.xml</value>
+				<value>org/shu/model/GpSteamCuring.hbm.xml</value>
+				<value>org/shu/model/GpCrane.hbm.xml</value>
+				<value>org/shu/model/ConcResistLeak.hbm.xml</value>
+				<value>org/shu/model/GpWaterCuring.hbm.xml</value>
+				<value>org/shu/model/ConcResistComp.hbm.xml</value>
+				<value>org/shu/model/SteelSkelHalf.hbm.xml</value>
+				<value>org/shu/model/GpAssemble.hbm.xml</value>
+				<value>org/shu/model/GpCheckLeak.hbm.xml</value>
+				<value>org/shu/model/RfidRefGp.hbm.xml</value>
+				<value>org/shu/model/PreEmbed.hbm.xml</value>
+				<value>org/shu/model/ReportPdfMapping.hbm.xml</value>
+				<value>org/shu/model/GpStorage.hbm.xml</value>
+				<value>org/shu/model/GpReceive.hbm.xml</value>
+				<value>org/shu/model/GpQuality.hbm.xml</value>
+				<value>org/shu/model/WaterProof.hbm.xml</value>
+				<value>org/shu/model/BoltQuality.hbm.xml</value>
+				<value>org/shu/model/ShieldProcess.hbm.xml</value>
+				<value>org/shu/model/SynchronousGrout.hbm.xml</value>
+				<value>org/shu/model/ShieldPose.hbm.xml</value>
+				<value>org/shu/model/LogInfo.hbm.xml</value>
+				<value>org/shu/model/MoldQual.hbm.xml</value>
+				<value>org/shu/model/PartOfConcPour.hbm.xml</value>
+				<value>org/shu/model/GpQualCert.hbm.xml</value>
+				<value>org/shu/model/ConcRcvd.hbm.xml</value>
+				<value>org/shu/model/GpMendInfo.hbm.xml</value>
+				<value>org/shu/model/RfidCombine.hbm.xml</value>
+				<value>org/shu/model/PartOfConcRcvd.hbm.xml</value>
+				<value>org/shu/model/InCheck.hbm.xml</value>
+				<value>org/shu/model/GpTransport.hbm.xml</value>
+				<value>org/shu/model/GpSoilproperty.hbm.xml</value>
+				<value>org/shu/model/GpAlongsheshi.hbm.xml</value>
+				<value>org/shu/model/GpSgds.hbm.xml</value>
+				<value>org/shu/model/GpMeasurepoint.hbm.xml</value>
+				<value>org/shu/model/GpDesignaxis.hbm.xml</value>
+				<value>org/shu/model/GpGroundsettling.hbm.xml</value>
+				<value>org/shu/model/GpAlonggeology.hbm.xml</value>
+				<value>org/shu/model/GpCheckindex.hbm.xml</value>
+				<value>org/shu/model/Pzqcheck.hbm.xml</value>
+				<value>org/shu/model/Segmentrepair.hbm.xml</value>
+				<value>org/shu/model/DownWell.hbm.xml</value>
+				<value>org/shu/model/GpTotalInfo.hbm.xml</value>
+				<value>org/shu/model/CdinModelInfo.hbm.xml</value>
+				<value>org/shu/model/BuildingInModelInfo.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="poseService" class="org.shu.construct.service.PoseService">
+		<property name="poseDao">
+			<ref bean="poseDao" />
+		</property>
+	</bean>
+	<bean id="poseDao" class="org.shu.construct.dao.PoseDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="synService" class="org.shu.construct.service.SynService">
+		<property name="synDao">
+			<ref bean="synDao" />
+		</property>
+	</bean>
+	<bean id="synDao" class="org.shu.construct.dao.SynDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sgdsService" class="org.shu.construct.service.GpSgdsService">
+		<property name="sgdsDao">
+			<ref bean="sgdsDao" />
+		</property>
+	</bean>
+	<bean id="sgdsDao" class="org.shu.construct.dao.SgdsDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="measureService" class="org.shu.construct.service.GpMeasurepointService">
+		<property name="measureDao">
+			<ref bean="measureDao" />
+		</property>
+	</bean>
+	<bean id="measureDao" class="org.shu.construct.dao.MeasureDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sheshiService" class="org.shu.construct.service.GpAlongsheshiService">
+		<property name="sheshiDao">
+			<ref bean="sheshiDao" />
+		</property>
+	</bean>
+	<bean id="sheshiDao" class="org.shu.construct.dao.SheshiDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="authorityDao" class="org.shu.construct.dao.AuthorityDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="authorityService" class="org.shu.construct.service.AuthorityService">
+		<property name="authorityDao">
+			<ref bean="authorityDao" />
+		</property>
+	</bean>
+	<bean id="roleDao" class="org.shu.construct.dao.RoleDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="roleService" class="org.shu.construct.service.RoleService">
+		<property name="roleDao">
+			<ref bean="roleDao" />
+		</property>
+	</bean>
+	<bean id="menuDao" class="org.shu.construct.dao.MenuDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="menuService" class="org.shu.construct.service.MenuService">
+		<property name="menuDao">
+			<ref bean="menuDao" />
+		</property>
+	</bean>
+	<bean id="downWellDao" class="org.shu.construct.dao.DownWellDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="downWellService" class="org.shu.construct.service.DownWellService">
+		<property name="downWellDao">
+			<ref bean="downWellDao" />
+		</property>
+	</bean>
+	<bean id="pzqDao" class="org.shu.construct.dao.PzqDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="pzqService" class="org.shu.construct.service.PzqService">
+		<property name="pzqDao">
+			<ref bean="pzqDao" />
+		</property>
+	</bean>
+	<bean id="totalDao" class="org.shu.construct.dao.TotalDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="totalService" class="org.shu.construct.service.TotalService">
+		<property name="totalDao">
+			<ref bean="totalDao" />
+		</property>
+	</bean>
+
+	<bean id="xunJianDao" class="org.shu.construct.dao.XunJianDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="xunJianService" class="org.shu.construct.service.XunJianService">
+		<property name="xunJianDao">
+			<ref bean="xunJianDao" />
+		</property>
+	</bean>
+	<bean id="inCheckDao" class="org.shu.construct.dao.InCheckDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="inCheckService" class="org.shu.construct.service.InCheckService">
+		<property name="inCheckDao">
+			<ref bean="inCheckDao" />
+		</property>
+	</bean>
+	<bean id="rfidDao" class="org.shu.construct.dao.RfidDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="rfidService" class="org.shu.construct.service.RfidService">
+		<property name="rfidDao">
+			<ref bean="rfidDao" />
+		</property>
+	</bean>
+	<bean id="monitorDao" class="org.shu.construct.dao.MonitorDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="monitorService" class="org.shu.construct.service.MonitorService">
+		<property name="monitorDao">
+			<ref bean="monitorDao" />
+		</property>
+	</bean>
+	<bean id="advanceDao" class="org.shu.construct.dao.AdvanceDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="advanceService" class="org.shu.construct.service.AdvanceService">
+		<property name="advanceDao">
+			<ref bean="advanceDao" />
+		</property>
+	</bean>
+	<bean id="soilDao" class="org.shu.construct.dao.SoilDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="soilService" class="org.shu.construct.service.SoilService">
+		<property name="soilDao">
+			<ref bean="soilDao" />
+		</property>
+	</bean>
+	<bean id="proInfoDao" class="org.shu.dao.imp.ProInfoDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="proInfoService" class="org.shu.service.imp.ProInfoService">
+		<property name="proInfoDao">
+			<ref bean="proInfoDao" />
+		</property>
+	</bean>
+	<bean id="roleInfoDao" class="org.shu.dao.imp.RoleInfoDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="roleInfoService" class="org.shu.service.imp.RoleInfoService">
+		<property name="roleInfoDao">
+			<ref bean="roleInfoDao" />
+		</property>
+	</bean>
+	<bean id="userInfoDao" class="org.shu.dao.imp.UserInfoDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="functionInfoDao" class="org.shu.dao.imp.FunctionInfoDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleRefFunctionDao" class="org.shu.dao.imp.RoleRefFunctionDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleRefFunctionDao1" class="org.shu.construct.dao.RoleRefFunctionDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleRefFunctionService" class="org.shu.construct.service.RoleRefFunctionService">
+		<property name="roleRefFunctionDao" ref="roleRefFunctionDao1" />
+	</bean>
+	<bean id="roleRefUserDao" class="org.shu.dao.imp.RoleRefUserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleRefUserDao1" class="org.shu.construct.dao.RoleRefUserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleRefUserService" class="org.shu.construct.service.RoleRefUserService">
+		<property name="roleRefUserDao" ref="roleRefUserDao1" />
+	</bean>
+	<bean id="systemService" class="org.shu.service.imp.SystemService">
+		<property name="userInfoDao" ref="userInfoDao" />
+		<property name="functionInfoDao" ref="functionInfoDao" />
+		<property name="roleInfoDao" ref="roleInfoDao" />
+		<property name="roleRefFunctionDao" ref="roleRefFunctionDao" />
+		<property name="roleRefUserDao" ref="roleRefUserDao" />
+	</bean>
+	<bean id="userDAO" class="org.shu.admin.dao.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="departmentInfoDao" class="org.shu.construct.dao.DepartmentInfoDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="departmentInfoService" class="org.shu.construct.service.DepartmentInfoService">
+		<property name="departmentInfoDao">
+			<ref bean="departmentInfoDao" />
+		</property>
+	</bean>
+	<bean id="authorityDAO" class="org.shu.admin.dao.AuthorityDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminService" class="org.shu.common.service.AdminService">
+		<property name="userDAO">
+			<ref bean="userDAO" />
+		</property>
+
+		<property name="authorityDAO">
+			<ref bean="authorityDAO" />
+		</property>
+	</bean>
+</beans>

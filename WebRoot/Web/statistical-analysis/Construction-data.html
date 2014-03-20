@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>施工端数据展示</title>
+
+   <!-- Bootstrap core CSS -->
+    <link href="../bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">	
+	<link href="../bootstrap-3.0.0/css/bootstrap-datetimepicker.css" rel="stylesheet">	
+    <!-- Custom styles for this template -->
+	<link href="../bootstrap-3.0.0/css/sticky-footer-navbar.css" rel="stylesheet">	
+  </head>
+
+  <body>
+  	<iframe src="../menu.html" class="col-md-12" height="200" frameborder="0" scrolling="no" width="100%"
+						marginheight="0" marginwidth="0"></iframe>
+	<div class="container">
+		<div class="row">
+				<div class="panel panel-info">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading">查询事项</div>
+					  <div class="panel-body">	
+							<div class="col-md-4" style="padding-top:10px;height:100px;">
+								<select id="select" class="form-control">
+								  <option value="mud">剖面位置/土质图</option>
+								  <option value="facility">沿线重要设施</option>
+								  <option value="measure">测点布置情况</option>
+								  <option value="advance">盾构推进数据</option>							  
+								  <option value="pose">管片姿态参数</option>
+								  <option value="syn">同步注浆数据</option>
+								  <option value="big-thing">施工大事记录</option>
+								</select>
+							</div>
+							<div class="col-md-8"></div>
+					  </div>			 
+				</div>
+		</div>
+		
+		<div id="div-mud" class="row">
+			<div class="panel panel-info">
+				
+				<div class="panel-body">
+				
+						<div class="btn-group">
+						  <button type="button" class="btn btn-primary">查询</button>
+						  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+							<li><a href="#" data-toggle="modal" data-target="#modal-mud-date">按时间查询</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#modal-mud-loop">按环号查询</a></li>
+						  </ul>
+						</div>
+						 <button type="button" class="btn btn-primary">生成报表</button>
+						 <button type="button" class="btn btn-primary">导出EXCEL</button>
+						 <div class="modal fade" id="modal-mud-date">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
+												<div class="col-sm-7 input-group start-date">
+													<input id="input-start-date" type="text" class="form-control">
+													<span class="input-group-addon glyphicon glyphicon-calendar">
+													</span>
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<div class="modal fade" id="modal-mud-loop">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">环号：</label>
+												<div class="col-sm-7 input-group">
+													<input id="input-start-date" type="text" class="form-control">
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<table class="table">   
+							<tbody>
+								<tr>
+									  <td>层号</td>
+									  <td>土层名称</td>
+									  <td>含水量</td>
+									  <td>比重</td>
+									  <td>空隙比</td>
+									  <td>内摩擦角</td>
+									  <td>水平渗透系数</td>
+									  <td>垂直渗透系数</td>							  
+									  <td>粘聚力</td>
+									  <td>压缩模量</td>
+									  <td>标准贯入</td>
+									  <td>压缩系数</td>
+									  <td>静止侧压系数</td><!--
+									  <td>塑限</td>
+									  <td>液限</td>
+									  <td>液性指标</td>
+									  <td>塑性指标</td>
+									  <td>单轴抗压</td>
+									  <td>石英含量</td>		-->
+								</tr>
+								<tr>
+								  <td>2013-05-01</td>
+								  <td>2013-05-31</td>
+								  <td>1874</td>
+								  <td>2032</td>
+								  <td>tom</td>
+								</tr>		
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+		<div id="div-facility" class="row hide">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				  <h3 class="panel-title">沿线重要设施</h3>				  
+				</div>
+				<div class="panel-body">
+						<table class="table">
+							<tbody>
+								<tr>
+									  <td>建筑物名称</td>
+									  <td>建筑物保护等级</td>
+									  <td>允许差异沉降</td>
+									  <td>允许隆起沉降</td>
+									  <td>相关测点列表</td>
+									  <td>允许倾斜</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+		<div id="div-measure" class="row hide">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				  <h3 class="panel-title">测点</h3>				  
+				</div>
+				<div class="panel-body">
+						<table class="table">
+							<tbody>	
+								<tr>
+									  <td>测点名称</td>
+									  <td>测点类型</td>
+									  <td>隧道坐标(X)</td>
+									  <td>隧道坐标(Y)</td>
+									  <td>组坐标(X)</td>
+									  <td>组坐标(Y)</td>
+									  <td>基准</td>
+									  <td>相关建筑物</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+		<div id="div-advance" class="row hide">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				  <h3 class="panel-title">盾构推进信息</h3>				  
+				</div>
+				<div class="panel-body">
+						<div class="btn-group">
+						  <button type="button" class="btn btn-primary">查询</button>
+						  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+							<li><a href="#" data-toggle="modal" data-target="#modal-advance-date">按时间查询</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#modal-advance-loop">按环号查询</a></li>
+						  </ul>
+						</div>
+						 <button type="button" class="btn btn-primary">生成报表</button>
+						 <button type="button" class="btn btn-primary">导出EXCEL</button>
+						 <div class="modal fade" id="modal-advance-date">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
+												<div class="col-sm-7 input-group start-date">
+													<input id="input-start-date" type="text" class="form-control">
+													<span class="input-group-addon glyphicon glyphicon-calendar">
+													</span>
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<div class="modal fade" id="modal-advance-loop">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">环号：</label>
+												<div class="col-sm-7 input-group">
+													<input id="input-start-date" type="text" class="form-control">
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<table class="table">
+							<tbody>
+								<tr>
+									  <td>推进环号</td>
+									  <td>项目编号</td>
+									  <td>推进日期</td>
+									  <td>推进开始时间</td>
+									  <td>推进结束时间</td>
+									  <td>掘进速度</td>
+									  <td>刀盘扭矩</td>
+									  <td>大刀盘转速</td>
+									  <td>贯入度速度</td>
+									  <td data-options="field:'last',widtd:80">操作</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td><a id="btn-detail-info" class="btn btn-success" href="javascript:;">详细</a></td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-shield-advance">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">盾构推进详细信息</h4>
+			  </div>
+			  <div class="modal-body">
+					<table class="table">          
+						  <tbody>
+							<tr>
+							  <td>推进环号：</td>
+							  <td>2222</td>
+							</tr>
+							<tr>
+							  <td>推进日期：</td>
+							  <td>2013-12-15</td>
+							</tr>
+							<tr>
+							  <td>推进开始时间：</td>
+							  <td>2013-12-15</td>
+							</tr>
+							<tr>
+							  <td>推进结束时间：</td>
+							  <td>2013-12-15</td>
+							</tr>
+							<tr>
+							  <td>掘进速度：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>盾构总推力：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>刀盘扭矩：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>大刀盘转速 ：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>贯入度速度：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>搅拌机扭矩左/右：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>千斤顶行程_推进开始A/B/C/D/E/F：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>千斤顶行程_推进结束A/B/C/D/E/F：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>千斤顶油压_推进开始A/B/C/D/E/F：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>千斤顶油压_推进结束A/B/C/D/E/F：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>气泡仓设定值：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>气泡仓压力推进开始/中途/结束：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>气泡仓液位推进开始/中途/结束 ：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>进泥流量推进开始/中途/结束：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>排泥流量推进开始/中途/结束：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>进泥密度推进开始/中途/结束：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>排泥密度推进开始/中途/结束：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>盾尾油脂注入量前部/中部/后部：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>盾尾油脂剩余量前部/中部/后部：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>气泡仓压力推进开始/中途/结束：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>气泡仓液位推进开始/中途/结束 ：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>进泥流量推进开始/中途/结束：</td>
+							  <td></td>
+							</tr>
+						  </tbody>
+					</table>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  </div>
+			</div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<div class="modal fade" id="modal-gp-pose">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">同步注浆详细信息</h4>
+			  </div>
+			  <div class="modal-body">
+					<table class="table">          
+						  <tbody>
+							<tr>
+							  <td>推进环号：</td>
+							  <td>2222</td>
+							</tr>
+							<tr>
+							  <td>推进日期：</td>
+							  <td>2013-12-15</td>
+							</tr>
+							<tr>
+							  <td>注浆压力设定上限1#/2#/3#/4#/5#/6#：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>注浆压力实际上限1#/2#/3#/4#/5#/6#：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>注浆压力设定下限1#/2#/3#/4#/5#/6#：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>注浆压力实际下限1#/2#/3#/4#/5#/6#：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>注浆压力检测时间：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>注浆方量设定值1#/2#/3#/4#/5#/6# ：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>注浆方量实际值1#/2#/3#/4#/5#/6#：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>浆液指标（比重）：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>坍落度：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>注浆过程中发生的意外情况：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>备注：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>记录人：</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td>记录时间：</td>
+							  <td></td>
+							</tr>
+						  </tbody>
+					</table>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  </div>
+			</div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<div id="div-syn" class="row hide">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				  <h3 class="panel-title">同步注浆信息</h3>				  
+				</div>
+				<div class="panel-body">
+						<div class="btn-group">
+						  <button type="button" class="btn btn-primary">查询</button>
+						  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+							<li><a href="#" data-toggle="modal" data-target="#modal-syn-date">按时间查询</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#modal-syn-loop">按环号查询</a></li>
+						  </ul>
+						</div>
+						 <button type="button" class="btn btn-primary">生成报表</button>
+						 <button type="button" class="btn btn-primary">导出EXCEL</button>
+						 <div class="modal fade" id="modal-syn-date">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
+												<div class="col-sm-7 input-group start-date">
+													<input id="input-start-date" type="text" class="form-control">
+													<span class="input-group-addon glyphicon glyphicon-calendar">
+													</span>
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<div class="modal fade" id="modal-syn-loop">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">环号：</label>
+												<div class="col-sm-7 input-group">
+													<input id="input-start-date" type="text" class="form-control">
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<table class="table table-condensed table-hover table-responsive">
+							<tbody>
+								<tr>
+									  <td>推进环号</td>
+									  <td>项目编号</td>
+									  <td>推进日期</td>
+									  <td>压力设定上限</td>
+									  <td>压力实际上限</td>
+									  <td>压力设定下限</td>
+									  <td>压力实际下限</td>
+									  <td>压力检测时间</td>							  
+									  <td>方量设定值</td>
+									  <td>方量实际值</td>
+									  <td>浆液指标</td>
+									  <td>坍落度</td>
+									  <td>意外情况</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>		
+		<div id="div-thing" class="row hide  ">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				  <h3 class="panel-title">施工大事信息</h3>				  
+				</div>
+				<div class="panel-body">
+						<div class="btn-group">
+						  <button type="button" class="btn btn-primary">查询</button>
+						  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+							<li><a href="#" data-toggle="modal" data-target="#modal-thing-date">按时间查询</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#modal-thing-loop">按环号查询</a></li>
+						  </ul>
+						</div>
+						 <button type="button" class="btn btn-primary">生成报表</button>
+						 <button type="button" class="btn btn-primary">导出EXCEL</button>
+						 <div class="modal fade" id="modal-thing-date">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
+												<div class="col-sm-7 input-group start-date">
+													<input id="input-start-date" type="text" class="form-control">
+													<span class="input-group-addon glyphicon glyphicon-calendar">
+													</span>
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<div class="modal fade" id="modal-thing-loop">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">环号：</label>
+												<div class="col-sm-7 input-group">
+													<input id="input-start-date" type="text" class="form-control">
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<table class="table">
+							<tbody>
+								<tr>
+									  <td>环号</td>
+									  <td>时间</td>
+									  <td>横径左</td>
+									  <td>横径右</td>
+									  <td>横径左+右</td>
+									  <td>竖径上</td>
+									  <td>竖径下</td>
+									  <td>竖径上+下</td>							  
+									  <td>横径差值</td>
+									  <td>备注(盾尾变形)</td>
+									  <td>突发事件</td>
+									  <td>原因(突发事件)</td>
+									  <td>拌浆量</td>
+									  <td>数量</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+		<div id="div-gp-pose" class="row hide  ">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				  <h3 class="panel-title">管片姿态信息</h3>				  
+				</div>
+				<div class="panel-body">
+						<div class="btn-group">
+						  <button type="button" class="btn btn-primary">查询</button>
+						  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+							<li><a href="#" data-toggle="modal" data-target="#modal-gp-pose-date">按时间查询</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#modal-gp-pose-loop">按环号查询</a></li>
+						  </ul>
+						</div>
+						 <button type="button" class="btn btn-primary">生成报表</button>
+						 <button type="button" class="btn btn-primary">导出EXCEL</button>
+						 <div class="modal fade" id="modal-gp-pose-date">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
+												<div class="col-sm-7 input-group start-date">
+													<input id="input-start-date" type="text" class="form-control">
+													<span class="input-group-addon glyphicon glyphicon-calendar">
+													</span>
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<div class="modal fade" id="modal-gp-pose-loop">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+								  </div>
+								  <div class="modal-body">
+										<form class="form-inline" role="form">
+											  <div class="form-group col-sm-8">
+												<label class="col-sm-5 control-label" for="input-start-date">环号：</label>
+												<div class="col-sm-7 input-group">
+													<input id="input-start-date" type="text" class="form-control">
+												</div>
+											  </div>											 
+											  <div class="col-sm-4">
+												<button type="submit" class="btn btn-success">查询</button>
+											  </div>
+										</form>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						<table class="table">
+							<tbody>
+								<tr>
+									  <td>推进环号</td>
+									  <td>项目编号</td>
+									  <td>设计线性</td>
+									  <td>设计坡度</td>
+									  <td>盾构坡度</td>
+									  <td>盾构转角</td>
+									  <td>切口里程</td>
+									  <td>盾构姿态高程切口/盾尾</td>							  
+									  <td>盾构姿态平面切口/盾尾</td>
+									  <td>操作</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td><a id="btn-detail-gp-pose" class="btn btn-success" href="javascript:;">详细</a></td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>		
+	</div>
+	<div id="footer">
+      <div class="container" style="background-color:gray">
+		  <div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p class="text-muted credit">上海市虹梅南路-金海路越江隧道</p>
+			</div>
+			<div class="col-md-4"></div>       
+		  </div>
+	   </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../bootstrap-3.0.0/js/jquery-1.9.1.js"></script>
+	<script src="../bootstrap-3.0.0/js/jquery.validate.js"></script>
+	<script src="../bootstrap-3.0.0/js/bootstrap.js"></script>
+	<script src="../bootstrap-3.0.0/js/moment.min.js"></script>
+	<script src="../bootstrap-3.0.0/js/bootstrap-datetimepicker.js"></script>
+	<script src="./construct-data.js"></script>
+  </body>
+</html>

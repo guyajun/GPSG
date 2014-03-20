@@ -1,0 +1,45 @@
+package org.shu.construct.action;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+
+import org.tool.CommonParam;
+
+import com.opensymphony.xwork2.ActionContext;
+
+import common.base.action.BaseAction;
+
+public class FTPDownloadStreamAction extends BaseAction {
+	private InputStream fileStream;
+	public InputStream getFileStream() {
+		return fileStream;
+	}
+
+	public void setFileStream(InputStream fileStream) {
+		this.fileStream = fileStream;
+	}
+	public String getStream() throws IOException {//施工端图片
+		CommonParam cp = new CommonParam();
+		String localPath = cp.getString("local-imgs-path");
+		String folder=request.getParameter("folder");
+		String fileName=request.getParameter("fileName");
+		File file=new File(localPath+"/"+folder+"/"+fileName);
+		InputStream is = new FileInputStream(file);
+		fileStream = new BufferedInputStream(is);
+		return SUCCESS;
+	}
+	public String getProduceStream() throws IOException {//生产端图片
+		CommonParam cp = new CommonParam();
+		String localPath = cp.getString("local-imgs-produce");
+		String folder=request.getParameter("folder");
+		String fileName=request.getParameter("fileName");
+		File file=new File(localPath+"/"+folder+"/"+fileName);
+		InputStream is = new FileInputStream(file);
+		fileStream = new BufferedInputStream(is);
+		return SUCCESS;
+	}
+}
