@@ -1,7 +1,9 @@
+#Wed Mar 19 21:55:54 CST 2014
 eclipse.preferences.version=1
 encoding//WebRoot/Web/construct-manage/construct-data-mud.jsp=UTF-8
 encoding//WebRoot/Web/index.jsp=UTF-8
 encoding//WebRoot/Web/menu.jsp=UTF-8
+encoding//src/SysConfig.properties=UTF-8
 encoding//src/common/base/action/ExportExcel.java=UTF-8
 encoding//src/org/shu/connection/ConnectionTest.java=UTF-8
 encoding//src/org/shu/connection/Gptotal.java=UTF-8
