@@ -9,12 +9,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>施工端数据展示</title>
-<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css"
+	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
 	rel="stylesheet">
-<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css"
+	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
@@ -39,8 +41,9 @@
 						<div class="well">
 							<a id="a-mud" href="/GPSG/construct-web/soil.action"
 								class="btn btn-danger">剖面位置/土质图</a> <a id="a-facility"
-								href="/GPSG/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
-							<a id="a-measure" href="/GPSG/construct-web/measure.action"
+								href="/GPSG/construct-web/facility.action"
+								class="btn btn-primary">沿线重要设施</a> <a id="a-measure"
+								href="/GPSG/construct-web/measure.action"
 								class="btn btn-success">测点布置情况</a> <a id="a-advance"
 								href="/GPSG/construct-web/advance_getAllRecord.action"
 								class="btn btn-warning">盾构推进数据</a> <a id="a-pose"
@@ -66,15 +69,16 @@
 									<span class="caret"></span> <span class="sr-only">Toggle
 										Dropdown</span>
 								</button>
-								<ul class="dropdown-menu" role="menu"><!-- 
+								<ul class="dropdown-menu" role="menu">
+									<!-- 
 									<li><a href="#" data-toggle="modal"
 										data-target="#modal-syn-date">按时间查询</a>
 									</li> -->
 									<li><a href="#" data-toggle="modal"
-										data-target="#modal-syn-loop">按环号查询</a>
-									</li>
+										data-target="#modal-syn-loop">按环号查询</a></li>
 								</ul>
-							</div><!-- 
+							</div>
+							<!-- 
 							<div class="btn-group">
 								<button type="button" class="btn btn-primary">绘制曲线</button>
 								<button type="button" class="btn btn-primary dropdown-toggle"
@@ -96,8 +100,7 @@
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li><a id="excel-all" href="#" data-toggle="modal"
-										data-target="#modal-total">导出全部记录</a>
-									</li>
+										data-target="#modal-total">导出全部记录</a></li>
 								</ul>
 							</div>
 						</div>
@@ -119,35 +122,45 @@
 								</tr>
 								<s:iterator value="#request.groutList" id="syn">
 									<tr>
-										<td id="index1"><s:property value="#syn.id" /></td>
-										<td id="aa"><s:property value="#syn.tunnelLoop" /></td>
-										<td id="bb"><s:property value="#syn.proId" /></td>
+										<td id="index1"><s:property value="#syn.id" />
+										</td>
+										<td id="aa"><s:property value="#syn.tunnelLoop" />
+										</td>
+										<td id="bb"><s:property value="#syn.proId" />
+										</td>
 										<td id="cc"><s:date name="#syn.today" format="yyyy-MM-dd" />
 										</td>
-										<td id="dd"><s:property value="#syn.setUpperLimit" /></td>
+										<td id="dd"><s:property value="#syn.setUpperLimit" />
+										</td>
 										<td id="ee"><s:property value="#syn.actualUpperLimit" />
 										</td>
-										<td id="ff"><s:property value="#syn.setLowerLimit" /></td>
+										<td id="ff"><s:property value="#syn.setLowerLimit" />
+										</td>
 										<td id="gg"><s:property value="#syn.actualLowerLimit" />
 										</td>
 										<td id="hh"><s:property value="#syn.checkPressureTime" />
 										</td>
-										<td id="ii"><s:property value="#syn.groutSetValue" /></td>
+										<td id="ii"><s:property value="#syn.groutSetValue" />
+										</td>
 										<td id="jj"><s:property value="#syn.groutActualValue" />
 										</td>
-										<td><a id="detail" class="btn-detail" href="#">详细</a></td>
+										<td><a id="detail" class="btn-detail" href="#">详细</a>
+										</td>
 										<td id="kk" class="hide"><s:property
-												value="#syn.serifluxRatio" /></td>
+												value="#syn.serifluxRatio" />
+										</td>
 										<td id="ll" class="hide"><s:property value="#syn.slump" />
 										</td>
 										<td id="mm" class="hide"><s:property
-												value="#syn.accident" /></td>
+												value="#syn.accident" />
+										</td>
 										<td id="nn" class="hide"><s:property value="#syn.memo" />
 										</td>
 										<td id="oo" class="hide"><s:property value="#syn.creator" />
 										</td>
 										<td id="pp" class="hide"><s:property
-												value="#syn.createDate" /></td>
+												value="#syn.createDate" />
+										</td>
 										<td id="qq" class="hide"><s:property value="#syn.status" />
 										</td>
 										<td id="rr" class="hide"><s:property value="#syn.isEast" />
@@ -198,11 +211,12 @@
 											aria-hidden="true">&times;</button>
 										<h4 class="modal-title" id="myModalLabel">导出所有记录</h4>
 									</div>
-									<div class="modal-body">
-										<div class="row">
-											<form id="form-total" method="post"
-												action="/GPSG/construct-web/excelAll6.action"
-												class="form-inline" role="form">
+									<form id="form-total" method="post"
+										action="/GPSG/construct-web/excelAll6.action"
+										class="form-horizontal" role="form">
+										<div class="modal-body">
+											<div class="row">
+
 												<div class="form-group col-sm-9">
 													<label class="col-sm-6 control-label" for="excelPath">请输入EXCEL导出路径：</label>
 													<div class="col-sm-6">
@@ -210,23 +224,40 @@
 															value="d:/同步注浆信息.xls" type="text" class="form-control">
 													</div>
 												</div>
-												<div class="col-sm-3">
-													<button id="export-all-btn" type="submit" class="btn btn-success">导出</button>
+
+												<div class="form-group row">
+													<label class="col-sm-4 control-label">请选择东西线：</label>
+													<div class="col-lg-3">
+														<div class="input-group">
+															<span class="input-group-addon"> <input
+																type="radio" name="isEast" value="0" checked> </span> <input
+																type="text" class="form-control" value="东线">
+														</div>
+													</div>
+													<div class="col-lg-3">
+														<div class="input-group">
+															<span class="input-group-addon"> <input
+																type="radio" name="isEast" value="1"> </span> <input
+																type="text" class="form-control" value="西线">
+														</div>
+													</div>
 												</div>
-											</form>
+											</div>
 										</div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">关闭</button>
-									</div>
+										<div class="modal-footer">
+											<button id="export-all-btn" type="submit"
+												class="btn btn-success">导出</button>
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">关闭</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
 						<div class="modal fade" id="modal-syn-date">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form class="form-inline" role="form" method="post"
+									<form class="form-horizontal" role="form" method="post"
 										action="/GPSG/construct-web/syndate.action">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
@@ -241,6 +272,23 @@
 													<span
 														class="input-group-addon glyphicon glyphicon-calendar"></span>
 
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
 												</div>
 											</div>
 										</div>
@@ -289,31 +337,48 @@
 			<div class="modal fade" id="modal-syn-loop">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
-						</div>
-						<div class="modal-body">
-							<form id="form-query-by-loop" method="post"
-								action="/GPSG/construct-web/synLoop.action" class="form-inline"
-								role="form">
-								<div class="form-group col-sm-8">
+						<form id="form-query-by-loop" method="post"
+							action="/GPSG/construct-web/synLoop.action"
+							class="form-horizontal" role="form">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
+							</div>
+							<div class="modal-body">
+
+								<div class="form-group col-sm-9">
 									<label class="col-sm-5 control-label" for="input-start-date">环号：</label>
 									<div class="col-sm-7 input-group">
 										<input id="tunnelLoop" name="tunnelLoop" type="text"
 											class="form-control">
 									</div>
 								</div>
-								<div class="col-sm-4">
-									<button id="button4"type="button" class="btn btn-success">查询</button>
+
+								<div class="form-group row">
+									<label class="col-sm-4 control-label">请选择东西线：</label>
+									<div class="col-lg-3">
+										<div class="input-group">
+											<span class="input-group-addon"> <input type="radio"
+												name="isEast" value="0" checked> </span> <input type="text"
+												class="form-control" value="东线">
+										</div>
+									</div>
+									<div class="col-lg-3">
+										<div class="input-group">
+											<span class="input-group-addon"> <input type="radio"
+												name="isEast" value="1"> </span> <input type="text"
+												class="form-control" value="西线">
+										</div>
+									</div>
 								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-						</div>
+							</div>
+							<div class="modal-footer">
+								<button id="button4" type="button" class="btn btn-success">查询</button>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

@@ -7,7 +7,8 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <title>施工端数据展示</title>
-<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css" rel="stylesheet">
+<link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap.css"
+	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/bootstrap-datetimepicker.css"
 	rel="stylesheet">
 <link href="/GPSG/Web/bootstrap-3.0.0/css/sticky-footer-navbar.css"
@@ -32,8 +33,9 @@
 						<div class="well">
 							<a id="a-mud" href="/GPSG/construct-web/soil.action"
 								class="btn btn-danger">剖面位置/土质图</a> <a id="a-facility"
-								href="/GPSG/construct-web/facility.action" class="btn btn-primary">沿线重要设施</a>
-							<a id="a-measure" href="/GPSG/construct-web/measure.action"
+								href="/GPSG/construct-web/facility.action"
+								class="btn btn-primary">沿线重要设施</a> <a id="a-measure"
+								href="/GPSG/construct-web/measure.action"
 								class="btn btn-success">测点布置情况</a> <a id="a-advance"
 								href="/GPSG/construct-web/advance_getAllRecord.action"
 								class="btn btn-warning btn-lg">盾构推进数据</a> <a id="a-pose"
@@ -60,13 +62,12 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#" data-toggle="modal"
-									data-target="#modal-by-date">按时间查询</a>
-								</li>
+									data-target="#modal-by-date">按时间查询</a></li>
 								<li><a href="#" data-toggle="modal"
-									data-target="#modal-advance-loop">按环号查询</a>
-								</li>
+									data-target="#modal-advance-loop">按环号查询</a></li>
 							</ul>
-						</div><!-- 
+						</div>
+						<!-- 
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary">绘制曲线</button>
 							<button type="button" class="btn btn-primary dropdown-toggle"
@@ -91,11 +92,9 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#" data-toggle="modal"
-									data-target="#modal-total">导出全部记录</a>
-								</li>
+									data-target="#modal-total">导出全部记录</a></li>
 								<li><a href="#" data-toggle="modal"
-									data-target="#modal-excel">按环号区间导出</a>
-								</li>
+									data-target="#modal-excel">按环号区间导出</a></li>
 							</ul>
 						</div>
 						<div class="modal fade" id="modal-excel">
@@ -110,27 +109,46 @@
 											<h4 class="modal-title" id="myModalLabel">按需导出</h4>
 										</div>
 										<div class="modal-body">
-									    	<div id="alert1" class="alert alert-danger text-center hide"></div>
+											<div id="alert1" class="alert alert-danger text-center hide"></div>
 											<div class="row">
 												<div class="form-group">
-													<label class="col-sm-6 control-label" for="gp-high-start-loop">起始环号：</label>
+													<label class="col-sm-4 control-label"
+														for="gp-high-start-loop">起始环号：</label>
 													<div class="col-sm-6">
-														<input id="gp-high-start-loop" name="loop1" value="1" type="text"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-6 control-label" for="gp-high-end-loop">结束环号：</label>
-													<div class="col-sm-6">
-														<input id="gp-high-end-loop" name="loop2" value="1" type="text"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-6 control-label" for="excelPath">导出路径：</label>
-													<div class="col-sm-6">
-														<input id="excelPath" name="excelPath" value="d:/盾构推进区间查询.xls"
+														<input id="gp-high-start-loop" name="loop1" value="1"
 															type="text" class="form-control">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-4 control-label"
+														for="gp-high-end-loop">结束环号：</label>
+													<div class="col-sm-6">
+														<input id="gp-high-end-loop" name="loop2" value="1"
+															type="text" class="form-control">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-4 control-label" for="excelPath">导出路径：</label>
+													<div class="col-sm-6">
+														<input id="excelPath" name="excelPath"
+															value="d:/盾构推进区间查询.xls" type="text" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
 													</div>
 												</div>
 											</div>
@@ -152,11 +170,12 @@
 											aria-hidden="true">&times;</button>
 										<h4 class="modal-title" id="myModalLabel">EXCEL导出所有记录</h4>
 									</div>
-									<div class="modal-body">
-										<div class="row">
-											<form id="form-total1" method="post"
-												action="/GPSG/construct-web/excelAdvance.action"
-												class="form-inline" role="form">
+									<form id="form-total1" method="post"
+										action="/GPSG/construct-web/excelAdvance.action"
+										class="form-horizontal" role="form">
+										<div class="modal-body">
+											<div class="row">
+
 												<div class="form-group col-sm-9">
 													<label class="col-sm-6 control-label" for="excelPath">导出路径：</label>
 													<div class="col-sm-6">
@@ -164,23 +183,39 @@
 															type="text" class="form-control">
 													</div>
 												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
 												<div class="col-sm-3">
-													<button id="export-all-btn1" type="submit" class="btn btn-success">EXCEL导出</button>
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
 												</div>
-											</form>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
+												</div>
+											</div>
 										</div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">关闭</button>
-									</div>
+										<div class="modal-footer">
+											<button id="export-all-btn1" type="submit"
+												class="btn btn-success">EXCEL导出</button>
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">关闭</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
 						<div class="modal fade" id="modal-by-date">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form class="form-inline" role="form" method="post"
+									<form class="form-horizontal" role="form" method="post"
 										action="/GPSG/construct-web/advance_getByDate.action">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
@@ -188,12 +223,29 @@
 											<h4 class="modal-title" id="myModalLabel">盾构推进参数曲线</h4>
 										</div>
 										<div class="modal-body">
-											<div class="form-group col-sm-8">
+											<div class="form-group col-sm-9">
 												<label class="col-sm-5 control-label" for="input-start-date">推进日期：</label>
 												<div class="col-sm-7 input-group start-date">
 													<input name="date" type="text" class="form-control">
 													<span
 														class="input-group-addon glyphicon glyphicon-calendar"></span>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
 												</div>
 											</div>
 										</div>
@@ -206,7 +258,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="modal fade" id="modal-shield-advance-loop">
+						<!-- <div class="modal fade" id="modal-shield-advance-loop">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -233,9 +285,9 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
-						<div class="modal fade" id="modal-by-date1">
+						<!-- <div class="modal fade" id="modal-by-date1">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -264,11 +316,12 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="modal fade" id="modal-advance-loop">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<form id="form2" class="form-inline" role="form" method="post"
+									<form id="form2" class="form-horizontal" role="form"
+										method="post"
 										action="/GPSG/construct-web/advance_getByLoop.action">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
@@ -276,11 +329,28 @@
 											<h4 class="modal-title" id="myModalLabel">盾构推进信息查询</h4>
 										</div>
 										<div class="modal-body">
-											<div class="form-group col-sm-8">
+											<div class="form-group col-sm-9">
 												<label class="col-sm-5 control-label" for="input-loop">环号：</label>
 												<div class="col-sm-7 input-group">
 													<input id="input-loop" name="loop" type="text"
 														class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
 												</div>
 											</div>
 										</div>
@@ -311,95 +381,64 @@
 								</tr>
 								<s:iterator value="#request.list" id="advance">
 									<tr>
-										<td id="index"><s:property value="#advance.id" />
-										</td>
-										<td id="aa"><s:property value="#advance.tunnelLoop" />
-										</td>
-										<td id="bb"><s:property value="#advance.proId" />
-										</td>
-										<td id="cc"><s:property value="#advance.today" />
-										</td>
-										<td id="dd"><s:property value="#advance.startTime" />
-										</td>
-										<td id="ee"><s:property value="#advance.endTime" />
-										</td>
-										<td id="ff"><s:property value="#advance.speed" />
-										</td>
+										<td id="index"><s:property value="#advance.id" /></td>
+										<td id="aa"><s:property value="#advance.tunnelLoop" /></td>
+										<td id="bb"><s:property value="#advance.proId" /></td>
+										<td id="cc"><s:property value="#advance.today" /></td>
+										<td id="dd"><s:property value="#advance.startTime" /></td>
+										<td id="ee"><s:property value="#advance.endTime" /></td>
+										<td id="ff"><s:property value="#advance.speed" /></td>
 										<td id="gg"><s:property
-												value="#advance.shieldPushStrength" />
-										</td>
+												value="#advance.shieldPushStrength" /></td>
 										<td id="hh"><s:property value="#advance.cutterTorque" />
 										</td>
 										<td id="ii"><s:property
-												value="#advance.cutterRotateSpeed" />
-										</td>
+												value="#advance.cutterRotateSpeed" /></td>
 										<td id="jj"><s:property value="#advance.penetrationSpeed" />
 										</td>
-										<td><a id="detail" class="btn-detail" href="#">详细</a>
-										</td>
+										<td><a id="detail" class="btn-detail" href="#">详细</a></td>
 										<td id="ll" class="hide"><s:property
-												value="#advance.blenderTorqueLr" />
-										</td>
+												value="#advance.blenderTorqueLr" /></td>
 										<td id="mm" class="hide"><s:property
-												value="#advance.jackStrokeStartAbcdef" />
-										</td>
+												value="#advance.jackStrokeStartAbcdef" /></td>
 										<td id="nn" class="hide"><s:property
-												value="#advance.jackStrokeEndAbcdef" />
-										</td>
+												value="#advance.jackStrokeEndAbcdef" /></td>
 										<td id="oo" class="hide"><s:property
-												value="#advance.jackOilStartAbcdef" />
-										</td>
+												value="#advance.jackOilStartAbcdef" /></td>
 										<td id="pp" class="hide"><s:property
-												value="#advance.jackOilEndAbcdef" />
-										</td>
+												value="#advance.jackOilEndAbcdef" /></td>
 										<td id="qq" class="hide"><s:property
-												value="#advance.bubbleSetValue" />
-										</td>
+												value="#advance.bubbleSetValue" /></td>
 										<td id="rr" class="hide"><s:property
-												value="#advance.bubblePressureSme" />
-										</td>
+												value="#advance.bubblePressureSme" /></td>
 										<td id="ss" class="hide"><s:property
-												value="#advance.bubbleLiduidSme" />
-										</td>
+												value="#advance.bubbleLiduidSme" /></td>
 										<td id="tt" class="hide"><s:property
-												value="#advance.inFlowSme" />
-										</td>
+												value="#advance.inFlowSme" /></td>
 										<td id="uu" class="hide"><s:property
-												value="#advance.outFlowSme" />
-										</td>
+												value="#advance.outFlowSme" /></td>
 										<td id="vv" class="hide"><s:property
-												value="#advance.inDensitySme" />
-										</td>
+												value="#advance.inDensitySme" /></td>
 										<td id="ww" class="hide"><s:property
-												value="#advance.outDensitySme" />
-										</td>
+												value="#advance.outDensitySme" /></td>
 										<td id="xx" class="hide"><s:property
-												value="#advance.oilInjectionFmr" />
-										</td>
+												value="#advance.oilInjectionFmr" /></td>
 										<td id="yy" class="hide"><s:property
-												value="#advance.oilRemainFmr" />
-										</td>
+												value="#advance.oilRemainFmr" /></td>
 										<td id="zz" class="hide"><s:property
-												value="#advance.oilUseFmr" />
-										</td>
+												value="#advance.oilUseFmr" /></td>
 										<td id="aaa" class="hide"><s:property
-												value="#advance.oilTotalFmr" />
-										</td>
+												value="#advance.oilTotalFmr" /></td>
 										<td id="bbb" class="hide"><s:property
-												value="#advance.creator" />
-										</td>
+												value="#advance.creator" /></td>
 										<td id="ccc" class="hide"><s:property
-												value="#advance.createDate" />
-										</td>
+												value="#advance.createDate" /></td>
 										<td id="ddd" class="hide"><s:property
-												value="#advance.memo" />
-										</td>
+												value="#advance.memo" /></td>
 										<td id="eee" class="hide"><s:property
-												value="#advance.status" />
-										</td>
+												value="#advance.status" /></td>
 										<td id="fff" class="hide"><s:property
-												value="#advance.isEast" />
-										</td>
+												value="#advance.isEast" /></td>
 									</tr>
 								</s:iterator>
 							</tbody>

@@ -68,8 +68,7 @@
 										<a id="by-date" href="#" data-toggle="modal" data-target="#modal-mud-date">按时间查询</a>
 									</li> -->
 										<li><a id="by-loop" href="#" data-toggle="modal"
-											data-target="#modal-mud-loop">按环号查询</a>
-										</li>
+											data-target="#modal-mud-loop">按环号查询</a></li>
 									</ul>
 								</div>
 								<div class="btn-group">
@@ -81,8 +80,7 @@
 									</button>
 									<ul class="dropdown-menu" role="menu">
 										<li><a id="excel-all" href="#" data-toggle="modal"
-											data-target="#modal-total">导出全部记录</a>
-										</li>
+											data-target="#modal-total">导出全部记录</a></li>
 										<!-- 	<li>
 										<a id="excel-part" href="#" data-toggle="modal" data-target="#modal-by-condition">按查询条件导出</a>
 									</li> -->
@@ -145,28 +143,28 @@
 							<div class="modal fade" id="modal-total">
 								<div class="modal-dialog">
 									<div class="modal-content">
-									
+
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">导出所有记录</h4>
 										</div>
 										<form id="form-total" method="post"
-													action="/GPSG/construct-web/excelAll.action"
-													class="form-horizontal" role="form">
-										<div class="modal-body">
-										
-										
-											
-													<div class="form-group col-sm-9">
-														<label class="col-sm-6 control-label" for="excelPath">输入EXCEL导出路径：</label>
-														<div class="col-sm-5">
-															<input id="excelPath" name="excelPath" value="d:/土质表.xls"
-																type="text" class="form-control">
-														</div>
+											action="/GPSG/construct-web/excelAll.action"
+											class="form-horizontal" role="form">
+											<div class="modal-body">
+
+
+
+												<div class="form-group col-sm-9">
+													<label class="col-sm-6 control-label" for="excelPath">输入EXCEL导出路径：</label>
+													<div class="col-sm-5">
+														<input id="excelPath" name="excelPath" value="d:/土质表.xls"
+															type="text" class="form-control">
 													</div>
-													
-												
+												</div>
+
+
 												<div class="form-group">
 													<label class="col-sm-4 control-label">请选择东西线：</label>
 													<div class="col-sm-3">
@@ -184,16 +182,16 @@
 														</div>
 													</div>
 												</div>
-											
-											
-											
-										</div>
-										<div class="modal-footer">
-										<button id="export-all-btn" type="button"
-															class="btn btn-success">导出</button>
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">关闭</button>
-										</div>
+
+
+
+											</div>
+											<div class="modal-footer">
+												<button id="export-all-btn" type="button"
+													class="btn btn-success">导出</button>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">关闭</button>
+											</div>
 										</form>
 									</div>
 								</div>
@@ -274,14 +272,14 @@
 											</div>
 											<div class="modal-body">
 
-												<div class="form">
+												<div class="form-group">
 													<label class="col-sm-4 control-label" for="input-loop">环号：</label>
 													<div class="col-sm-5 input-group">
 														<input id="input-loop" name="id" type="text"
 															class="form-control">
 													</div>
 												</div>
-												
+
 
 												<div class="form-group row">
 													<label class="col-sm-4 control-label">请选择东西线：</label>
@@ -452,32 +450,19 @@
 									</tr>
 									<s:iterator value="#request.soilList" id="soil">
 										<tr>
-											<td id="index"><s:property value="#soil.tcIndx" />
-											</td>
-											<td id="aa"><s:property value="#soil.tcCno" />
-											</td>
-											<td id="bb"><s:property value="#soil.tcTcmc" />
-											</td>
-											<td id="loop"><s:property value="#soil.tcLoop" />
-											</td>
-											<td id="cc"><s:property value="#soil.tcHsl" />
-											</td>
-											<td id="dd"><s:property value="#soil.tcMd" />
-											</td>
-											<td id="ee"><s:property value="#soil.tcKxb" />
-											</td>
-											<td id="ff"><s:property value="#soil.tcNr" />
-											</td>
-											<td id="gg"><s:property value="#soil.tcKh" />
-											</td>
-											<td id="hh"><s:property value="#soil.tcKv" />
-											</td>
-											<td id="ii"><s:property value="#soil.tcCu" />
-											</td>
-											<td id="jj"><s:property value="#soil.tcYsml" />
-											</td>
-											<td><a id="detail" class="btn-detail" href="#">详细</a>
-											</td>
+											<td id="index"><s:property value="#soil.tcIndx" /></td>
+											<td id="aa"><s:property value="#soil.tcCno" /></td>
+											<td id="bb"><s:property value="#soil.tcTcmc" /></td>
+											<td id="loop"><s:property value="#soil.tcLoop" /></td>
+											<td id="cc"><s:property value="#soil.tcHsl" /></td>
+											<td id="dd"><s:property value="#soil.tcMd" /></td>
+											<td id="ee"><s:property value="#soil.tcKxb" /></td>
+											<td id="ff"><s:property value="#soil.tcNr" /></td>
+											<td id="gg"><s:property value="#soil.tcKh" /></td>
+											<td id="hh"><s:property value="#soil.tcKv" /></td>
+											<td id="ii"><s:property value="#soil.tcCu" /></td>
+											<td id="jj"><s:property value="#soil.tcYsml" /></td>
+											<td><a id="detail" class="btn-detail" href="#">详细</a></td>
 											<td id="ll" class="hide"><s:property value="#soil.tcN" />
 											</td>
 											<td id="mm" class="hide"><s:property value="#soil.tcYs" />
@@ -493,14 +478,11 @@
 											<td id="rr" class="hide"><s:property value="#soil.tcIp" />
 											</td>
 											<td id="ss" class="hide"><s:property
-													value="#soil.tcDzky" />
-											</td>
+													value="#soil.tcDzky" /></td>
 											<td id="tt" class="hide"><s:property
-													value="#soil.tcSyhl" />
-											</td>
+													value="#soil.tcSyhl" /></td>
 											<td id="uu" class="hide"><s:property
-													value="#soil.isEast" />
-											</td>
+													value="#soil.isEast" /></td>
 										</tr>
 									</s:iterator>
 								</tbody>

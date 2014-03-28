@@ -180,11 +180,12 @@
 										aria-hidden="true">&times;</button>
 									<h4 class="modal-title" id="myModalLabel">导出所有记录</h4>
 								</div>
+								<form id="form-total" method="post"
+											action="/GPSG/construct-web/excelAll3.action"
+											class="form-horizontal" role="form">
 								<div class="modal-body">
 									<div class="row">
-										<form id="form-total" method="post"
-											action="/GPSG/construct-web/excelAll3.action"
-											class="form-inline" role="form">
+										
 											<div class="form-group col-sm-9">
 												<label class="col-sm-6 control-label" for="excelPath">请输入EXCEL导出路径：</label>
 												<div class="col-sm-6">
@@ -192,23 +193,41 @@
 														value="d:/测点布置情况.xls" type="text" class="form-control">
 												</div>
 											</div>
-											<div class="col-sm-3">
-												<button id="export-all-btn" type="submit" class="btn btn-success">导出</button>
+											<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
+												</div>
 											</div>
-										</form>
+											
+										
 									</div>
 								</div>
 								<div class="modal-footer">
+								<button id="export-all-btn" type="submit" class="btn btn-success">导出</button>
 									<button type="button" class="btn btn-default"
 										data-dismiss="modal">关闭</button>
+										
 								</div>
+								</form>
 							</div>
 						</div>
 					</div>
 
 				</div>
 
-				<div class="modal fade" id="modal-syn-date">
+				<!-- <div class="modal fade" id="modal-syn-date">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -218,7 +237,7 @@
 							</div>
 							<div class="modal-body">
 								<form id="form-date-query" method="post"
-									action="/GPSG/construct-web/indx.action" class="form-inline"
+									action="/GPSG/construct-web/indx.action" class="form-horizontal"
 									role="form">
 									<div class="form-group col-sm-8">
 										<label class="col-sm-5 control-label" for="input-date">请输入索引号：</label>
@@ -237,35 +256,53 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="modal fade" id="modal-measure-cedian">
 					<div class="modal-dialog">
 						<div class="modal-content">
+						<form id="form1" method="post"
+									action="/GPSG/construct-web/cedian.action" class="form-horizontal"
+									role="form">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">&times;</button>
 								<h4 class="modal-title" id="myModalLabel">测点查询</h4>
 							</div>
 							<div class="modal-body">
-								<form id="form1" method="post"
-									action="/GPSG/construct-web/cedian.action" class="form-inline"
-									role="form">
-									<div class="form-group col-sm-8">
-										<label class="col-sm-5 control-label" for="input-start-date">测点：</label>
-										<div class="col-sm-7 input-group">
+
+									<div class="form-group">
+										<label class="col-sm-4 control-label" for="input-start-date">请输入测点：</label>
+										<div class="col-sm-5 input-group">
 											<input id="input-start-date" name="cbCdno" type="text"
 												class="form-control">
 										</div>
 									</div>
-									<div class="col-sm-4">
-										<button id="button2" type="button" class="btn btn-success">查询</button>
-									</div>
-								</form>
+									<div class="form-group row">
+												<label class="col-sm-4 control-label">请选择东西线：</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="0" checked> </span> <input
+															type="text" class="form-control" value="东线">
+													</div>
+												</div>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<span class="input-group-addon"> <input
+															type="radio" name="isEast" value="1"> </span> <input
+															type="text" class="form-control" value="西线">
+													</div>
+												</div>
+											</div>
+								
+								
 							</div>
 							<div class="modal-footer">
+							<button id="button2" type="button" class="btn btn-success">查询</button>
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">Close</button>
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>
