@@ -21,13 +21,13 @@ public class DepartmentInfoDao extends GenericHibernateDao<DepartmentInfo, Integ
     }
 	public ArrayList<DepartmentInfo> findByName(String departmentname)
 	{
-		String sql="select * from DEPARTMENT_INFO where DEPARTMENT_NAME='"+departmentname+"';";
+		String sql="select * from DEPARTMENT_INFO where DEPARTMENT_NAME like '%" + departmentname + "%';";
 		ArrayList<DepartmentInfo> list=(ArrayList<DepartmentInfo>)this.sqlFind(sql);
 		return list;
 	}
 	public ArrayList<DepartmentInfo> findmohuName(String departmentname)
 	{
-		String sql="select * from DEPARTMENT_INFO where DEPARTMENT_NAME like '%"+departmentname+"%';";
+		String sql="select * from DEPARTMENT_INFO where DEPARTMENT_NAME like '%" + departmentname + "%';";
 		ArrayList<DepartmentInfo> list=(ArrayList<DepartmentInfo>) sqlFind(sql);
 		return list;
 	}

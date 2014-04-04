@@ -66,7 +66,7 @@ public class UserDAO extends GenericHibernateDao<UserInfo, Integer> {
 		return userList1;
 	}
 	public ArrayList<UserInfo> getCountByName(String fullName) {
-		String sql = "select * from USER_INFO where FULL_NAME ='" + fullName+"';";
+		String sql = "select * from USER_INFO where FULL_NAME like '%" + fullName + "%';";
 		ArrayList<UserInfo> UserInfo = (ArrayList<UserInfo>) this
 				.sqlFind(sql);
 		return UserInfo;
