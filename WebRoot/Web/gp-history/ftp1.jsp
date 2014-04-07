@@ -56,8 +56,7 @@
 										<td><%=++i%></td>
 										<td id="aa"><s:property />
 										</td>
-										<td><a class="dd" href="#">下载</a>
-										</td>
+										<td><a href="/GPSG/stream/getFtpStream.action?downloadZip=<s:property/>">下载</a></td>
 									</tr>
 								</s:iterator>
 							</tbody>
