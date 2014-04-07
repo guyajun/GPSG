@@ -181,6 +181,10 @@
 		</action>
 	</package>
 	<package name="web" namespace="/construct-web" extends="jsonDefault">
+		<action name="uploadFromPad" class="org.shu.construct.action.UploadFromPad"
+			method="execute">
+			<result name="success">/Web/data-combine/msg.jsp</result>
+		</action>
 		<action name="anotherDb_*" class="org.shu.construct.action.ProduceGP"
 			method="{1}">
 			<result name="success">/Web/gp-history/gp-produce-info.jsp</result>
