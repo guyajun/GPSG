@@ -181,6 +181,10 @@
 		</action>
 	</package>
 	<package name="web" namespace="/construct-web" extends="jsonDefault">
+		<action name="anotherDb_*" class="org.shu.construct.action.ProduceGP"
+			method="{1}">
+			<result name="success">/Web/gp-history/gp-produce-info.jsp</result>
+		</action>
 		<action name="unZip" class="org.shu.construct.action.UnZip"
 			method="beginUnZip">
 			<result type="json"></result>
