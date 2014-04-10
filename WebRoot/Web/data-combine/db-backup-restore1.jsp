@@ -38,33 +38,33 @@
 			height="160px"></iframe>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-6">
 					<div class="panel panel-info" style="height:600px;">
 						<div class="panel-heading">
 							<h3 class="panel-title">数据库备份</h3>
 						</div>
 						<div class="panel-body" style="padding-top:100px;">
-							<form id="form-query" class="form-horizontal"
-								role="form">
+							<form id="form-query" method="post"
+								action="/GPSG/construct-web/db_backup.action"
+								class="form-horizontal" role="form">
 								<div class="form-group">
-									<label class="col-sm-3 control-label" for="backupPath">数据库名称：</label>
-									<div class="col-sm-6 input-group">
-										<input id="backupPath" name="bakName" type="text"
-											width="200px" value="<%=bakName%>" class="form-control">
+									<label class="col-sm-3 control-label" for="backupPath">保存地址：</label>
+									<div class="col-sm-9 input-group">
+										<input id="backupPath" name="backupPath" type="text"
+											width="200px" value="<%=path%>/<%=bakName%>"
+											class="form-control">
 									</div>
 								</div>
 								<div class="form-group" style="padding-top:100px;">
 									<div class=" col-sm-offset-4">
-										<a
-											href="/GPSG/construct-web/db_backup.action?bakName=<%=bakName%>"
-											class="btn btn-success btn-lg">备份生产端数据库</a>
+										<button type="submit" class="btn btn-success btn-lg">备份本地数据库</button>
+										<!-- <button type="button" class="btn btn-default">取消</button> -->
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-				<!-- 
 				<div class="col-sm-6">
 					<div class="panel panel-info" style="height:600px;">
 						<div class="panel-heading">
@@ -99,7 +99,7 @@
 							</form>
 						</div>
 					</div>
-				</div>-->
+				</div>
 			</div>
 		</div>
 	</div>

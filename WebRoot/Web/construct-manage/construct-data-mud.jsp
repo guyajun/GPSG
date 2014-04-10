@@ -157,9 +157,9 @@
 
 
 												<div class="form-group col-sm-9">
-													<label class="col-sm-6 control-label" for="excelPath">输入EXCEL导出路径：</label>
+													<label class="col-sm-6 control-label" for="excelPath">输入EXCEL名称：</label>
 													<div class="col-sm-5">
-														<input id="excelPath" name="excelPath" value="d:/土质表.xls"
+														<input id="excelPath" name="excelPath" value="tuzhibiao.xls"
 															type="text" class="form-control">
 													</div>
 												</div>

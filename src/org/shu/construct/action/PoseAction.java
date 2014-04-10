@@ -1,11 +1,16 @@
 package org.shu.construct.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Map;
+
 import org.shu.construct.service.PoseService;
 import org.shu.model.ShieldPose;
 import org.tool.Pager;
+
 import com.opensymphony.xwork2.ActionContext;
 import common.base.action.BaseAction;
 import common.base.action.ExportExcel;
@@ -19,7 +24,16 @@ public class PoseAction extends BaseAction {
 	private int isEast;
 	private Integer number;
 	private String excelPath;
+	private InputStream fileStream;
 	
+	public InputStream getFileStream() {
+		return fileStream;
+	}
+
+	public void setFileStream(InputStream fileStream) {
+		this.fileStream = fileStream;
+	}
+
 	public int getIsEast() {
 		return isEast;
 	}
@@ -73,11 +87,16 @@ public class PoseAction extends BaseAction {
 	}
 
 	public String exportExcel() throws Exception {
-		String excelPathNew = URLDecoder
+		String excelName = URLDecoder
 				.decode(new String(request.getParameter("excelPath").getBytes(
 						"UTF-8"), "UTF-8"), "UTF-8");
+		String excelPathNew="d:/"+excelName;
 		ArrayList<ShieldPose> poseList = poseService.getByIsEast(isEast);
 		exportExcelCommon(poseList, excelPathNew);
+		File file=new File(excelPathNew);
+		if(file.exists()){
+			fileStream=new FileInputStream(file);
+		}
 		return SUCCESS;
 	}
 

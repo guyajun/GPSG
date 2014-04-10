@@ -213,9 +213,27 @@
 			method="{1}">
 			<result name="success">/Web/gp-history/xun-jian.jsp</result>
 		</action>
+		
+		<!-- 
+		<action name="getFtpStream" class="org.shu.construct.action.FtpDownloadStream"
+			method="mainDownload">
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${downloadZip}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
+		</action>
+		 -->
+		
 		<action name="db_*" class="org.shu.construct.action.BackupDB"
 			method="{1}">
-			<result name="success">/Web/gp-history/msg.jsp</result>
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;fileName="${bakName}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
 		</action>
 		<action name="fileTree" class="org.shu.construct.action.TreeFileAction"
 			method="generateTree">
@@ -292,7 +310,12 @@
 		</action>
 		<action name="excelAll5" class="org.shu.construct.action.PoseAction"
 			method="exportExcel">
-			<result name="success" type="redirectAction">pose</result>
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${excelPath}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
 		</action>
 		<action name="excelShieldPose" class="org.shu.construct.action.PoseAction"
 			method="exportExcel">
@@ -467,7 +490,12 @@
 		</action>
 		<action name="excelAll" class="org.shu.construct.action.SoilAction"
 			method="exportExcel">
-			<result name="success" type="redirectAction">soil</result>
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${excelPath}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
 		</action>
 		<action name="excelPartDate" class="org.shu.construct.action.SoilAction"
 			method="exportExcelByDate">
