@@ -8,9 +8,9 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 		</property>
 		<property name="url"
 			value="jdbc:sqlserver://localhost:1433;databasename=GpConstruct">
-		</property>   <!--  -->
-		<property name="username" value="sa"></property>
-		<property name="password" value="ZBF917ZGB919cs"></property>
+		</property>   
+		<property name="username" value="aa"></property>
+		<property name="password" value="aa"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
