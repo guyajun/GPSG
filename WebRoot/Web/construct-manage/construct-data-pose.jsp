@@ -243,7 +243,7 @@
 												<label class="col-sm-5 control-label" for="excelPath">请输入EXCEL导出路径：</label>
 												<div class="col-sm-6">
 													<input id="excelPath" name="excelPath"
-														value="d:/盾构和管片姿态信息.xls" type="text" class="form-control">
+														value="zitai.xls" type="text" class="form-control">
 												</div>
 											</div>
 											<div class="form-group row">

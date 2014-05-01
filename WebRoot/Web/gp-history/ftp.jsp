@@ -66,83 +66,24 @@
 											value="<s:property/>" /></td>-->
 										<td><%=++i%></td>
 										<td id="abc"><s:property /></td>
-										<td><a class="download-class" type="button" href="#">下载</a>
-										</td>
+										<td><a href="/GPSG/stream/getFtpStream.action?downloadZip=<s:property/>">下载</a></td>
 									</tr>
 								</s:iterator>
 							</tbody>
 						</table>
 						<%
-							CommonParam cp = new CommonParam();
+							CommonParam cp = new CommonParam(); 
 							String produceFilePath = cp.getString("local-imgs-produce");
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 							Date date = new Date();
 							String today = sdf.format(date);
 						%>
-						<!-- 	<div class="modal fade" id="modal-download">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">从FTP下载文件</h4>
-									</div>
-									<div class="modal-body">
-										<form id="form-download" action="ftpDownloadFolder.action"
-											method="post" class="form-horizontal" role="form">
-											<div class="form-group">
-												<label class="col-sm-4 control-label" for="input">文件保存路径：</label>
-												<div class="col-sm-6 input-group">
-													<input id="input" type="hidden" name="savePath"
-														value="C:\Users\Administrator\Downloads" /> <input
-														id="downloads" name="downloads" type="hidden">
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button id="download-btn" type="button"
-											class="btn btn-success">下载</button>
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">关闭</button>
-									</div>
-								</div>
-							</div>
-						</div> -->
 						<div class="modal fade" id="modal-download">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<form id="form-download" action="ftpDownloadFolder.action"
-										method="post" class="form-horizontal" role="form">
-										<div class="alert alert-success text-left">
-											点击下载直接保存到了“下载”文件夹，解压缩之后保存到了<%=produceFilePath%></div>
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">&times;</button>
-											<h4 class="modal-title" id="myModalLabel">下载并解压缩</h4>
-										</div>
-										<div class="modal-body">
-											<div class="form-group">
-												<label class="col-sm-5 control-label"></label>
-												<div class="col-sm-5 input-group">
-													<a id="a-download" class="btn btn-success">从ftp下载压缩包并解压缩</a>
-												</div>
-											</div>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">Close</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-						<!-- <div class="modal fade" id="modal-download">在哪台电脑上访问就下载到哪台电脑上，但我们的目的是只能下载到安装施工端系统的电脑上
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<form class="form-horizontal">
 										<div class="alert alert-success text-left">
-											点击下载直接保存到了“下载”文件夹，解压缩之后保存到了<%=produceFilePath%></div>
+											点击下载直接保存到了“下载”文件夹，解压缩之后保存到了<%=produceFilePath %></div>
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">&times;</button>
@@ -171,7 +112,7 @@
 									</form>
 								</div>
 							</div>
-						</div> -->
+						</div>
 					</div>
 				</div>
 			</div>

@@ -8,9 +8,12 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 		</property>
 		<property name="url"
 			value="jdbc:sqlserver://localhost:1433;databasename=GpConstruct">
+
 		</property>   
 		<property name="username" value="aa"></property>
 		<property name="password" value="aa"></property>
+
+
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -298,6 +301,14 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 		<property name="authorityDAO">
 			<ref bean="authorityDAO" />
+		</property>
+	</bean>
+	<bean id="planDao1" class="org.shu.plan.dao.PlanDao1">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="planService1" class="org.shu.plan.service.PlanService1">
+		<property name="planDao1">
+			<ref bean="planDao1" />
 		</property>
 	</bean>
 </beans>

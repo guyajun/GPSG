@@ -77,6 +77,26 @@
 		</action>
 	</package>
 	<package name="system" namespace="/system" extends="strutsDefault">
+	<action name="plan1" class="org.shu.plan.action.PlanAction1"
+			method="getAll">
+			<result name="success">/Web/admin-manage/plan1.jsp</result>
+		</action>
+		<action name="searchplan1" class="org.shu.plan.action.PlanAction1"
+			method="searchplan1">
+			<result name="success">/Web/admin-manage/plan1.jsp</result>
+		</action>
+		<action name="addplan1" class="org.shu.plan.action.PlanAction1"
+			method="addplan1">
+			<result type="redirectAction">plan1</result>
+		</action>
+		<action name="deleteplan1" class="org.shu.plan.action.PlanAction1"
+			method="deleteplan1">
+			<result type="redirectAction">plan1</result>
+		</action>
+		<action name="editplan1" class="org.shu.plan.action.PlanAction1"
+			method="editplan1">
+			<result type="redirectAction">plan1</result>
+		</action>
 		<action name="getAllRole" class="org.shu.construct.action.MenuAction"
 			method="getAllRole">
 			<result name="success">/Web/admin-manage/edit-user.jsp</result>
@@ -181,6 +201,14 @@
 		</action>
 	</package>
 	<package name="web" namespace="/construct-web" extends="jsonDefault">
+		<action name="uploadFromPad" class="org.shu.construct.action.UploadFromPad"
+			method="execute">
+			<result name="success">/Web/data-combine/msg.jsp</result>
+		</action>
+		<action name="anotherDb_*" class="org.shu.construct.action.ProduceGP"
+			method="{1}">
+			<result name="success">/Web/gp-history/gp-produce-info.jsp</result>
+		</action>
 		<action name="unZip" class="org.shu.construct.action.UnZip"
 			method="beginUnZip">
 			<result type="json"></result>
@@ -205,9 +233,27 @@
 			method="{1}">
 			<result name="success">/Web/gp-history/xun-jian.jsp</result>
 		</action>
+		
+		<!-- 
+		<action name="getFtpStream" class="org.shu.construct.action.FtpDownloadStream"
+			method="mainDownload">
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${downloadZip}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
+		</action>
+		 -->
+		
 		<action name="db_*" class="org.shu.construct.action.BackupDB"
 			method="{1}">
-			<result name="success">/Web/gp-history/msg.jsp</result>
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;fileName="${bakName}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
 		</action>
 		<action name="fileTree" class="org.shu.construct.action.TreeFileAction"
 			method="generateTree">
@@ -284,7 +330,12 @@
 		</action>
 		<action name="excelAll5" class="org.shu.construct.action.PoseAction"
 			method="exportExcel">
-			<result name="success" type="redirectAction">pose</result>
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${excelPath}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
 		</action>
 		<action name="excelShieldPose" class="org.shu.construct.action.PoseAction"
 			method="exportExcel">
@@ -459,7 +510,12 @@
 		</action>
 		<action name="excelAll" class="org.shu.construct.action.SoilAction"
 			method="exportExcel">
-			<result name="success" type="redirectAction">soil</result>
+			<result name="success" type="stream">
+				<param name="inputName">fileStream</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${excelPath}"</param>
+				<param name="bufferSize">4096*4096</param>
+			</result>
 		</action>
 		<action name="excelPartDate" class="org.shu.construct.action.SoilAction"
 			method="exportExcelByDate">

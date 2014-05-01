@@ -32,11 +32,10 @@
 				String fileName = request.getParameter("fileName");
 				CommonParam cp = new CommonParam();
 				String dirPath = cp.getString("local-imgs-produce");
-				String mostRencentDate=cp.getMostRecentDay(dirPath);
 			%>
 			<div>
 				<iframe style="padding-top:50px;"
-					src="/GPSG/stream/stream_getProduceStream.action?date=<%=mostRencentDate %>&folder=<%=folder%>
+					src="/GPSG/stream/stream_getProduceStream.action?folder=<%=folder%>
 					&fileName=<%=fileName%>"
 					scroll="true" width="100%" height="700px"></iframe>
 			</div>

@@ -283,7 +283,7 @@
 					Date date = new Date();
 					String today = sdf.format(date);
 				%>
-				<div class="modal fade" id="modal-upload">
+			<!-- 	<div class="modal fade" id="modal-upload">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -310,12 +310,12 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<!--	<div class="modal fade" id="modal-upload">
+				</div> -->
+				<div class="modal fade" id="modal-upload">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="alert alert-success text-left">
-								本地文件路径：<%=uploadpath%>；<br>压缩后保存路径：C:\\<%=today%>.zip;<br>压缩完成请将<%=today%>.zip上传
+								本地文件路径：<%=uploadpath%>；压缩完成请上传;
 							</div>
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"
@@ -349,7 +349,7 @@
 							</div>
 						</div>
 					</div>
-				</div>-->
+				</div>
 				<div class="modal fade" id="modal-measure-query-date">
 					<div class="modal-dialog">
 						<div class="modal-content">

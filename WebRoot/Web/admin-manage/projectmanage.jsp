@@ -61,7 +61,7 @@
 										</td>
 										<td id="ff"><s:property value="#pro.endGpId" /></td>
 										<td><a href="#" class="edit">修改</a></td> 
-									<td><a href="#" class="delete">删除</a></td>
+									    <td><a href="#" class="delete">删除</a></td>
 										<td><a href="#" class="detail">详细</a></td>
 										<td id="gg" class="hide"><s:property value="#pro.gkTltp" />
 										</td>

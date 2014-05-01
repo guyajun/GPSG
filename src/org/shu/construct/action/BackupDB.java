@@ -1,9 +1,13 @@
 package org.shu.construct.action;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import org.tool.CommonParam;
@@ -13,10 +17,27 @@ import common.base.action.BaseAction;
 
 public class BackupDB extends BaseAction {
 	private static final long serialVersionUID = 1L;
-	private String backupPath;
 	private String restorePath;
 	private File upload;
 	private String uploadFileName;
+	private InputStream fileStream;	
+	private String bakName;
+
+	public String getBakName() {
+		return bakName;
+	}
+
+	public void setBakName(String bakName) {
+		this.bakName = bakName;
+	}
+
+	public InputStream getFileStream() {
+		return fileStream;
+	}
+
+	public void setFileStream(InputStream fileStream) {
+		this.fileStream = fileStream;
+	}
 
 	public File getUpload() {
 		return upload;
@@ -42,16 +63,14 @@ public class BackupDB extends BaseAction {
 		this.restorePath = restorePath;
 	}
 
-	public String getBackupPath() {
-		return backupPath;
-	}
-
-	public void setBackupPath(String backupPath) {
-		this.backupPath = backupPath;
-	}
-
 	public String backup() {
-		Map request = (Map) ActionContext.getContext().get("request");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMd-HHmmss");
+		Date date = new Date();
+		String today = sdf.format(date);
+		String bakName = "Shchd_" + today + ".bak";
+		CommonParam cp = new CommonParam();
+		String path = cp.getString("local-bak-path");
+		String backupPath=path+"/"+bakName;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver")
 					.newInstance();
@@ -61,23 +80,19 @@ public class BackupDB extends BaseAction {
 				System.out.println("Successfully connected to server");
 			}
 			Statement st1 = con.createStatement();
-			if (backupPath.contains("\\\\")) {
-				backupPath = backupPath.replaceAll("\\\\", "/");
-			}
 			String sql = "backup database GP0711 to disk = '" + backupPath
 					+ "';";
 			st1.executeUpdate(sql);
 			st1.close();
 			con.close();
-			request.put("msg", "本地数据库备份成功！");
+			File file=new File(backupPath);
+			System.out.println("file name="+file.getName());
+			fileStream=new FileInputStream(file);
 		} catch (Exception e) {
-			request.put("msg", "本地数据库备份失败！");
 			e.printStackTrace();
 		}
-
 		return SUCCESS;
 	}
-
 	public String restore() {
 		if (upload != null) {
 			Map request1 = (Map) ActionContext.getContext().get("request");

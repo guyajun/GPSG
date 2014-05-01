@@ -1,5 +1,8 @@
 package org.shu.construct.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Map;
@@ -14,7 +17,12 @@ import common.base.action.ExportExcel;
 
 @SuppressWarnings("serial")
 public class SoilAction extends BaseAction {
+	private InputStream fileStream;
 	private Integer pageNow = 1;
+	private String tcCno;
+	private String excelPath;
+	private SoilService soilService;
+
 	private Integer id;
 
 	public Integer getId() {
@@ -24,10 +32,14 @@ public class SoilAction extends BaseAction {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public InputStream getFileStream() {
+		return fileStream;
+	}
 
-	private String tcCno;
-	private String excelPath;
-	private SoilService soilService;
+	public void setFileStream(InputStream fileStream) {
+		this.fileStream = fileStream;
+	}
 
 	public String getExcelPath() {
 		return excelPath;
@@ -108,11 +120,17 @@ public class SoilAction extends BaseAction {
 	}
 
 	public String exportExcel() throws Exception {
-		String excelPathNew = URLDecoder
+		String excelName = URLDecoder
 				.decode(new String(request.getParameter("excelPath").getBytes(
 						"UTF-8"), "UTF-8"), "UTF-8");
+		String excelPathNew="d:/"+excelName;
+		System.out.println("excelPathNew="+excelPathNew);
 		ArrayList<GpSoilproperty> soilList = soilService.getAll();
 		exportExcelCommon(soilList, excelPathNew);
+		File file=new File(excelPathNew);
+		if(file.exists()){
+			fileStream=new FileInputStream(file);
+		}
 		return SUCCESS;
 	}
 	
@@ -131,10 +149,12 @@ public class SoilAction extends BaseAction {
 			String excelPath) {		
 			ArrayList<String> titles = new ArrayList<String>();
 			titles.add("索引号");
+			titles.add("项目编号");
 			titles.add("层号");
 			titles.add("土层名称");
-			titles.add("含水量");
 			titles.add("环号");
+			titles.add("里程");
+			titles.add("含水量");
 			titles.add("重度");
 			titles.add("比重");
 			titles.add("饱和度");

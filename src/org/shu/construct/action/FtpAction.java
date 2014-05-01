@@ -69,14 +69,20 @@ public class FtpAction extends BaseAction {
 		FTPFile[] files = ftpClient.listFiles();
 		ArrayList<String> dadList = new ArrayList<String>();
 		for (int j = 0; j < files.length; j++) {
-			String str[] = files[j].getName().split("-");
-			if (str.length == 3) {
-				if (str[0].length() == 4 && str[1].length() == 2) {
-					String baseName=FilenameUtils.getBaseName(files[j].getName());
-					Date date = sdf.parse(baseName);
-					if ((date.after(startDate) && date.before(endDate))
-							|| date.equals(startDate) || date.equals(endDate)) {
-						dadList.add(files[j].getName());
+			FTPFile file = files[j];
+			String ext = FilenameUtils.getExtension(file.getName());
+			if (file.isFile() && ext.equals("zip")) {
+				String str[] = files[j].getName().split("-");
+				if (str.length == 3) {
+					if (str[0].length() == 4 && str[1].length() == 2) {
+						String baseName = FilenameUtils.getBaseName(files[j]
+								.getName());
+						Date date = sdf.parse(baseName);
+						if ((date.after(startDate) && date.before(endDate))
+								|| date.equals(startDate)
+								|| date.equals(endDate)) {
+							dadList.add(files[j].getName());
+						}
 					}
 				}
 			}
